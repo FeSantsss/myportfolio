@@ -23,10 +23,8 @@ header {
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   transform: translateZ(0);
   will-change: width;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -150,9 +148,8 @@ header.scrolled .header-content {
 .mobile-menu-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0, 0, 0, 0.907);
   backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
   opacity: 0;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,6 +1,5 @@
 body {
   background-color: var(--my-black);
-  height: 1000px;
 }
 html {
   scroll-behavior: smooth;
