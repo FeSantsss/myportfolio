@@ -1,13 +1,36 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../felipy-ui/tokens.css";
+import localFont from "next/font/local";
+import { Header } from "@/components/Header";
+
+const chillax = localFont({
+  src: [
+    {
+      path: "./fonts/Chillax-Variable.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+});
+
+const montserrat = localFont({
+  src: [
+    {
+      path: "./fonts/Montserrat-VariableFont_wght.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
-  title: "Felipy Santos | Minimalist Developer",
+  title: "Felipy Santos - Minimalist Developer",
   description:
     "Felipy Santos - Minimalist Full-stack Developer crafting clean, efficient solutions. Open to opportunities.",
   keywords: ["developer", "full-stack", "minimalist", "portfolio"],
   icons: {
-    icon: [{ url: "/icon.jpg", type: "image/jpeg" }],
+    icon: [{ url: "/icon.png", type: "image/png" }],
   },
   openGraph: {
     title: "Felipy Santos | Minimalist Developer",
@@ -16,7 +39,7 @@ export const metadata: Metadata = {
     siteName: "Felipy Santos",
     images: [
       {
-        url: "/icon.jpg",
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Felipy Santos - Minimalist Developer",
@@ -36,7 +59,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <main>
+          <Header />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

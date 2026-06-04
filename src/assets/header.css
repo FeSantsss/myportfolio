@@ -1,0 +1,333 @@
+/* ─── Base ─── */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 12px 16px 0;
+  transition: padding 0.3s ease;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  isolation: isolate;
+  border-radius: 25px;
+  padding: 0 16px;
+  height: 44px;
+  width: 90%;
+  margin: 0 auto;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transform: translateZ(0);
+  will-change: width;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.header-icon {
+  font-family: chillax;
+  color: var(--my-white);
+  font-weight: 500;
+  letter-spacing: -1.2px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Estado scrollado */
+header.scrolled .header-content {
+  width: 80%;
+}
+
+/* ─── Desktop nav ─── */
+.header-links {
+  display: none;
+  gap: 24px;
+  align-items: center;
+}
+
+.header-links a {
+  position: relative;
+  color: var(--my-beige);
+  opacity: 0.8;
+  font-family: montserrat;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: opacity 0.5s ease;
+}
+
+.header-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-links a:hover {
+  opacity: 1;
+  transition: 1s;
+}
+
+.header-links a:hover::after {
+  width: 100%;
+}
+
+/* ─── Burger button ─── */
+.burger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  position: relative;
+  z-index: 1010;
+}
+
+.burger-btn span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--my-beige);
+  border-radius: 2px;
+  transform-origin: center;
+  position: absolute;
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.burger-btn .line-1 {
+  top: calc(50% - 3px);
+}
+
+.burger-btn .line-2 {
+  top: calc(50% + 3px);
+}
+
+/* Burger → X */
+.burger-btn.open .line-1 {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-btn.open .line-2 {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ─── Mobile full-screen menu ─── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mobile-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open {
+  pointer-events: all;
+}
+
+.mobile-menu.open .mobile-menu-backdrop {
+  opacity: 1;
+}
+
+/* Nav links */
+.mobile-menu-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 80px 44px 60px;
+}
+
+/* Separadores */
+.mobile-menu-nav .nav-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open .nav-sep {
+  transform: scaleX(1);
+}
+
+/* Links */
+.mobile-menu-nav a {
+  display: block;
+  color: var(--my-beige);
+  text-decoration: none;
+  font-family: montserrat;
+  font-size: clamp(28px, 7vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  padding: 18px 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s ease;
+}
+
+/* Stagger de entrada */
+.mobile-menu.open a:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}
+
+.mobile-menu.open a:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.mobile-menu.open a:nth-child(6) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.mobile-menu.open a:nth-child(8) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.mobile-menu.open .nav-sep:nth-child(1) {
+  transition-delay: 0.03s;
+}
+
+.mobile-menu.open .nav-sep:nth-child(3) {
+  transition-delay: 0.08s;
+}
+
+.mobile-menu.open .nav-sep:nth-child(5) {
+  transition-delay: 0.13s;
+}
+
+.mobile-menu.open .nav-sep:nth-child(7) {
+  transition-delay: 0.18s;
+}
+
+.mobile-menu.open .nav-sep:nth-child(9) {
+  transition-delay: 0.23s;
+}
+
+.mobile-menu-nav a:hover {
+  color: var(--my-beige);
+}
+
+/* Chevron → detalhe Apple */
+.mobile-menu-nav a::after {
+  content: "›";
+  float: right;
+  font-size: 28px;
+  font-weight: 300;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+}
+
+.mobile-menu-nav a:hover::after {
+  opacity: 0.75;
+}
+
+/* ─── Tablet (769px) ─── */
+@media (min-width: 769px) {
+  header {
+    padding: 16px 20px 0;
+  }
+
+  .header-content {
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 25px;
+    width: 85%;
+  }
+
+  header.scrolled .header-content {
+    width: 70%;
+  }
+
+  .header-links {
+    display: flex;
+  }
+
+  .burger-btn {
+    display: none;
+  }
+
+  .header-links a {
+    font-size: 18px;
+  }
+}
+
+/* ─── Desktop (1024px) ─── */
+@media (min-width: 1024px) {
+  header {
+    padding: 20px 14px 0;
+  }
+
+  .header-content {
+    height: 56px;
+    padding: 0 44px;
+    border-radius: 28px;
+    width: 85%;
+  }
+
+  header.scrolled .header-content {
+    width: 50%;
+  }
+
+  .header-icon {
+    font-size: 19px;
+  }
+
+  .header-links {
+    gap: 32px;
+  }
+
+  .header-links a {
+    font-size: 20px;
+  }
+}
