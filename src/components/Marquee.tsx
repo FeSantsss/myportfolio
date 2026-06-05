@@ -24,6 +24,7 @@ export function Marquee() {
   const trackRef = useRef<HTMLDivElement>(null);
   return (
     <div className={styles.marqueeWrapper}>
+aria-hidden="true"
       <div className={styles.marqueeTrack} ref={trackRef}>
         {[...items, ...items].map((item, i) => (
           <span key={i} className={styles.marqueeItem}>
