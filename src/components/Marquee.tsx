@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import "../assets/marquee.css";
+import styles from "../assets/marquee.module.css";
 
 const items = [
   "NEXT.JS",
@@ -23,11 +23,11 @@ const items = [
 export function Marquee() {
   const trackRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="marquee-wrapper">
-      <div className="marquee-track" ref={trackRef}>
+    <div className={styles.marqueeWrapper}>
+      <div className={styles.marqueeTrack} ref={trackRef}>
         {[...items, ...items].map((item, i) => (
-          <span key={i} className="marquee-item">
-            <span className="marquee-sep"> • </span>
+          <span key={i} className={styles.marqueeItem}>
+            <span className={styles.marqueeSep}> • </span>
             {item}
           </span>
         ))}

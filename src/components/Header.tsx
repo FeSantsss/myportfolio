@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import "../assets/header.css";
+import styles from "../assets/header.module.css";
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -46,15 +46,15 @@ export function Header() {
   return (
     <>
       <header ref={headerRef}>
-        <div className="header-content">
+        <div className={styles.headerContent}>
           <a href="#">
-            <span className="header-icon" translate="no">
+            <span className={styles.headerIcon} translate="no">
               @felipysantsss
             </span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="header-links">
+          <nav className={styles.headerLinks}>
             <a href="#work">work</a>
             <a href="#about">about</a>
             <a href="#contact">contact</a>
@@ -62,37 +62,37 @@ export function Header() {
 
           {/* Burger — mobile only */}
           <button
-            className={`burger-btn${menuOpen ? " open" : ""}`}
+            className={`${styles.burgerBtn}${menuOpen ? ` ${styles.open}` : ""}`}
             onClick={toggleMenu}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}
           >
-            <span className="line-1" />
-            <span className="line-2" />
+            <span className={styles.line1} />
+            <span className={styles.line2} />
           </button>
         </div>
       </header>
 
       {/* Mobile full-screen menu */}
       <div
-        className={`mobile-menu${menuOpen ? " open" : ""}`}
+        className={`${styles.mobileMenu}${menuOpen ? ` ${styles.open}` : ""}`}
         aria-hidden={!menuOpen}
       >
-        <div className="mobile-menu-backdrop" onClick={closeMenu} />
-        <nav className="mobile-menu-nav">
-          <div className="nav-sep" />
+        <div className={styles.mobileMenuBackdrop} onClick={closeMenu} />
+        <nav className={styles.mobileMenuNav}>
+          <div className={styles.navSep} />
           <a href="#work" onClick={closeMenu}>
             work
           </a>
-          <div className="nav-sep" />
+          <div className={styles.navSep} />
           <a href="#about" onClick={closeMenu}>
             about
           </a>
-          <div className="nav-sep" />
+          <div className={styles.navSep} />
           <a href="#contact" onClick={closeMenu}>
             contact
           </a>
-          <div className="nav-sep" />
+          <div className={styles.navSep} />
         </nav>
       </div>
     </>

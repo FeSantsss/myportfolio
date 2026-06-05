@@ -1,6 +1,6 @@
 /* slider */
 
-.marquee-wrapper {
+.marqueeWrapper {
   overflow: hidden;
   width: 100%;
   background: #ffffff00;
@@ -11,13 +11,13 @@
   margin-top: 40px;
 }
 
-.marquee-track {
+.marqueeTrack {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marqueeScroll 30s linear infinite;
 }
 
-.marquee-item {
+.marqueeItem {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -31,12 +31,12 @@
   text-transform: uppercase;
 }
 
-.marquee-sep {
+.marqueeSep {
   color: var(--my-white);
   letter-spacing: 3px;
 }
 
-@keyframes marquee-scroll {
+@keyframes marqueeScroll {
   from {
     transform: translateX(0);
   }
