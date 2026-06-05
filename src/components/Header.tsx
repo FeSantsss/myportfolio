@@ -48,7 +48,9 @@ export function Header() {
       <header ref={headerRef}>
         <div className="header-content">
           <a href="#">
-            <span className="header-icon">FELIPY SANTOS</span>
+            <span className="header-icon" translate="no">
+              @felipysantsss
+            </span>
           </a>
 
           {/* Desktop nav */}

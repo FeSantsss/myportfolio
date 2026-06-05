@@ -1,13 +1,12 @@
 import "../../assets/hero.css";
-import Image from "next/image";
-import arrowIcon from "../../../public/images/right-arrow.avif";
+import { Marquee } from "../Marquee";
 
 export function Hero() {
   return (
     <section className="container-hero">
       <h1 className="title-hero">
         Hi, I'm <br />
-        <span className="highlight">
+        <span className="highlight" translate="no">
           Felipy <br /> Santos
         </span>
       </h1>
@@ -24,13 +23,14 @@ export function Hero() {
           <div className="detail-item">
             <p className="detail-locate">Based in PE, Brazil</p>
           </div>
-          <div className="detail-item">
-            <p className="detail-goal">Open to relocate</p>
+          <div className="detail-item detail-item-goal">
+            <p className="detail-goal">creative and minimalist</p>
           </div>
         </div>
       </div>
-
       <div className="arrow-icon">↗</div>
+
+      <Marquee />
     </section>
   );
 }

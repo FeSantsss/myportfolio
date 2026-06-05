@@ -30,7 +30,9 @@ export function Intro() {
     <div className={`intro${fadeOut ? " fade-out" : ""}`}>
       <div className="intro-center">
         <div className="intro-dot" />
-        <div className="intro-name">Felipy Santos</div>
+        <div className="intro-name" translate="no">
+          Felipy Santos
+        </div>
         <div className="intro-line" />
         <div className="intro-sub">Minimalist developer</div>
       </div>
