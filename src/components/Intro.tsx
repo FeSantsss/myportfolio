@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "../assets/intro.css";
+import styles from "../assets/intro.module.css";
 
 export function Intro() {
   const [visible, setVisible] = useState(true);
@@ -27,14 +27,14 @@ export function Intro() {
   if (!visible) return null;
 
   return (
-    <div className={`intro${fadeOut ? " fade-out" : ""}`}>
-      <div className="intro-center">
-        <div className="intro-dot" />
-        <div className="intro-name" translate="no">
+    <div className={`${styles.intro}${fadeOut ? ` ${styles.fadeOut}` : ""}`}>
+      <div className={styles.introCenter}>
+        <div className={styles.introDot} />
+        <div className={styles.introName} translate="no">
           Felipy Santos
         </div>
-        <div className="intro-line" />
-        <div className="intro-sub">Minimalist developer</div>
+        <div className={styles.introLine} />
+        <div className={styles.introSub}>Minimalist developer</div>
       </div>
     </div>
   );
