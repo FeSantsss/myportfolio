@@ -24,7 +24,7 @@ export function Hero() {
             <p>Based in PE, Brazil</p>
           </div>
           <div className={`${styles.detailItem} ${styles.detailItemGoal}`}>
-            <p>creative and minimalist</p>
+            <p aria-label="creative and minimalist developer">creative and minimalist</p>
           </div>
         </div>
       </div>
