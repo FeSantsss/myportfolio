@@ -1,5 +1,5 @@
 /* ─── Base ─── */
-header {
+.headerTag {
   position: fixed;
   top: 0;
   left: 0;
@@ -35,14 +35,16 @@ header {
   color: var(--my-white);
   font-weight: 500;
   letter-spacing: -1.2px;
+  text-decoration: none;
+  display: inline-block;
 }
 
-a {
+.headerLink {
   text-decoration: none;
 }
 
 /* Estado scrollado */
-header.scrolled .headerContent {
+.headerTag.scrolled .headerContent {
   width: 80%;
 }
 
@@ -53,7 +55,7 @@ header.scrolled .headerContent {
   align-items: center;
 }
 
-.headerLinks a {
+.headerLinks .headerLink {
   position: relative;
   color: var(--my-beige);
   opacity: 0.8;
@@ -65,7 +67,7 @@ header.scrolled .headerContent {
   transition: opacity 0.5s ease;
 }
 
-.headerLinks a::after {
+.headerLinks .headerLink::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -76,12 +78,12 @@ header.scrolled .headerContent {
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.headerLinks a:hover {
+.headerLinks .headerLink:hover {
   opacity: 1;
   transition: 1s;
 }
 
-.headerLinks a:hover::after {
+.headerLinks .headerLink:hover::after {
   width: 100%;
 }
 
@@ -188,7 +190,7 @@ header.scrolled .headerContent {
 }
 
 /* Links */
-.mobileMenuNav a {
+.mobileMenuNav .mobileMenuLink {
   display: block;
   color: var(--my-beige);
   text-decoration: none;
@@ -207,25 +209,25 @@ header.scrolled .headerContent {
 }
 
 /* Stagger de entrada */
-.mobileMenu.open a:nth-child(2) {
+.mobileMenu.open .mobileMenuLink:nth-child(2) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.05s;
 }
 
-.mobileMenu.open a:nth-child(4) {
+.mobileMenu.open .mobileMenuLink:nth-child(4) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.1s;
 }
 
-.mobileMenu.open a:nth-child(6) {
+.mobileMenu.open .mobileMenuLink:nth-child(6) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.15s;
 }
 
-.mobileMenu.open a:nth-child(8) {
+.mobileMenu.open .mobileMenuLink:nth-child(8) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.2s;
@@ -251,12 +253,12 @@ header.scrolled .headerContent {
   transition-delay: 0.23s;
 }
 
-.mobileMenuNav a:hover {
+.mobileMenuNav .mobileMenuLink:hover {
   color: var(--my-beige);
 }
 
 /* Chevron → detalhe Apple */
-.mobileMenuNav a::after {
+.mobileMenuNav .mobileMenuLink::after {
   content: "›";
   float: right;
   font-size: 28px;
@@ -265,13 +267,13 @@ header.scrolled .headerContent {
   transition: opacity 0.2s;
 }
 
-.mobileMenuNav a:hover::after {
+.mobileMenuNav .mobileMenuLink:hover::after {
   opacity: 0.75;
 }
 
 /* ─── Tablet (769px) ─── */
 @media (min-width: 769px) {
-  header {
+  .headerTag {
     padding: 16px 20px 0;
   }
 
@@ -282,7 +284,7 @@ header.scrolled .headerContent {
     width: 85%;
   }
 
-  header.scrolled .headerContent {
+  .headerTag.scrolled .headerContent {
     width: 70%;
   }
 
@@ -294,14 +296,14 @@ header.scrolled .headerContent {
     display: none;
   }
 
-  .headerLinks a {
+  .headerLinks .headerLink {
     font-size: 18px;
   }
 }
 
 /* ─── Desktop (1024px) ─── */
 @media (min-width: 1024px) {
-  header {
+  .headerTag {
     padding: 20px 14px 0;
   }
 
@@ -312,7 +314,7 @@ header.scrolled .headerContent {
     width: 85%;
   }
 
-  header.scrolled .headerContent {
+  .headerTag.scrolled .headerContent {
     width: 50%;
   }
 
@@ -324,7 +326,7 @@ header.scrolled .headerContent {
     gap: 32px;
   }
 
-  .headerLinks a {
+  .headerLinks .headerLink {
     font-size: 20px;
   }
 }

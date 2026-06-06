@@ -45,9 +45,9 @@ export function Header() {
 
   return (
     <>
-      <header ref={headerRef}>
+      <header className={styles.headerTag} ref={headerRef}>
         <div className={styles.headerContent}>
-          <a href="#">
+          <a href="#" className={styles.headerLink}>
             <span className={styles.headerIcon} translate="no">
               @felipysantsss
             </span>
@@ -55,9 +55,15 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className={styles.headerLinks}>
-            <a href="#work">work</a>
-            <a href="#about">about</a>
-            <a href="#contact">contact</a>
+            <a href="#work" className={styles.headerLink}>
+              work
+            </a>
+            <a href="#about" className={styles.headerLink}>
+              about
+            </a>
+            <a href="#contact" className={styles.headerLink}>
+              contact
+            </a>
           </nav>
 
           {/* Burger — mobile only */}
@@ -81,15 +87,23 @@ export function Header() {
         <div className={styles.mobileMenuBackdrop} onClick={closeMenu} />
         <nav className={styles.mobileMenuNav}>
           <div className={styles.navSep} />
-          <a href="#work" onClick={closeMenu}>
+          <a href="#work" className={styles.mobileMenuLink} onClick={closeMenu}>
             work
           </a>
           <div className={styles.navSep} />
-          <a href="#about" onClick={closeMenu}>
+          <a
+            href="#about"
+            className={styles.mobileMenuLink}
+            onClick={closeMenu}
+          >
             about
           </a>
           <div className={styles.navSep} />
-          <a href="#contact" onClick={closeMenu}>
+          <a
+            href="#contact"
+            className={styles.mobileMenuLink}
+            onClick={closeMenu}
+          >
             contact
           </a>
           <div className={styles.navSep} />
