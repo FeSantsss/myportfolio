@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "../felipy-ui/tokens.css";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 
