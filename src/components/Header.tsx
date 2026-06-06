@@ -4,18 +4,16 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "../assets/header.module.css";
 
 export function Header() {
-  const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // Substitui a manipulação de ref
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!headerRef.current) return;
-
-      // Adiciona classe 'scrolled' quando scroll > 50px
+      // Apenas atualiza o estado boolean do React
       if (window.scrollY > 50) {
-        headerRef.current.classList.add("scrolled");
+        setScrolled(true);
       } else {
-        headerRef.current.classList.remove("scrolled");
+        setScrolled(false);
       }
     };
 
@@ -45,7 +43,9 @@ export function Header() {
 
   return (
     <>
-      <header className={styles.headerTag} ref={headerRef}>
+      <header
+        className={`${styles.headerTag} ${scrolled ? styles.scrolled : ""}`}
+      >
         <div className={styles.headerContent}>
           <a href="#" className={styles.headerLink}>
             <span className={styles.headerIcon} translate="no">

@@ -1,6 +1,7 @@
 import styles from "../../assets/hero.module.css";
-import { Marquee } from "../Marquee";
+import dynamic from "next/dynamic";
 
+const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
 export function Hero() {
   return (
     <section className={styles.containerHero}>
@@ -24,7 +25,9 @@ export function Hero() {
             <p>Based in PE, Brazil</p>
           </div>
           <div className={`${styles.detailItem} ${styles.detailItemGoal}`}>
-            <p aria-label="creative and minimalist developer">creative and minimalist</p>
+            <p aria-label="creative and minimalist developer">
+              creative and minimalist
+            </p>
           </div>
         </div>
       </div>
