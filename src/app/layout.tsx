@@ -36,9 +36,10 @@ export const metadata: Metadata = {
     description:
       "Minimalist Full-stack Developer. Clean code, efficient solutions. Open to work.",
     siteName: "Felipy Santos",
+    url: "https://felipysantos-snowy.vercel.app",
     images: [
       {
-        url: "/icon.png",
+        url: "https://felipysantos-snowy.vercel.app/icon.png",
         width: 1200,
         height: 630,
         alt: "Felipy Santos - Minimalist Developer",
