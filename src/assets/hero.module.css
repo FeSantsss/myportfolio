@@ -91,7 +91,7 @@
 
 .arrowIcon {
   font-size: 26px;
-  transform: rotate(135deg);
+  transform: rotate(90deg);
   color: rgba(94, 95, 97, 0.537);
   display: inline-block;
   margin-top: 8px;
@@ -101,11 +101,11 @@
 @keyframes arrowFloat {
   0%,
   100% {
-    transform: rotate(135deg) translate(0, 0);
+    transform: rotate(90deg) translate(0, 0);
     opacity: 0.5;
   }
   50% {
-    transform: rotate(135deg) translate(-4px, -4px);
+    transform: rotate(90deg) translate(-6px, 0px);
     opacity: 0.9;
   }
 }

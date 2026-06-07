@@ -35,7 +35,21 @@ export function Hero() {
         </div>
       </div>
       <div aria-hidden="true" className={styles.arrowIcon}>
-        ↗
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 8H14M14 8L8 2M14 8L8 14"
+            stroke="#484848"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
 
       <Marquee />
