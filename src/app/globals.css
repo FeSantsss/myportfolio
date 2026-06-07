@@ -11,3 +11,12 @@ html {
   --my-black: #1a1712;
   --my-beige: #fff5de;
 }
+#subtitles {
+  display: block;
+  font-family: montserrat;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--my-beige);
+}

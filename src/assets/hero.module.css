@@ -4,6 +4,10 @@
   margin: 0 10px;
 }
 
+.subtitleHero {
+  margin-bottom: 20px;
+}
+
 .titleHero {
   font-family: chillax;
   font-weight: 400;
@@ -227,12 +231,12 @@
   .containerHero {
     max-width: 1900px;
     margin: 0 auto;
-    padding-top: 70px;
+    padding-top: 90px;
     padding-left: 80px;
     padding-right: 80px;
   }
 
   .highlight {
-    font-size: clamp(220px, 15vw, 280px);
+    font-size: clamp(220px, 15vw, 260px);
   }
 }

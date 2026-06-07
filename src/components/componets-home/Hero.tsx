@@ -5,10 +5,13 @@ const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
 export function Hero() {
   return (
     <section className={styles.containerHero}>
+      <span id="subtitles" className={styles.subtitleHero}>
+        I - FULL-STACK DEVELOPER
+      </span>
       <h1 className={styles.titleHero}>
         Hi, I'm <br />
         <span className={styles.highlight} translate="no">
-          Felipy <br /> Santos
+          felipy <br /> santos
         </span>
       </h1>
       <div className={styles.detailsHero}>
@@ -22,7 +25,7 @@ export function Hero() {
             <p>available for work</p>
           </div>
           <div className={styles.detailItem}>
-            <p>Based in PE, Brazil</p>
+            <p>Pernambuco, Brazil</p>
           </div>
           <div className={`${styles.detailItem} ${styles.detailItemGoal}`}>
             <p aria-label="creative and minimalist developer">
@@ -31,7 +34,9 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <div className={styles.arrowIcon}>↗</div>
+      <div aria-hidden="true" className={styles.arrowIcon}>
+        ↗
+      </div>
 
       <Marquee />
     </section>
