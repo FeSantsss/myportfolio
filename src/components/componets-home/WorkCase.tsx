@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "../../assets/workCase.module.css";
+import projectsData from "@/data/works.json";
 
 interface WorkCaseProps {
   id: number;
@@ -10,19 +11,12 @@ interface WorkCaseProps {
   stack?: string[];
 }
 
-export async function WorkCase() {
-  const response = await fetch(
-    "http://felipysantos-snowy.vercel.app/json-workcase/works.json",
-    {
-      next: { revalidate: 3600 },
-    },
-  );
+export function WorkCase() {
+  const projects = projectsData as WorkCaseProps[];
 
-  if (!response.ok) {
+  if (!projects) {
     return <div>Erro ao carregar os dados do projeto.</div>;
   }
-
-  const projects: WorkCaseProps[] = await response.json();
 
   if (!projects) return null;
 
