@@ -12,7 +12,7 @@ interface WorkCaseProps {
 
 export async function WorkCase() {
   const response = await fetch(
-    "http://localhost:3000/json-workcase/works.json",
+    "http://felipysantos-snowy.vercel.app/json-workcase/works.json",
     {
       next: { revalidate: 3600 },
     },
