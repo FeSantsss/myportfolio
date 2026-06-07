@@ -24,17 +24,35 @@ const montserrat = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Felipy Santos - Minimalist Developer",
+  title: "Felipy Santos — Full-Stack Developer",
   description:
-    "Felipy Santos - Minimalist Full-stack Developer crafting clean, efficient solutions. Open to opportunities.",
-  keywords: ["developer", "full-stack", "minimalist", "portfolio"],
+    "Full-Stack Developer specializing in React, TypeScript & Spring Boot. Crafting clean, performant interfaces and scalable backends. Available for international opportunities.",
+  keywords: [
+    "full-stack developer",
+    "frontend developer",
+    "React developer",
+    "TypeScript",
+    "Spring Boot",
+    "Java developer",
+    "minimalist developer",
+    "portfolio",
+    "Brazil developer",
+    "remote developer",
+    "UI developer",
+    "web developer",
+    "Felipy Santos",
+  ],
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
   },
+  metadataBase: new URL("https://felipysantos-snowy.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Felipy Santos | Minimalist Developer",
+    title: "Felipy Santos — Full-Stack Developer",
     description:
-      "Minimalist Full-stack Developer. Clean code, efficient solutions. Open to work.",
+      "React · TypeScript · Spring Boot. Clean code, intentional design, scalable solutions. Available for international work.",
     siteName: "Felipy Santos",
     url: "https://felipysantos-snowy.vercel.app",
     images: [
@@ -42,14 +60,35 @@ export const metadata: Metadata = {
         url: "https://felipysantos-snowy.vercel.app/icon.png",
         width: 1200,
         height: 630,
-        alt: "Felipy Santos - Minimalist Developer",
+        alt: "Felipy Santos — Full-Stack Developer",
       },
     ],
-    locale: "pt_BR",
+    locale: "en_US",
     type: "website",
   },
-  authors: [{ name: "Felipy Santos" }],
+  twitter: {
+    card: "summary_large_image",
+    title: "Felipy Santos — Full-Stack Developer",
+    description:
+      "React · TypeScript · Spring Boot. Clean code, intentional design. Open to international opportunities.",
+    images: ["https://felipysantos-snowy.vercel.app/icon.png"],
+    creator: "@felipysantsss",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  authors: [
+    { name: "Felipy Santos", url: "https://felipysantos-snowy.vercel.app" },
+  ],
   creator: "Felipy Santos",
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -64,6 +103,32 @@ export default function RootLayout({
           <Header />
           {children}
         </main>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Felipy Santos",
+              url: "https://felipysantos-snowy.vercel.app",
+              jobTitle: "Full-Stack Developer",
+              description:
+                "Full-Stack Developer specializing in React, TypeScript and Spring Boot. Available for international opportunities.",
+              knowsAbout: [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Java",
+                "Spring Boot",
+              ],
+              sameAs: [
+                "https://github.com/FeSantsss",
+                "https://linkedin.com/in/felipysantsss",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );
