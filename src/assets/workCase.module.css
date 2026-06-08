@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+.cardWorkCaseLink {
+  text-decoration: none;
+}
+
 .cardWorkCaseContent {
   margin-bottom: 30px;
   padding: 10px;
@@ -19,7 +23,7 @@
   margin-bottom: 10px;
   font-family: montserrat;
   font-size: small;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .cardWorkCaseData {
@@ -31,6 +35,7 @@
   font-family: chillax;
   font-size: 30px;
   margin-top: 10px;
+  font-weight: 500;
 }
 
 .cardWorkCaseDescription {
@@ -76,7 +81,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--my-beige);
+  background-color: rgba(245, 245, 245, 0.165);
+  border: 1px solid rgba(255, 255, 255, 0.647);
   width: 44px;
   height: 44px;
   border-radius: 100%;
@@ -98,6 +104,7 @@
 .cardWorkCase:hover .cardWorkCaseImageOverlay {
   transform: scale(1.08);
   transition: 1s;
+  background-color: var(--my-beige);
 }
 
 .cardWorkCase {
@@ -140,5 +147,10 @@
     width: 500px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 0px;
+  }
+}
+@media (min-width: 1000px) {
+  .cardWorkCaseDescription {
+    max-width: 700px;
   }
 }

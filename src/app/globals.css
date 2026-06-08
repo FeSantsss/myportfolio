@@ -4,6 +4,11 @@ body {
 html {
   scroll-behavior: smooth;
 }
+* {
+  scrollbar-color: var(--my-beige) var(--my-black);
+  scrollbar-width: thin;
+}
+
 :root {
   /* Colors */
 
@@ -19,4 +24,5 @@ html {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--my-beige);
+  opacity: 0.6;
 }

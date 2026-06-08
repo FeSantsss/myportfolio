@@ -16,7 +16,7 @@ export function Hero() {
       </h1>
       <div className={styles.detailsHero}>
         <p className={styles.descriptionHero}>
-          I build fast, scalable web applications with Next.js, TypeScript, and
+          I build fast, scalable web applications with Next.js, TypeScript and
           Spring Boot.
         </p>
         <div className={styles.myDetails}>
