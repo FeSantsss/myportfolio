@@ -58,7 +58,7 @@ export function WorkCase() {
                   alt={project.title}
                   width={500}
                   height={300}
-                  loading="lazy"
+                  loading="eager"
                   className={styles.cardWorkCaseImage}
                 />
               )}
