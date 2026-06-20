@@ -1,28 +1,57 @@
-body {
-  background-color: var(--my-black);
-}
-html {
-  scroll-behavior: smooth;
-}
-* {
-  scrollbar-color: var(--my-beige) var(--my-black);
-  scrollbar-width: thin;
+@import "tailwindcss";
+
+@theme {
+  --color-mybeige: #fff5de;
+  --color-mywhite: #fffbf4;
+  --color-myblack: #1a1712;
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-marquee-scroll: marquee-scroll 30s linear infinite;
 }
 
-:root {
-  /* Colors */
-
-  --my-white: #fffbf4;
-  --my-black: #1a1712;
-  --my-beige: #fff5de;
-}
-#subtitles {
+@utility subtitles {
+  color: #fff5de;
   display: block;
   font-family: montserrat;
   font-size: 0.68rem;
   font-weight: 400;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--my-beige);
   opacity: 0.6;
+}
+@utility detail-item {
+  color: #fff5de;
+  font-family: montserrat;
+  background-color: rgba(20, 13, 13, 0.53);
+  border: 1px solid rgb(44, 33, 33);
+  font-size: 12px;
+  width: fit-content;
+  padding: 0 20px;
+  height: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 32px;
+  text-transform: lowercase;
+}
+
+body {
+  background-color: #1a1712;
+}
+html {
+  scroll-behavior: smooth;
+}
+* {
+  scrollbar-color: #fff5de #1a1712;
+  scrollbar-width: thin;
 }
