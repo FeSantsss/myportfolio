@@ -8,7 +8,7 @@ export function Work() {
     >
       <span className="subtitles -mb-15 xl:-mb-20">II - SELECTED PROJECTS</span>
       <h2 className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20">
-        work
+        projects
         <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
 

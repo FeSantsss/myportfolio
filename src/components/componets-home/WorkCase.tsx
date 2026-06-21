@@ -41,7 +41,10 @@ export function WorkCase() {
               <span className="font-[montserrat] opacity-50 md:-mt-3.5 xl:ml-4">
                 {project.data}
               </span>
-              <h3 className="font-[chillax] text-3xl my-2.5 font-semibold md:text-5xl xl:ml-4">
+              <h3
+                translate="no"
+                className="font-[chillax] text-3xl my-2.5 font-semibold md:text-5xl xl:ml-4"
+              >
                 {project.title}
               </h3>
               <p className="font-[montserrat] text-xs mb-9 max-w-[500px] md:text-sm xl:ml-4">
@@ -51,6 +54,7 @@ export function WorkCase() {
                 <div className="font-[montserrat] text-xs flex gap-2.5 flex-row flex-wrap md:text-sm xl:ml-4">
                   {project.stack.map((item, index) => (
                     <span
+                      translate="no"
                       key={index}
                       className="border-[1px] border-mybeige opacity-80 rounded-2xl p-1"
                     >
