@@ -10,19 +10,19 @@ export function Hero() {
       <h1 className="font-[chillax] font-normal text-mybeige text-2xl leading-[1.3] lg:text-2xl">
         Hi, I'm <br />
         <span
-          className="font-semibold text-[clamp(90px,27vw,100px)] tracking-tighter leading-[0.85] block md:text-[clamp(90px,27vw,150px)] lg:text-[clamp(150px,17vw,200px)] 2xl:text-[clamp(220px,15vw,220px)]"
+          className="font-semibold text-[clamp(90px,27vw,100px)] mt-2 tracking-tighter leading-[0.80] block md:text-[clamp(90px,27vw,150px)] lg:text-[clamp(150px,17vw,200px)] 2xl:text-[clamp(220px,15vw,220px)]"
           translate="no"
         >
-          felipy <br /> santos
+          Felipy <br /> Santos
         </span>
       </h1>
       <div className="flex flex-col items-start my-6 gap-5 md:items-end md:flex-row md:justify-between md:my-14 lg:my-12 xl:my-10 2xl:my-8">
-        <p className="font-[montserrat] text-mywhite text-sm my-5 leadind-[1.65] max-w-[280px] opacity-70 md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px]">
-          I build fast, scalable web applications with Next.js, Tailwind CSS,
-          Sanity CMS, TypeScript and Spring Boot.
+        <p className="font-[montserrat] text-mywhite text-sm my-5 leadind-[1.65] max-w-[280px] opacity-70 md:max-w-[240px] lg:max-w-[280px] xl:max-w-[350px]">
+          I build fast, scalable and client-friendly web applications with
+          Next.js, Tailwind CSS, Sanity CMS, TypeScript and Spring Boot.
         </p>
-        <div className="flex flex-col items-start md:items-end">
-          <div className="detail-item bg-[rgba(0,128,0,0.119)] text-[rgb(31,226,31)] border-green-300">
+        <div className="flex flex-col items-start md:items-end lg:scale-105">
+          <div className="detail-item bg-[rgba(0,128,0,0.119)] text-[rgb(31,226,31)] border-green-600">
             <div className="w-2 h-2 bg-green-400 rounded-4xl inline-block mr-2 animate-pulse shadow-green-600"></div>
             <p>available for work</p>
           </div>

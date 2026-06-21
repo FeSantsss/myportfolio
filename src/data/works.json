@@ -4,8 +4,8 @@
     "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/saints-images/saints-photos/saints/about-four.avif",
     "data": "2025 - now",
     "title": "saintsfilms",
-    "description": "Institutional website for Saints Films — a professional audiovisual production company based in Brazil, PE. Developed with a focus on a strong visual identity, fluid animations, and a scalable frontend architecture.",
-    "stack": ["Next", "Sanity CMS", "TypeScript", "Tailwind CSS"],
+    "description": "Institutional website for Saints Films — a professional audiovisual production company based in Brazil, PE. Developed with a focus on a strong visual identity, fluid animations, strong SEO, and a scalable frontend architecture.",
+    "stack": ["Next.js", "Sanity CMS", "TypeScript", "Tailwind CSS", "Motion"],
     "url": "https://saintsfilms.vercel.app/"
   }
 ]

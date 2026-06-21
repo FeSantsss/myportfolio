@@ -53,7 +53,7 @@ export function Header() {
         >
           <a href="#" className="no-underline">
             <span
-              className="inline-block font-[chillax] font-medium tracking-[-1.2px] text-mywhite no-underline lg:text-[19px]"
+              className="inline-block font-[chillax] font-medium tracking-[-1.2px] duration-700 text-mywhite no-underline lg:text-[19px] hover:opacity-80"
               translate="no"
             >
               @felipysantsss
@@ -79,7 +79,7 @@ export function Header() {
           {/* Burger — mobile only */}
           <button
             type="button"
-            className="relative z-[1010] flex h-8 w-8 items-center justify-center border-none bg-transparent p-1 md:hidden"
+            className="relative z-[1010] flex h-8 w-8 items-center cursor-pointer justify-center border-none bg-transparent p-1 md:hidden"
             onClick={toggleMenu}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={menuOpen}

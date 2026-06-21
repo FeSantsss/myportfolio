@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "../../assets/workCase.module.css";
 import projectsData from "@/data/works.json";
 
 interface WorkCaseProps {
@@ -22,36 +21,46 @@ export function WorkCase() {
   if (!projects) return null;
 
   return (
-    <div className={styles.workCaseContainer}>
+    <div className="mx-2.5">
       {projects.map((project) => (
         <a
           href={project.url}
           target="_blank"
-          className={styles.cardWorkCaseLink}
+          className="no-underline"
           rel="noopener noreferrer"
           key={project.id}
         >
-          <div key={project.id} className={styles.cardWorkCase}>
-            <div className={styles.cardWorkCaseContent}>
-              <span className={styles.cardWorkCaseId}>
+          <div
+            key={project.id}
+            className="group/image group/arrow mb-10 rounded-2xl bg-[#1e1b16] border-[rgba(255,251,244,0.08)] flex flex-col flex-1 cursor-pointer xl:flex-row  xl:justify-between border duration-700 hover:bg-[#232018] hover:border-[rgba(255,251,244,0.2)]"
+          >
+            <div className="mb-8 p-2.5 text-mybeige flex flex-col md:gap-6">
+              <span className="block mb-2.5 font-montserrat text-sm opacity-20">
                 {`0${project.id}`} -
               </span>
-              <span className={styles.cardWorkCaseData}>{project.data}</span>
-              <h3 className={styles.cardWorkCaseTitle}>{project.title}</h3>
-              <p className={styles.cardWorkCaseDescription}>
+              <span className="font-[montserrat] opacity-50 md:-mt-3.5 xl:ml-4">
+                {project.data}
+              </span>
+              <h3 className="font-[chillax] text-3xl my-2.5 font-semibold md:text-5xl xl:ml-4">
+                {project.title}
+              </h3>
+              <p className="font-[montserrat] text-xs mb-9 max-w-[500px] md:text-sm xl:ml-4">
                 {project.description}
               </p>
               {project.stack && project.stack.length > 0 && (
-                <div className={styles.cardWorkCaseStack}>
+                <div className="font-[montserrat] text-xs flex gap-2.5 flex-row flex-wrap md:text-sm xl:ml-4">
                   {project.stack.map((item, index) => (
-                    <span key={index} className={styles.cardWorkCaseStackItem}>
+                    <span
+                      key={index}
+                      className="border-[1px] border-mybeige opacity-80 rounded-2xl p-1"
+                    >
                       {item}
                     </span>
                   ))}
                 </div>
               )}
             </div>
-            <div className={styles.cardWorkCaseImageContainer}>
+            <div className="relative overflow-hidden">
               {project.imageSrc && (
                 <Image
                   src={project.imageSrc}
@@ -59,15 +68,16 @@ export function WorkCase() {
                   width={500}
                   height={300}
                   loading="eager"
-                  className={styles.cardWorkCaseImage}
+                  className="rounded-2xl rounded-t-none rounded-tl-none overflow-hidden object-cover w-full h-full block duration-700 group-hover/image:scale-105  xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
                 />
               )}
-              <div className={styles.cardWorkCaseImageOverlay}>
+              <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full absolute right-4 bottom-4 backdrop-blur-sm duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
+                  className="-rotate-45 duration-500 group-hover/arrow:rotate-0"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
