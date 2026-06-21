@@ -58,7 +58,7 @@ export async function About() {
           />
           <span className="subtitles mt-8">skills</span>
 
-          <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-3 max-w-[500px]">
+          <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (
               <span
                 key={index}
