@@ -52,13 +52,13 @@ export async function About() {
         <div className="w-full">
           <span className="subtitles">experience</span>
           <ExperienceAbout
-            title="saintsfilms website"
+            title="saintsfilms"
             role="developer/designer freelancer"
             data="2025 - 2026/jun"
           />
           <span className="subtitles mt-8">skills</span>
 
-          <div className="flex flex-row flex-wrap gap-2.5 mt-1.5 px-1.5">
+          <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-3 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (
               <span
                 key={index}
