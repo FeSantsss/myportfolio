@@ -4,7 +4,7 @@ const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
 export function Hero() {
   return (
     <section className="pt-[70px] max-w-[1900px] mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
-      <span className="subtitles mb-1 md:mt-6 lg:mb-4">
+      <span translate="no" className="subtitles mb-1 md:mt-6 lg:mb-4">
         I - FULL-STACK DEVELOPER
       </span>
       <h1 className="font-[chillax] font-normal text-mybeige text-2xl leading-[1.3] lg:text-2xl">

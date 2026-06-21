@@ -61,6 +61,7 @@ export async function About() {
           <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (
               <span
+                translate="no"
                 key={index}
                 className="text-xs opacity-50 w-fit h-fit p-1 border-[0.5px] border-mywhite rounded-2xl"
               >
