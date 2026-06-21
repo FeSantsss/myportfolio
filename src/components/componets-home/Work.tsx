@@ -13,6 +13,8 @@ export function Work() {
       </h2>
 
       <WorkCase />
+
+      <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
     </section>
   );
 }
