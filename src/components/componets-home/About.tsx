@@ -8,7 +8,10 @@ export async function About() {
       className="pt-18 mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
     >
       <span className="subtitles -mb-15 xl:-mb-20">III - my journey</span>
-      <h2 className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20">
+      <h2
+        translate="no"
+        className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
+      >
         About
         <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
@@ -53,11 +56,11 @@ export async function About() {
           <span className="subtitles">experience</span>
           <ExperienceAbout
             title="saintsfilms"
-            role="developer/designer freelancer"
+            role="developer / designer"
             data="2025 - 2026/jun"
           />
           <span className="subtitles mt-8">skills</span>
-
+          <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (
               <span

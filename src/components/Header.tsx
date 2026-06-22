@@ -62,15 +62,15 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-6 md:flex lg:gap-8">
-            <a href="#work" className={navLinkClass}>
+            <a translate="no" href="#work" className={navLinkClass}>
               work
               <span className={navUnderlineClass} />
             </a>
-            <a href="#about" className={navLinkClass}>
+            <a translate="no" href="#about" className={navLinkClass}>
               about
               <span className={navUnderlineClass} />
             </a>
-            <a href="#contact" className={navLinkClass}>
+            <a translate="no" href="#contact" className={navLinkClass}>
               contact
               <span className={navUnderlineClass} />
             </a>
@@ -124,6 +124,7 @@ export function Header() {
           />
           <a
             href="#work"
+            translate="no"
             onClick={closeMenu}
             tabIndex={menuOpen ? 0 : -1}
             className={`block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-[opacity,transform,color] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75 ${
@@ -141,6 +142,7 @@ export function Header() {
           />
           <a
             href="#about"
+            translate="no"
             onClick={closeMenu}
             tabIndex={menuOpen ? 0 : -1}
             className={`block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-[opacity,transform,color] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75 ${
@@ -158,6 +160,7 @@ export function Header() {
           />
           <a
             href="#contact"
+            translate="no"
             onClick={closeMenu}
             tabIndex={menuOpen ? 0 : -1}
             className={`block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-[opacity,transform,color] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75 ${
