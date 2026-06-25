@@ -7,17 +7,24 @@ export function Intro() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // 1. Tempo que a tela fica ativa (ex: 2 segundos)
-    const timerShow = setTimeout(() => {
-      setFadeOut(true); // Ativa a animação de sumiço
-    }, 2000);
+    // Bloqueia o scroll do body assim que o componente entra na tela
+    document.body.style.overflow = "hidden";
 
-    // 2. Tempo para deletar o componente da tela após a animação acabar (mais 500ms)
-    const timerRemove = setTimeout(() => {
-      setVisible(false);
+    // 1. Tempo que a tela fica ativa exibindo o conteúdo
+    const timerShow = setTimeout(() => {
+      setFadeOut(true);
     }, 2500);
 
+    // 2. Tempo para remover o componente (tempo do timerShow + tempo da animação CSS)
+    const timerRemove = setTimeout(() => {
+      setVisible(false);
+      // Libera o scroll assim que a animação de sumiço termina
+      document.body.style.overflow = "";
+    }, 3300);
+
+    // Cleanup: Garante que o scroll seja liberado se o usuário sair da página antes do fim
     return () => {
+      document.body.style.overflow = "";
       clearTimeout(timerShow);
       clearTimeout(timerRemove);
     };
@@ -26,7 +33,7 @@ export function Intro() {
   if (!visible) return null;
 
   return (
-    <div className={`intro ${fadeOut ? ` ${fadeOut}` : ""}`}>
+    <div className={`intro ${fadeOut ? "fadeOut" : ""}`}>
       <div className="introCenter">
         <div className="introDot" />
         <div className="introName" translate="no">

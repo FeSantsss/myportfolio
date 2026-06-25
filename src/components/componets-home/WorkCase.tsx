@@ -38,7 +38,7 @@ export function WorkCase() {
               <span className="block mb-2.5 font-montserrat text-sm opacity-20">
                 {`0${project.id}`} -
               </span>
-              <span className="font-[montserrat] opacity-50 md:-mt-3.5 xl:ml-4">
+              <span className="font-[montserrat] uppercase opacity-50 md:-mt-3.5 xl:ml-4">
                 {project.data}
               </span>
               <h3
@@ -64,17 +64,18 @@ export function WorkCase() {
                 </div>
               )}
             </div>
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden h-64 md:h-80 xl:h-auto xl:w-1/2 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
               {project.imageSrc && (
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
-                  width={500}
-                  height={300}
+                  fill
+                  sizes="(min-width: 1280px) 50vw, 100vw"
                   loading="eager"
-                  className="rounded-2xl rounded-t-none rounded-tl-none overflow-hidden object-cover w-full h-full block duration-700 group-hover/image:scale-105  xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
+                  className="rounded-2xl rounded-t-none saturate-0 rounded-tl-none object-cover duration-700 group-hover/image:scale-105 xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
                 />
               )}
+
               <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full absolute right-4 bottom-4 backdrop-blur-sm duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
                 <svg
                   width="16"
