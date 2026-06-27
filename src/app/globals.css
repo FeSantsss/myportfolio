@@ -16,6 +16,33 @@
 
   --animate-marquee-scroll: marquee-scroll 30s linear infinite;
 }
+@utility link-line {
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  position: relative;
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 0.5px;
+    background: currentColor;
+    transition: width 0.35s ease-out;
+  }
+
+  &:hover {
+    opacity: 0.45;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
 
 @utility subtitles {
   color: #fff5de;
