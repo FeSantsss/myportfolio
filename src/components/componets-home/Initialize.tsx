@@ -2,15 +2,10 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
 const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export function Initialize() {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -144,6 +139,16 @@ export function Initialize() {
             ease: "power1.inOut",
           },
           "-=0.7",
+        )
+        .from(
+          ".marque",
+          {
+            opacity: 0,
+            x: 25,
+            duration: 1,
+            ease: "power1.inOut",
+          },
+          "-=0.7",
         );
     },
     { scope: pageRef },
@@ -232,7 +237,9 @@ export function Initialize() {
           </svg>
         </div>
 
-        <Marquee />
+        <div className="marque">
+          <Marquee />
+        </div>
       </section>
     </div>
   );
