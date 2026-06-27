@@ -45,19 +45,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],
   },
-  metadataBase: new URL("https://felipysantos-snowy.vercel.app"),
+  metadataBase: new URL("https://felipysantsss.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Felipy Santos — Full-Stack Developer",
     description:
-      "React · TypeScript · Spring Boot. Clean code, intentional design, scalable solutions. Available for international work.",
+      "Next.js · TypeScript · GSAP. Clean code, intentional design, scalable solutions. Available for international work.",
     siteName: "Felipy Santos",
-    url: "https://felipysantos-snowy.vercel.app",
+    url: "https://felipysantsss.vercel.app",
     images: [
       {
-        url: "https://felipysantos-snowy.vercel.app/icon.png",
+        url: "https://felipysantsss.vercel.app/icon.png",
         width: 1200,
         height: 630,
         alt: "Felipy Santos — Full-Stack Developer",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "Felipy Santos — Full-Stack Developer",
     description:
       "React · TypeScript · Spring Boot. Clean code, intentional design. Open to international opportunities.",
-    images: ["https://felipysantos-snowy.vercel.app/icon.png"],
+    images: ["https://felipysantsss.vercel.app/icon.png"],
     creator: "@felipysantsss",
   },
   robots: {
@@ -84,9 +84,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  authors: [
-    { name: "Felipy Santos", url: "https://felipysantos-snowy.vercel.app" },
-  ],
+  authors: [{ name: "Felipy Santos", url: "https://felipysantsss.vercel.app" }],
   creator: "Felipy Santos",
   category: "technology",
 };
@@ -111,7 +109,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Felipy Santos",
-              url: "https://felipysantos-snowy.vercel.app",
+              url: "https://felipysantsss.vercel.app",
               jobTitle: "Full-Stack Developer",
               description:
                 "Full-Stack Developer specializing in React, TypeScript and Spring Boot. Available for international opportunities.",
