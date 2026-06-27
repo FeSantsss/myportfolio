@@ -29,6 +29,15 @@ export function About() {
         duration: 1,
         ease: "power4.inOut",
       })
+        .to(
+          ".lines",
+          {
+            width: "100%",
+            duration: 0.7,
+            stagger: 0.4,
+          },
+          "-=0.4",
+        )
         .from(
           ".subtitles",
           {
@@ -88,7 +97,7 @@ export function About() {
         className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
       >
         <span className="title">About</span>
-        <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+        <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
       <div className="flex flex-col gap-10 text-mybeige font-[montserrat] xl:flex-row xl:justify-between">
         <div className=" max-w-[800px] opacity-70">
@@ -137,7 +146,7 @@ export function About() {
             />
           </div>
           <span className="subtitles mt-8">skills</span>
-          <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+          <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (
               <span

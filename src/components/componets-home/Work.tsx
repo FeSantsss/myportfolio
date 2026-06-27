@@ -37,6 +37,16 @@ export function Work() {
           trigger: ".title",
         },
       });
+      gsap.to(".lines", {
+        width: "100%",
+        duration: 0.5,
+        ease: "power4.out",
+
+        scrollTrigger: {
+          start: "top 80%",
+          trigger: ".lines",
+        },
+      });
       gsap.from(".workCase", {
         y: 40,
         opacity: 0,
@@ -65,14 +75,14 @@ export function Work() {
         className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
       >
         <span className="title">Work</span>
-        <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+        <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
 
       <div className="workCase">
         <WorkCase />
       </div>
 
-      <div className="w-full h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+      <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
     </section>
   );
 }
