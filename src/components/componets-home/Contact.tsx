@@ -1,4 +1,4 @@
-export default function Contact() {
+export function Contact() {
   return (
     <section
       id="contact"
@@ -7,6 +7,7 @@ export default function Contact() {
       <div className="font-[chillax] text-mybeige font-bold text-right">
         <div className="lowercase">
           <p className="text-7xl md:text-8xl lg:text-9xl">got</p>
+
           <p className="text-5xl -mb-2.5 md:text-7xl lg:text-8xl">a</p>
           <p className="text-7xl mb-1 tracking-widest md:text-8xl lg:text-9xl">
             {" "}

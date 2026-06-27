@@ -34,8 +34,8 @@ export async function About() {
           <p>
             What began with HTML, CSS, and JavaScript quickly evolved into
             building modern applications with <strong>Next.js</strong>,{" "}
-            <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>,
-            <strong> Framer Motion</strong>, and <strong>Sanity CMS</strong>.
+            <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>,{" "}
+            <strong> Gsap</strong>, and <strong>Sanity CMS</strong>.
           </p>
           <br />
           <p>
