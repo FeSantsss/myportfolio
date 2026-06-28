@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 
 const chillax = localFont({
   src: [
@@ -99,7 +100,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <main>
           <Header />
-          {children}
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </main>
 
         <script
