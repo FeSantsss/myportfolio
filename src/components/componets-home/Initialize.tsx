@@ -29,20 +29,16 @@ export function Initialize() {
         },
       );
       tlIntro
+        .to(".introLine", {
+          width: "100%",
+          ease: "power1.inOut",
+          duration: 0.6,
+        })
         .to(".introName", {
           width: "100%",
-          duration: 0.9,
-          ease: "power1.inOut",
+          duration: 2,
+          ease: "power4.out",
         })
-        .to(
-          ".introLine",
-          {
-            width: "100%",
-            ease: "power1.inOut",
-            duration: 0.6,
-          },
-          "-=0.2",
-        )
         .to(
           ".introSub",
           {
@@ -159,12 +155,14 @@ export function Initialize() {
       <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center">
         <div className="introCenter flex flex-col items-center gap-4">
           <div className="introDot w-1.5 h-1.5 rounded-full opacity-0 bg-myblack" />
+
           <div
             className="introName font-[chillax] text-[clamp(28px,5vw,42px)] font-medium tracking-tight text-myblack uppercase overflow-hidden whitespace-nowrap w-0"
             translate="no"
           >
             Felipy Santos
           </div>
+
           <div className="introLine w-0 h-[1px] bg-myblack opacity-20" />
           <div className="introSub font-[montserrat] text-[clamp(9px,1.2vw,12px)] tracking-[3px] text-myblack opacity-0 lowercase">
             Minimalist developer

@@ -17,8 +17,10 @@ export function Contact() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pageRef.current,
-          start: "top 60%",
-          toggleActions: "play none none none",
+          start: "top 20%",
+          end: "bottom 90%",
+          scrub: 2,
+          markers: true,
         },
       });
       tl.from(".textWork", {
