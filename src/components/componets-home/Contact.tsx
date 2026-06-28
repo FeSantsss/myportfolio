@@ -14,39 +14,59 @@ export function Contact() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top 20%",
-          end: "bottom 90%",
-          scrub: 2,
-          markers: true,
-        },
-      });
-      tl.from(".textWork", {
-        opacity: 0,
-        yPercent: 100,
-        duration: 0.9,
-        ease: "power4.out",
-        stagger: 0.4,
-      })
-        .from(".titleContact", {
-          opacity: 0,
-          yPercent: 100,
-          duration: 0.9,
-          ease: "power4.out",
-        })
-        .from(
-          ".contacts",
-          {
+      let mm = gsap.matchMedia();
+      const TimelineCreatorMedia = (timeline: gsap.core.Timeline) => {
+        timeline
+          .from(".textWork", {
             opacity: 0,
-            x: -25,
+            yPercent: 100,
             duration: 0.9,
             ease: "power4.out",
-            stagger: 0.5,
+            stagger: 0.4,
+          })
+          .from(".titleContact", {
+            opacity: 0,
+            yPercent: 100,
+            duration: 0.9,
+            ease: "power4.out",
+          })
+          .from(
+            ".contacts",
+            {
+              opacity: 0,
+              x: -25,
+              duration: 0.9,
+              ease: "power4.out",
+              stagger: 0.5,
+            },
+            "-=0.4",
+          );
+      };
+
+      mm.add("(max-width: 1023px)", () => {
+        const tlMobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: pageRef.current,
+            start: "top 20%",
+            end: "bottom 90%",
           },
-          "-=0.4",
-        );
+        });
+
+        TimelineCreatorMedia(tlMobile);
+      });
+
+      mm.add("(min-width: 1024px)", () => {
+        const tlDesktop = gsap.timeline({
+          scrollTrigger: {
+            trigger: pageRef.current,
+            start: "top 20%",
+            end: "bottom 90%",
+            scrub: 2,
+          },
+        });
+
+        TimelineCreatorMedia(tlDesktop);
+      });
     },
     { scope: pageRef },
   );
