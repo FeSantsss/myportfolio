@@ -22,48 +22,48 @@ export function Initialize() {
         {
           opacity: 0.4,
           scale: 1.1,
-          ease: "power1.in",
+          ease: "sine.inOut",
           duration: 1,
           repeat: -1,
           yoyo: true,
         },
       );
+
       tlIntro
         .to(".introLine", {
           width: "100%",
-          ease: "power1.inOut",
-          duration: 0.6,
+          ease: "power2.inOut",
+          duration: 0.7,
         })
         .to(".introName", {
           width: "100%",
-          duration: 2,
-          ease: "power4.out",
+          duration: 1.4,
+          ease: "expo.out",
         })
         .to(
           ".introSub",
           {
             opacity: 0.4,
-            duration: 2,
+            duration: 1,
             ease: "power1.inOut",
           },
           "-=0.5",
         )
         .to(".introCenter", {
           y: "100vh",
-          duration: 1,
-          ease: "back.inOut",
+          duration: 0.9,
+          ease: "power4.in",
         })
         .to(
           ".intro",
           {
-            duration: 1,
+            duration: 0.9,
             y: "-100vh",
-            ease: "power4.out",
+            ease: "power4.in",
             autoAlpha: 0,
           },
-          "-=0.5",
+          "-=0.45",
         );
-
       tlIntro
         .from(
           ".upTitle",
@@ -76,6 +76,16 @@ export function Initialize() {
           "-=0.9",
         )
         .from(
+          ".linesRow",
+          {
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out",
+            stagger: 0.1,
+          },
+          "-=1.2",
+        )
+        .from(
           ".subtitles",
           {
             opacity: 0,
@@ -83,7 +93,7 @@ export function Initialize() {
             duration: 1,
             ease: "power4.out",
           },
-          "-=0.5",
+          "-=4.2",
         )
         .from(
           ".titleOne",
@@ -93,7 +103,7 @@ export function Initialize() {
             duration: 1,
             ease: "power4.out",
           },
-          "-=0.4",
+          "-=3",
         )
         .from(
           ".titleTwo",
@@ -103,7 +113,7 @@ export function Initialize() {
             duration: 1,
             ease: "power4.out",
           },
-          "-=0.4",
+          "-=2.8",
         )
         .from(
           ".description",
@@ -113,7 +123,7 @@ export function Initialize() {
             duration: 1,
             ease: "power1.inOut",
           },
-          "-=0.8",
+          "-=2.5",
         )
         .from(
           ".detail-item",
@@ -124,7 +134,7 @@ export function Initialize() {
             ease: "power2.inOut",
             stagger: 0.2,
           },
-          "-=0.5",
+          "-=2.9",
         )
         .from(
           ".arrow",
@@ -134,7 +144,7 @@ export function Initialize() {
             duration: 1,
             ease: "power1.inOut",
           },
-          "-=0.7",
+          "-=2.4",
         )
         .from(
           ".marque",
@@ -169,6 +179,34 @@ export function Initialize() {
           </div>
         </div>
       </div>
+
+      {/* GRID - START */}
+      <div
+        className="Rows absolute inset-0 -z-50 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
+        aria-hidden="true"
+      >
+        {/* linhas horizontais */}
+        <div className="linesRow absolute inset-0 flex flex-col justify-between max-lg:hidden">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div
+              key={`h-${i}`}
+              className="linesRow w-full h-px bg-mywhite/10"
+            />
+          ))}
+        </div>
+
+        {/* linhas verticais */}
+        <div className="linesRow absolute inset-0 flex justify-between max-lg:hidden">
+          {Array.from({ length: 13 }).map((_, i) => (
+            <div
+              key={`v-${i}`}
+              className="linesRow h-full w-px bg-mywhite/10"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* GRID - END */}
 
       <section className="pt-[70px] max-w-[1900px] mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
         <div className="block overflow-hidden">

@@ -24,62 +24,63 @@ export function About() {
         },
       });
       tl.from(".title", {
-        x: -25,
+        x: -30,
         opacity: 0,
-        duration: 1,
-        ease: "power4.inOut",
+        duration: 1.1,
+        ease: "expo.out",
       })
         .to(
           ".lines",
           {
             width: "100%",
-            duration: 0.7,
-            stagger: 0.4,
+            duration: 0.9,
+            ease: "power3.inOut",
+            stagger: 0.35,
           },
-          "-=0.4",
+          "-=0.5",
         )
         .from(
           ".subtitles",
           {
             x: -25,
             opacity: 0,
-            duration: 0.6,
-            ease: "power4.out",
-            stagger: 0.5,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.15,
           },
-          "-=0.5",
+          "-=0.6",
         )
         .from(
           ".experiences",
           {
             opacity: 0,
             y: 25,
-            duration: 0.7,
-            ease: "power4.out",
+            duration: 0.8,
+            ease: "power3.out",
           },
-          "-=0.9",
+          "-=0.7",
         )
         .from(
           ".aboutText",
           {
-            y: 25,
+            y: 30,
             opacity: 0,
-            duration: 1,
+            duration: 0.9,
             ease: "power4.out",
-            stagger: 0.3,
+            stagger: 0.15,
           },
-          "-=1.5",
+          "-=1.2",
         )
         .from(
           ".skills",
           {
-            x: -25,
+            x: -20,
             opacity: 0,
-            duration: 0.6,
-            ease: "power4.out",
-            stagger: 0.2,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.04,
           },
-          "-=1.5",
+          "-=1",
         );
     },
     { scope: pageRef },
@@ -99,7 +100,7 @@ export function About() {
         <span className="title">About</span>
         <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
-      <div className="flex flex-col gap-10 text-mybeige font-[montserrat] xl:flex-row xl:justify-between">
+      <div className="flex flex-col gap-10 text-mybeige font-[montserrat] xl:flex-row xl:justify-between md:text-xl">
         <div className=" max-w-[800px] opacity-70">
           <p className="aboutText">
             I started my development journey in <strong>2025</strong> with a

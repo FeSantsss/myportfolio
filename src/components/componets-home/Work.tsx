@@ -18,8 +18,8 @@ export function Work() {
       gsap.from(".subtitles", {
         y: 100,
         opacity: 0,
-        duration: 1.2,
-        ease: "power4.out",
+        duration: 1,
+        ease: "expo.out",
 
         scrollTrigger: {
           start: "top 80%",
@@ -29,8 +29,8 @@ export function Work() {
       gsap.from(".title", {
         x: -25,
         opacity: 0,
-        duration: 1.8,
-        ease: "power4.inOut",
+        duration: 1.1,
+        ease: "expo.out",
 
         scrollTrigger: {
           start: "top 80%",
@@ -39,8 +39,8 @@ export function Work() {
       });
       gsap.to(".lines", {
         width: "100%",
-        duration: 0.5,
-        ease: "power4.out",
+        duration: 0.9,
+        ease: "power3.inOut",
 
         scrollTrigger: {
           start: "top 80%",
@@ -50,8 +50,8 @@ export function Work() {
       gsap.from(".workCase", {
         y: 40,
         opacity: 0,
-        duration: 0.6,
-        ease: "power4.inOut",
+        duration: 0.8,
+        ease: "power3.out",
 
         scrollTrigger: {
           start: "top 80%",
