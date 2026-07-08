@@ -4,13 +4,26 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import contacts from "@/data/contacts.json";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+interface contactProps {
+  name: string;
+  link: string;
+}
+
 export function Contact() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const contact = contacts as contactProps[];
+
+  if (!contacts) {
+    return <div>Erro ao carregar os dados do projeto.</div>;
+  }
+
+  if (!contacts) return null;
 
   useGSAP(
     () => {
@@ -94,114 +107,32 @@ export function Contact() {
           translate="no"
           className="font-[montserrat] text-mywhite text-sm opacity-70 flex flex-col gap-5 mx-2.5 mt-10 md:flex-row"
         >
-          <div className="contacts">
-            <div className=" group link-line">
-              <a className="" href="mailto:hello@felipysantsss.dev">
-                hello@felipysantsss.dev
-              </a>
-              <span className="inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8H14M14 8L8 2M14 8L8 14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+          {contact.map((item, index) => (
+            <div className="contacts" key={index}>
+              <div className=" group link-line">
+                <a className="" href={item.link}>
+                  {item.name}
+                </a>
+                <span className="inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 8H14M14 8L8 2M14 8L8 14"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="contacts">
-            <div className=" group link-line">
-              <a
-                className=""
-                href="https://www.instagram.com/felipysantsss/"
-                target="_blank"
-              >
-                instagram
-              </a>
-              <span className=" inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8H14M14 8L8 2M14 8L8 14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </div>
-          <div className="contacts">
-            <div className="group link-line">
-              <a
-                className=""
-                href="https://github.com/FeSantsss"
-                target="_blank"
-              >
-                GitHub
-              </a>
-              <span className=" inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8H14M14 8L8 2M14 8L8 14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </div>
-          <div className="contacts">
-            <div className="group link-line">
-              <a
-                className=""
-                href="https://www.linkedin.com/in/felipysantsss"
-                target="_blank"
-              >
-                linkedIn
-              </a>
-              <span className=" inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8H14M14 8L8 2M14 8L8 14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </>
