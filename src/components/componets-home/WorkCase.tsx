@@ -26,8 +26,8 @@ export function WorkCase() {
         <a
           href={project.url}
           target="_blank"
-          className="no-underline"
           rel="noopener noreferrer"
+          title={`full case of ${project.title}`}
           key={project.id}
         >
           <div
@@ -75,7 +75,6 @@ export function WorkCase() {
                   className="rounded-2xl rounded-t-none saturate-0 rounded-tl-none object-cover duration-700 group-hover/image:scale-105 xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
                 />
               )}
-
               <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full absolute right-4 bottom-4 backdrop-blur-sm duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
                 <svg
                   width="16"
