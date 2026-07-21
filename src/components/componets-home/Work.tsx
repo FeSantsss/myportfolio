@@ -15,47 +15,48 @@ export function Work() {
 
   useGSAP(
     () => {
-      gsap.from(".subtitles", {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: pageRef.current,
+          start: "top 80%",
+          end: "bottom 90%",
+        },
+      });
+
+      tl.from(".subtitles", {
         y: 100,
-        opacity: 0,
-        duration: 1,
+        autoAlpha: 0,
+        duration: 0.5,
         ease: "expo.out",
-
-        scrollTrigger: {
-          start: "top 80%",
-          trigger: ".subtitles",
-        },
-      });
-      gsap.from(".title", {
-        x: -25,
-        opacity: 0,
-        duration: 1.1,
-        ease: "expo.out",
-
-        scrollTrigger: {
-          start: "top 80%",
-          trigger: ".title",
-        },
-      });
-      gsap.to(".lines", {
-        width: "100%",
-        duration: 0.9,
-        ease: "power3.inOut",
-
-        scrollTrigger: {
-          start: "top 80%",
-          trigger: ".lines",
-        },
-      });
-      gsap.from(".workCase", {
+      })
+        .from(
+          ".title",
+          {
+            x: -25,
+            autoAlpha: 0,
+            duration: 0.8,
+            ease: "expo.out",
+          },
+          "-=0.5",
+        )
+        .to(
+          ".lines",
+          {
+            width: "100%",
+            duration: 0.9,
+            ease: "power3.inOut",
+            stagger: 0.35,
+          },
+          "-=0.5",
+        );
+      gsap.from(".workCaseContainer", {
         y: 40,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 0.8,
         ease: "power3.out",
-
         scrollTrigger: {
-          start: "top 80%",
-          trigger: ".workCase",
+          trigger: ".workCaseContainer",
+          start: "top 85%",
         },
       });
     },
@@ -66,7 +67,7 @@ export function Work() {
     <section
       ref={pageRef}
       id="work"
-      className="pt-18 mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
+      className="pt-18 contain-paint mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
     >
       <span className="subtitles -mb-15 xl:-mb-20">II - SELECTED PROJECTS</span>
 
@@ -78,7 +79,7 @@ export function Work() {
         <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
 
-      <div className="workCase">
+      <div className="workCaseContainer transform-gpu">
         <WorkCase />
       </div>
 

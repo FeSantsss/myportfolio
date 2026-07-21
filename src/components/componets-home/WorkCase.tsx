@@ -26,12 +26,9 @@ export function WorkCase() {
           title={`full case of ${project.title}`}
           key={project.id}
         >
-          <div
-            key={project.id}
-            className="group/image group/arrow mb-10 rounded-2xl bg-[#1e1b16] border-[rgba(255,251,244,0.08)] flex flex-col flex-1 cursor-pointer xl:flex-row  xl:justify-between border duration-700 hover:bg-[#232018] hover:border-[rgba(255,251,244,0.2)]"
-          >
+          <div className="group/image group/arrow mb-10 rounded-2xl bg-[#1e1b16] border-[rgba(255,251,244,0.08)] flex flex-col flex-1 cursor-pointer xl:flex-row  xl:justify-between border duration-700 hover:bg-[#232018] hover:border-[rgba(255,251,244,0.2)]">
             <div className="mb-8 p-2.5 text-mybeige flex flex-col md:gap-6">
-              <span className="block mb-2.5 font-montserrat text-sm opacity-20">
+              <span className="block mb-2.5 font-montserrat text-sm opacity-20 duration-500 group-hover/image:opacity-80">
                 {`0${project.id}`} -
               </span>
               <span className="font-[montserrat] uppercase opacity-50 md:-mt-3.5 xl:ml-4">
@@ -67,11 +64,11 @@ export function WorkCase() {
                   alt={project.title}
                   fill
                   sizes="(min-width: 1280px) 50vw, 100vw"
-                  loading="eager"
-                  className="rounded-2xl rounded-t-none saturate-0 rounded-tl-none object-cover duration-700 group-hover/image:scale-105 xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
+                  loading="lazy"
+                  className="rounded-2xl rounded-t-none saturate-0 rounded-tl-none will-change-transform object-cover duration-700 group-hover/image:scale-105 xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
                 />
               )}
-              <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full absolute right-4 bottom-4 backdrop-blur-sm duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
+              <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full will-change-transform absolute right-4 bottom-4 duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
                 <svg
                   width="16"
                   height="16"
