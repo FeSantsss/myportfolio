@@ -38,8 +38,9 @@ export function Header() {
       // A. Animação de entrada do próprio Header quando a página monta
       gsap.from(".header-container", {
         y: -50,
-        opacity: 0,
+        autoAlpha: 0,
         duration: 1,
+        delay: 5,
         ease: "power4.out",
       });
 
@@ -65,7 +66,7 @@ export function Header() {
           ".menu-link",
           {
             y: 25,
-            opacity: 0,
+            autoAlpha: 0,
             duration: 0.5,
             stagger: 0.08,
             ease: "power3.out",
