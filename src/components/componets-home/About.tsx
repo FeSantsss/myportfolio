@@ -34,65 +34,130 @@ export function About() {
           toggleActions: "play none none none",
         },
       });
-      tl.from(".title", {
-        x: -30,
-        opacity: 0,
-        duration: 1.1,
-        ease: "expo.out",
-      })
-        .to(
-          ".lines",
-          {
-            width: "100%",
-            duration: 0.9,
-            ease: "power3.inOut",
-            stagger: 0.35,
-          },
-          "-=0.5",
-        )
-        .from(
-          ".subtitles",
-          {
-            x: -25,
-            opacity: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            stagger: 0.15,
-          },
-          "-=0.6",
-        )
-        .from(
-          ".experiences",
-          {
-            opacity: 0,
-            y: 25,
-            duration: 0.8,
-            ease: "power3.out",
-          },
-          "-=0.7",
-        )
-        .from(
-          ".aboutText",
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.9,
-            ease: "power4.out",
-            stagger: 0.15,
-          },
-          "-=1.2",
-        )
-        .from(
-          ".skills",
-          {
-            x: -20,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            stagger: 0.04,
-          },
-          "-=1",
-        );
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px)", () => {
+        tl.from(".title", {
+          x: -30,
+          opacity: 0,
+          duration: 1.1,
+          ease: "expo.out",
+        })
+          .to(
+            ".lines",
+            {
+              width: "100%",
+              duration: 0.9,
+              ease: "power3.inOut",
+              stagger: 0.35,
+            },
+            "-=0.5",
+          )
+          .from(
+            ".subtitles",
+            {
+              x: -25,
+              opacity: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              stagger: 0.15,
+            },
+            "-=0.6",
+          )
+          .from(
+            ".experiences",
+            {
+              opacity: 0,
+              y: 25,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.7",
+          )
+          .from(
+            ".aboutText",
+            {
+              y: 30,
+              opacity: 0,
+              duration: 0.9,
+              ease: "power4.out",
+              stagger: 0.15,
+            },
+            "-=1.2",
+          )
+          .from(
+            ".skills",
+            {
+              x: -20,
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              stagger: 0.04,
+            },
+            "-=1",
+          );
+      });
+      mm.add("(max-width: 1023px)", () => {
+        tl.from(".title", {
+          x: -30,
+          opacity: 0,
+          duration: 1.1,
+          ease: "expo.out",
+        })
+          .to(
+            ".lines",
+            {
+              width: "100%",
+              duration: 0.4,
+              ease: "power3.inOut",
+              stagger: 1,
+            },
+            "-=0.2",
+          )
+          .from(
+            ".subtitles",
+            {
+              x: -25,
+              opacity: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              stagger: 0.15,
+            },
+            "-=0.9",
+          )
+          .from(
+            ".aboutText",
+            {
+              y: 30,
+              opacity: 0,
+              duration: 0.9,
+              ease: "power4.out",
+              stagger: 0.15,
+            },
+            "-=1.8",
+          )
+          .from(
+            ".experiences",
+            {
+              opacity: 0,
+              y: 25,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.7",
+          )
+          .from(
+            ".skills",
+            {
+              x: -20,
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              stagger: 0.04,
+            },
+            "-=0.2",
+          );
+      });
     },
     { scope: pageRef },
   );
@@ -177,7 +242,7 @@ export function About() {
               <span
                 translate="no"
                 key={index}
-                className="skills text-xs opacity-20 w-fit h-fit p-1 border-[0.8px] border-mywhite rounded-2xl"
+                className="skills text-xs opacity-40 w-fit h-fit p-1 border-[0.8px] border-mywhite rounded-2xl"
               >
                 {skill}
               </span>
