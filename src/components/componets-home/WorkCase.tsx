@@ -14,11 +14,7 @@ interface WorkCaseProps {
 export function WorkCase() {
   const projects = projectsData as WorkCaseProps[];
 
-  if (!projects) {
-    return <div>Erro ao carregar os dados do projeto.</div>;
-  }
-
-  if (!projects) return null;
+  if (!projects) return <div>Erro ao carregar os dados do projeto.</div>;
 
   return (
     <div className="mx-2.5">
