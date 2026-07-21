@@ -27,19 +27,20 @@ export function About() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top 70%",
-          toggleActions: "play none none none",
-        },
-      });
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: pageRef.current,
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+
         tl.from(".title", {
           x: -30,
-          opacity: 0,
+          autoAlpha: 0,
           duration: 1.1,
           ease: "expo.out",
         })
@@ -57,7 +58,7 @@ export function About() {
             ".subtitles",
             {
               x: -25,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.7,
               ease: "power3.out",
               stagger: 0.15,
@@ -67,7 +68,7 @@ export function About() {
           .from(
             ".experiences",
             {
-              opacity: 0,
+              autoAlpha: 0,
               y: 25,
               duration: 0.8,
               ease: "power3.out",
@@ -78,7 +79,7 @@ export function About() {
             ".aboutText",
             {
               y: 30,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.9,
               ease: "power4.out",
               stagger: 0.15,
@@ -89,7 +90,7 @@ export function About() {
             ".skills",
             {
               x: -20,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.5,
               ease: "power2.out",
               stagger: 0.04,
@@ -98,9 +99,17 @@ export function About() {
           );
       });
       mm.add("(max-width: 1023px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: pageRef.current,
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+
         tl.from(".title", {
           x: -30,
-          opacity: 0,
+          autoAlpha: 0,
           duration: 1.1,
           ease: "expo.out",
         })
@@ -118,7 +127,7 @@ export function About() {
             ".subtitles",
             {
               x: -25,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.7,
               ease: "power3.out",
               stagger: 0.15,
@@ -129,7 +138,7 @@ export function About() {
             ".aboutText",
             {
               y: 30,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.9,
               ease: "power4.out",
               stagger: 0.15,
@@ -139,7 +148,7 @@ export function About() {
           .from(
             ".experiences",
             {
-              opacity: 0,
+              autoAlpha: 0,
               y: 25,
               duration: 0.8,
               ease: "power3.out",
@@ -150,7 +159,7 @@ export function About() {
             ".skills",
             {
               x: -20,
-              opacity: 0,
+              autoAlpha: 0,
               duration: 0.5,
               ease: "power2.out",
               stagger: 0.04,
@@ -174,7 +183,7 @@ export function About() {
     <section
       ref={pageRef}
       id="about"
-      className="pt-18 mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
+      className="pt-18 mx-2.5 contain-paint md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
     >
       <span className="subtitles -mb-15 xl:-mb-20">III - my journey</span>
       <h2

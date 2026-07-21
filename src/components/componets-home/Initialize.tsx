@@ -61,90 +61,94 @@ export function Initialize() {
             y: "-100vh",
             ease: "power4.in",
             autoAlpha: 0,
+            onComplete: () => {
+              gsap.set(".intro", {
+                display: "none",
+              });
+            },
           },
           "-=0.45",
-        );
-      tlIntro
+        )
         .from(
           ".upTitle",
           {
-            opacity: 0,
+            autoAlpha: 0,
             x: -20,
             duration: 1,
             ease: "power4.out",
           },
-          "-=0.9",
+          "+=0.2",
         )
 
         .from(
           ".subtitles",
           {
-            opacity: 0,
+            autoAlpha: 0,
             yPercent: 100,
             duration: 1,
             ease: "power4.out",
           },
-          "-=4.2",
+          "-=1.2",
         )
         .from(
           ".titleOne",
           {
-            opacity: 0,
+            autoAlpha: 0,
             yPercent: 100,
             duration: 1,
             ease: "power4.out",
           },
-          "-=3",
+          "-=1",
         )
         .from(
           ".titleTwo",
           {
-            opacity: 0,
+            autoAlpha: 0,
             yPercent: 100,
             duration: 1,
             ease: "power4.out",
           },
-          "-=2.8",
+          "-=0.7",
         )
         .from(
           ".description",
           {
-            opacity: 0,
+            autoAlpha: 0,
             y: 20,
             duration: 1,
             ease: "power1.inOut",
           },
-          "-=2.5",
+          "-=1",
         )
         .from(
           ".detail-item",
           {
             x: 25,
-            opacity: 0,
+            autoAlpha: 0,
             duration: 1,
             ease: "power2.inOut",
             stagger: 0.2,
           },
-          "-=2.9",
+          "-=1",
         )
         .from(
           ".arrow",
           {
-            opacity: 0,
+            autoAlpha: 0,
             y: 20,
             duration: 1,
             ease: "power1.inOut",
           },
-          "-=2.4",
+          "-=1",
         )
         .from(
           ".marque",
           {
-            opacity: 0,
+            autoAlpha: 0,
             duration: 1,
             ease: "power1.inOut",
           },
-          "-=0.7",
+          "-=0.5",
         );
     },
     { scope: pageRef },
@@ -152,7 +156,7 @@ export function Initialize() {
 
   return (
     <div ref={pageRef}>
-      <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center">
+      <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center transform-gpu">
         <div className="introCenter flex flex-col items-center gap-4">
           <div className="introDot w-1.5 h-1.5 rounded-full opacity-0 bg-myblack" />
 
@@ -170,7 +174,7 @@ export function Initialize() {
         </div>
       </div>
 
-      <section className="pt-[70px] max-w-[1900px] mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
+      <section className="pt-[70px] max-w-[1900px] contain-paint mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
         <div className="block overflow-hidden">
           <span translate="no" className="subtitles mb-1 md:mt-6 lg:mb-4">
             I - FULL-STACK DEVELOPER
