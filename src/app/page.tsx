@@ -1,8 +1,8 @@
-import { Work } from "@/components/componets-home/Work";
+import { Work } from "@/components/components-home/Work";
 import { Footer } from "@/components/Footer";
-import { About } from "@/components/componets-home/About";
-import { Contact } from "@/components/componets-home/Contact";
-import { Initialize } from "@/components/componets-home/Initialize";
+import { About } from "@/components/components-home/About";
+import { Contact } from "@/components/components-home/Contact";
+import { Initialize } from "@/components/components-home/Initialize";
 
 export default function Home() {
   return (
