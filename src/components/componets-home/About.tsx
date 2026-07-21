@@ -6,13 +6,24 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import skillsData from "@/data/skills.json";
+import experienceData from "@/data/experiences.json";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+interface IExperience {
+  id: string;
+  name: string;
+  role: string;
+  date: string;
+}
+
 export function About() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const experiences = Array.isArray(experienceData)
+    ? (experienceData as IExperience[])
+    : [];
 
   useGSAP(
     () => {
@@ -86,6 +97,14 @@ export function About() {
     { scope: pageRef },
   );
 
+  if (experiences.length === 0) {
+    return (
+      <div className="text-xs flex flex-row justify-between items-center mt-2 px-1.5 text-mybeige">
+        Experiences not found
+      </div>
+    );
+  }
+
   return (
     <section
       ref={pageRef}
@@ -105,8 +124,8 @@ export function About() {
           <p className="aboutText">
             I started my development journey in <strong>2025</strong> with a
             strong focus on back-end engineering, studying <strong>Java</strong>
-            ,<strong> Spring Boot</strong>, <strong> APIs</strong>,
-            <strong> databases</strong>, and
+            , <strong>Spring Boot</strong>, <strong>APIs</strong>,
+            <strong> databases</strong> and
             <strong> software architecture</strong>.
           </p>
           <br />
@@ -120,7 +139,7 @@ export function About() {
             What began with HTML, CSS, and JavaScript quickly evolved into
             building modern applications with <strong>Next.js</strong>,{" "}
             <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>,{" "}
-            <strong> Gsap</strong>, and <strong>Sanity CMS</strong>.
+            <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.
           </p>
           <br />
           <p className="aboutText">
@@ -132,20 +151,25 @@ export function About() {
           <br />
           <p className="aboutText">
             Most of my skills have been developed through hands-on{" "}
-            <strong>projects</strong>,<strong> freelance work</strong>,
+            <strong>projects</strong>, <strong>freelance work</strong>,
             technical documentation, online courses, and
             <strong> continuous self-learning.</strong>
           </p>
         </div>
         <div className="w-full">
           <span className="subtitles">experience</span>
+          <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="experiences">
-            <ExperienceAbout
-              title="saintsfilms"
-              role="developer / designer"
-              data="2025 - 2026/jun"
-            />
+            {experiences.map((exp: IExperience) => (
+              <ExperienceAbout
+                key={exp.id}
+                name={exp.name}
+                role={exp.role}
+                date={exp.date}
+              />
+            ))}
           </div>
+
           <span className="subtitles mt-8">skills</span>
           <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
