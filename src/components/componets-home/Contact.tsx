@@ -20,10 +20,12 @@ export function Contact() {
   const contact = contacts as contactProps[];
 
   if (!contacts) {
-    return <div>Erro ao carregar os dados do projeto.</div>;
+    return (
+      <div className="text-xs flex flex-row justify-between items-center mt-2 px-1.5 text-mybeige">
+        Error
+      </div>
+    );
   }
-
-  if (!contacts) return null;
 
   useGSAP(
     () => {
@@ -36,7 +38,7 @@ export function Contact() {
       });
 
       tl.from(".textWork", {
-        opacity: 0,
+        autoAlpha: 0,
         yPercent: 110,
         duration: 1.1,
         ease: "expo.out",
@@ -45,7 +47,7 @@ export function Contact() {
         .from(
           ".titleContact",
           {
-            opacity: 0,
+            autoAlpha: 0,
             yPercent: 100,
             duration: 1.3,
             ease: "expo.out",
@@ -55,7 +57,7 @@ export function Contact() {
         .from(
           ".contacts",
           {
-            opacity: 0,
+            autoAlpha: 0,
             x: -30,
             duration: 0.8,
             ease: "power3.out",
@@ -72,7 +74,7 @@ export function Contact() {
       <section
         ref={pageRef}
         id="contact"
-        className="pt-40 max-w-[1900px] mx-2 -mb-10 lg:px-2 2xl:mx-auto"
+        className="pt-40 contain-paint transform-gpu max-w-[1900px] mx-2 -mb-10 lg:px-2 2xl:mx-auto"
       >
         <div className="font-[chillax] text-mybeige font-bold text-right">
           <div className="lowercase">
@@ -107,8 +109,8 @@ export function Contact() {
           translate="no"
           className="font-[montserrat] text-mywhite text-sm opacity-70 flex flex-col gap-5 mx-2.5 mt-10 md:flex-row"
         >
-          {contact.map((item, index) => (
-            <div className="contacts" key={index}>
+          {contact.map((item) => (
+            <div className="contacts" key={item.name}>
               <div className=" group link-line">
                 <a className="" href={item.link}>
                   {item.name}
