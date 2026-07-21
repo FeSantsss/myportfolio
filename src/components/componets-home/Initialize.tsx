@@ -75,16 +75,7 @@ export function Initialize() {
           },
           "-=0.9",
         )
-        .from(
-          ".linesRow",
-          {
-            opacity: 0,
-            duration: 1,
-            ease: "power4.out",
-            stagger: 0.1,
-          },
-          "-=1.2",
-        )
+
         .from(
           ".subtitles",
           {
@@ -150,7 +141,6 @@ export function Initialize() {
           ".marque",
           {
             opacity: 0,
-            y: 25,
             duration: 1,
             ease: "power1.inOut",
           },
@@ -179,34 +169,6 @@ export function Initialize() {
           </div>
         </div>
       </div>
-
-      {/* GRID - START */}
-      <div
-        className="Rows absolute inset-0 -z-50 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]"
-        aria-hidden="true"
-      >
-        {/* linhas horizontais */}
-        <div className="linesRow absolute inset-0 flex flex-col justify-between max-lg:hidden">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <div
-              key={`h-${i}`}
-              className="linesRow w-full h-px bg-mywhite/10"
-            />
-          ))}
-        </div>
-
-        {/* linhas verticais */}
-        <div className="linesRow absolute inset-0 flex justify-between max-lg:hidden">
-          {Array.from({ length: 13 }).map((_, i) => (
-            <div
-              key={`v-${i}`}
-              className="linesRow h-full w-px bg-mywhite/10"
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* GRID - END */}
 
       <section className="pt-[70px] max-w-[1900px] mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
         <div className="block overflow-hidden">

@@ -177,7 +177,7 @@ export function About() {
               <span
                 translate="no"
                 key={index}
-                className="skills text-xs opacity-50 w-fit h-fit p-1 border-[0.5px] border-mywhite rounded-2xl"
+                className="skills text-xs opacity-20 w-fit h-fit p-1 border-[0.8px] border-mywhite rounded-2xl"
               >
                 {skill}
               </span>
