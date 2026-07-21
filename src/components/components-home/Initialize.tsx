@@ -13,21 +13,6 @@ export function Initialize() {
   useGSAP(
     () => {
       const tlIntro = gsap.timeline();
-      gsap.fromTo(
-        ".introDot",
-        {
-          opacity: 0.1,
-          scale: 1,
-        },
-        {
-          opacity: 0.4,
-          scale: 1.1,
-          ease: "sine.inOut",
-          duration: 1,
-          repeat: -1,
-          yoyo: true,
-        },
-      );
 
       tlIntro
         .to(".introLine", {
@@ -158,8 +143,6 @@ export function Initialize() {
     <div ref={pageRef}>
       <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center transform-gpu">
         <div className="introCenter flex flex-col items-center gap-4">
-          <div className="introDot w-1.5 h-1.5 rounded-full opacity-0 bg-myblack" />
-
           <div
             className="introName font-[chillax] text-[clamp(28px,5vw,42px)] font-medium tracking-tight text-myblack uppercase overflow-hidden whitespace-nowrap w-0"
             translate="no"

@@ -132,7 +132,7 @@ export function About() {
               ease: "power3.out",
               stagger: 0.15,
             },
-            "-=0.9",
+            "-=2.4",
           )
           .from(
             ".aboutText",
@@ -141,31 +141,23 @@ export function About() {
               autoAlpha: 0,
               duration: 0.9,
               ease: "power4.out",
-              stagger: 0.15,
+              stagger: 0.3,
             },
-            "-=1.8",
+            "-=2.2",
           )
-          .from(
-            ".experiences",
-            {
-              autoAlpha: 0,
-              y: 25,
-              duration: 0.8,
-              ease: "power3.out",
-            },
-            "-=0.7",
-          )
-          .from(
-            ".skills",
-            {
-              x: -20,
-              autoAlpha: 0,
-              duration: 0.5,
-              ease: "power2.out",
-              stagger: 0.04,
-            },
-            "-=0.2",
-          );
+          .from(".experiences", {
+            autoAlpha: 0,
+            y: 25,
+            duration: 0.8,
+            ease: "power3.out",
+          })
+          .from(".skills", {
+            x: -20,
+            autoAlpha: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            stagger: 0.04,
+          });
       });
     },
     { scope: pageRef },

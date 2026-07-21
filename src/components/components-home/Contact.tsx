@@ -32,7 +32,7 @@ export function Contact() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: pageRef.current,
-          start: "top 20%",
+          start: "top 50%",
           end: "bottom 90%",
         },
       });
