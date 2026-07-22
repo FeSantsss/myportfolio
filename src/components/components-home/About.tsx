@@ -63,7 +63,7 @@ export function About() {
               ease: "power3.out",
               stagger: 0.15,
             },
-            "-=0.6",
+            "-=1",
           )
           .from(
             ".experiences",
@@ -73,7 +73,7 @@ export function About() {
               duration: 0.8,
               ease: "power3.out",
             },
-            "-=0.7",
+            "-=1.3",
           )
           .from(
             ".aboutText",
@@ -95,14 +95,14 @@ export function About() {
               ease: "power2.out",
               stagger: 0.04,
             },
-            "-=1",
+            "-=1.4",
           );
       });
       mm.add("(max-width: 1023px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: pageRef.current,
-            start: "top 70%",
+            start: "top 80%",
             toggleActions: "play none none none",
           },
         });
@@ -132,7 +132,7 @@ export function About() {
               ease: "power3.out",
               stagger: 0.15,
             },
-            "-=2.4",
+            "-=2.5",
           )
           .from(
             ".aboutText",
@@ -143,21 +143,29 @@ export function About() {
               ease: "power4.out",
               stagger: 0.3,
             },
-            "-=2.2",
+            "-=2.4",
           )
-          .from(".experiences", {
-            autoAlpha: 0,
-            y: 25,
-            duration: 0.8,
-            ease: "power3.out",
-          })
-          .from(".skills", {
-            x: -20,
-            autoAlpha: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            stagger: 0.04,
-          });
+          .from(
+            ".experiences",
+            {
+              autoAlpha: 0,
+              y: 25,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=1",
+          )
+          .from(
+            ".skills",
+            {
+              x: -20,
+              autoAlpha: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              stagger: 0.04,
+            },
+            "-=0.8",
+          );
       });
     },
     { scope: pageRef },
