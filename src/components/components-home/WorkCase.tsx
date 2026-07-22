@@ -17,7 +17,7 @@ export function WorkCase() {
   if (!projects) return <div>Erro ao carregar os dados do projeto.</div>;
 
   return (
-    <div className="mx-2.5">
+    <div className="mx-2.5 contain-paint transform-gpu">
       {projects.map((project) => (
         <a
           href={project.url}
