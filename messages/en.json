@@ -15,16 +15,53 @@
     "item1": "NEXT.JS",
     "item2": "TYPESCRIPT",
     "item3": "JAVA",
-    "item4": "",
-    "item5": "",
-    "item6": "",
-    "item7": "",
-    "item8": "",
-    "item9": "",
-    "item10": "",
-    "item11": "",
-    "item12": "",
-    "item13": "",
-    "item14": ""
+    "item4": "SPRING BOOT",
+    "item5": "FAST WEB APPLICATIONS",
+    "item6": "SCALABLE SYSTEMS",
+    "item7": "MODERN WEB PRODUCTS",
+    "item8": "AVAILABLE FOR PROJECTS",
+    "item9": "REMOTE WORLDWIDE",
+    "item10": "PERFORMANCE",
+    "item11": "UI/UX",
+    "item12": "CLEAN ARCHITECTURE",
+    "item13": "WEB SYSTEMS",
+    "item14": "RELIABLE SOFTWARE"
+  },
+  "work": {
+    "projects": "II - SELECTED PROJECTS",
+    "title": "work"
+  },
+  "workcases": [
+    {
+      "id": 1,
+      "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
+      "data": "2025 - 2026/jun",
+      "title": "saintsfilms",
+      "description": "Institutional website for Saints Films — a professional audiovisual production company based in Brazil, PE. Developed with a focus on a strong visual identity, fluid animations, strong SEO, and a scalable frontend architecture.",
+      "stack": [
+        "Next.js",
+        "Sanity CMS",
+        "TypeScript",
+        "Tailwind CSS",
+        "Motion",
+        "Minimalist"
+      ],
+      "url": "https://www.behance.net/gallery/252363217/SAINTSFILMS"
+    }
+  ],
+  "about": {
+    "journey": "III - MY JOURNEY",
+    "title": "about",
+    "description1": "I started my development journey in <strong>2025</strong> with a strong focus on back-end engineering, studying <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>APIs</strong> <strong> databases</strong> and <strong> software architecture</strong>.",
+    "description2": "Later, an opportunity to work on front-end projects at <strong>Saints Films </strong> introduced me to a different side of web development.",
+    "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
+    "description4": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
+  },
+  "contact": {
+    "got": "got",
+    "a": "a",
+    "project": "project",
+    "inMind": "in mind?",
+    "letsBuild": "let's build together!"
   }
 }

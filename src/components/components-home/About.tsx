@@ -204,7 +204,7 @@ export function About() {
           </p>
           <br />
           <p className="aboutText">
-            Later, an opportunity to work on front-end projects at{" "}
+            Later, an opportunity to work on front-end projects at
             <strong>Saints Films </strong>
             introduced me to a different side of web development.
           </p>

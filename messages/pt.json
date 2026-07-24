@@ -1,0 +1,67 @@
+{
+  "initialize": {
+    "nameintro": "felipy santos",
+    "minimalistdev": "Desenvolvedor minimalista",
+    "fulldev": "I - DESENVOLVEDOR FULL-STACK",
+    "iam": "Olá, eu sou,",
+    "nameone": "Felipy",
+    "nametwo": "Santos",
+    "description": "Construo aplicações web rápidas, escaláveis e amigáveis ao cliente com Next.js, Tailwind CSS, Sanity CMS, TypeScript e Spring Boot.",
+    "detailitemone": "disponível para trabalho",
+    "detailitemtwo": "Pernambuco, Brasil",
+    "detailitemthree": "criativo e minimalista"
+  },
+  "wrapper": {
+    "item1": "NEXT.JS",
+    "item2": "TYPESCRIPT",
+    "item3": "JAVA",
+    "item4": "SPRING BOOT",
+    "item5": "APLICAÇÕES WEB RÁPIDAS",
+    "item6": "SISTEMAS ESCALÁVEIS",
+    "item7": "PRODUTOS WEB MODERNOS",
+    "item8": "DISPONÍVEL PARA PROJETOS",
+    "item9": "REMOTO PARA O MUNDO",
+    "item10": "PERFORMANCE",
+    "item11": "UI/UX",
+    "item12": "ARQUITETURA LIMPA",
+    "item13": "SISTEMAS WEB",
+    "item14": "SOFTWARE CONFIÁVEL"
+  },
+  "work": {
+    "projects": "II - PROJETOS SELECIONADOS",
+    "title": "trabalhos"
+  },
+  "workcases": [
+    {
+      "id": 1,
+      "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
+      "data": "2025 - 2026/jun",
+      "title": "saintsfilms",
+      "description": "Website institucional para a Saints Films — uma produtora audiovisual profissional sediada em Pernambuco, Brasil. Desenvolvido com foco em uma identidade visual forte, animações fluidas, SEO otimizado e uma arquitetura frontend escalável.",
+      "stack": [
+        "Next.js",
+        "Sanity CMS",
+        "TypeScript",
+        "Tailwind CSS",
+        "Motion",
+        "Minimalist"
+      ],
+      "url": "https://www.behance.net/gallery/252363217/SAINTSFILMS"
+    }
+  ],
+  "about": {
+    "journey": "III - MINHA JORNADA",
+    "title": "sobre",
+    "description1": "Iniciei minha jornada no desenvolvimento em <strong>2025</strong> com um forte foco em engenharia back-end, estudando <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>APIs</strong>, <strong>bancos de dados</strong> e <strong>arquitetura de software</strong>.",
+    "description2": "Mais tarde, a oportunidade de trabalhar em projetos front-end na <strong>Saints Films</strong> me apresentou a um lado diferente do desenvolvimento web.",
+    "description3": "O que começou com HTML, CSS e JavaScript rapidamente evoluiu para a construção de aplicações modernas com <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong>GSAP</strong> e <strong>Sanity CMS</strong>.",
+    "description4": "A maior parte das minhas habilidades foi desenvolvida através de <strong>projetos práticos</strong>, <strong>trabalhos como freelancer</strong>, documentação técnica, cursos online e <strong>aprendizado contínuo.</strong>"
+  },
+  "contact": {
+    "got": "tem",
+    "a": "um",
+    "project": "projeto",
+    "inMind": "em mente?",
+    "letsBuild": "vamos construir juntos!"
+  }
+}
