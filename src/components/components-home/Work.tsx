@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WorkCase } from "./WorkCase";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,7 @@ if (typeof window !== "undefined") {
 
 export function Work() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const tl = useTranslations("work");
 
   useGSAP(
     () => {
@@ -69,13 +71,13 @@ export function Work() {
       id="work"
       className="pt-18 contain-paint mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
     >
-      <span className="subtitles -mb-15 xl:-mb-20">II - SELECTED PROJECTS</span>
+      <span className="subtitles -mb-15 xl:-mb-20">{tl("projects")}</span>
 
       <h2
         translate="no"
         className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
       >
-        <span className="title">Work</span>
+        <span className="title">{tl("title")}</span>
         <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
 

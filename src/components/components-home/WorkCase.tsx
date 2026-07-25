@@ -1,5 +1,5 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import projectsData from "@/data/works.json";
 
 interface WorkCaseProps {
   id: number;
@@ -12,7 +12,9 @@ interface WorkCaseProps {
 }
 
 export function WorkCase() {
-  const projects = projectsData as WorkCaseProps[];
+  const tl = useTranslations("");
+
+  const projects = tl.raw("workcases") as WorkCaseProps[];
 
   if (!projects) return <div>Erro ao carregar os dados do projeto.</div>;
 

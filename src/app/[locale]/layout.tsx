@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
 
 const chillax = localFont({
   src: [
     {
-      path: "./fonts/Chillax-Variable.ttf",
+      path: "../fonts/Chillax-Variable.ttf",
       weight: "100 900",
       style: "normal",
     },
@@ -17,7 +19,7 @@ const chillax = localFont({
 const montserrat = localFont({
   src: [
     {
-      path: "./fonts/Montserrat-VariableFont_wght.ttf",
+      path: "../fonts/Montserrat-VariableFont_wght.ttf",
       weight: "100 900",
       style: "normal",
     },
@@ -90,18 +92,30 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  // Garante que a renderização estática e o i18n funcionem em sincronia
+  setRequestLocale(locale);
+
+  // Carrega as mensagens do dicionário (pt.json / en.json)
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body suppressHydrationWarning>
-        <main>
-          <Header />
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </main>
+        <NextIntlClientProvider messages={messages}>
+          <main>
+            <Header />
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </main>
+        </NextIntlClientProvider>
 
         <script
           type="application/ld+json"

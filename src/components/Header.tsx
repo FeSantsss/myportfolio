@@ -3,10 +3,12 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslations } from "next-intl";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const tl = useTranslations("menu");
 
   // Referências para controlar os elementos com GSAP
   const headerRef = useRef<HTMLDivElement>(null);
@@ -120,15 +122,15 @@ export function Header() {
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-6 md:flex lg:gap-8">
             <a translate="no" href="#work" className={navLinkClass}>
-              work
+              {tl("work")}
               <span className={navUnderlineClass} />
             </a>
             <a translate="no" href="#about" className={navLinkClass}>
-              about
+              {tl("about")}
               <span className={navUnderlineClass} />
             </a>
             <a translate="no" href="#contact" className={navLinkClass}>
-              contact
+              {tl("contact")}
               <span className={navUnderlineClass} />
             </a>
           </nav>
@@ -183,7 +185,7 @@ export function Header() {
             tabIndex={menuOpen ? 0 : -1}
             className="menu-link block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-colors duration-300 after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75"
           >
-            work
+            {tl("work")}
           </a>
 
           <div className="menu-divider h-px w-full origin-left scale-x-0 bg-white/10" />
@@ -194,7 +196,7 @@ export function Header() {
             tabIndex={menuOpen ? 0 : -1}
             className="menu-link block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-colors duration-300 after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75"
           >
-            about
+            {tl("about")}
           </a>
 
           <div className="menu-divider h-px w-full origin-left scale-x-0 bg-white/10" />
@@ -205,7 +207,7 @@ export function Header() {
             tabIndex={menuOpen ? 0 : -1}
             className="menu-link block w-full py-[18px] font-[montserrat] text-[clamp(28px,7vw,40px)] font-semibold tracking-[-0.5px] text-mybeige no-underline transition-colors duration-300 after:float-right after:text-[28px] after:font-light after:opacity-35 after:content-['›'] after:transition-opacity after:duration-200 hover:text-mybeige hover:after:opacity-75"
           >
-            contact
+            {tl("contact")}
           </a>
 
           <div className="menu-divider h-px w-full origin-left scale-x-0 bg-white/10" />

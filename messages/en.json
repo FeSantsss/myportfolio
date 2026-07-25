@@ -3,29 +3,13 @@
     "nameintro": "felipy santos",
     "minimalistdev": "Minimalist developer",
     "fulldev": "I - FULL-STACK DEVELOPER",
-    "iam": "Hi, I'm,",
+    "iam": "Hi! I'm,",
     "nameone": "Felipy",
     "nametwo": "Santos",
     "description": "I build fast, scalable and client-friendly web applications with Next.js, Tailwind CSS, Sanity CMS, TypeScript and Spring Boot.",
     "detailitemone": "available for work",
     "detailitemtwo": "Pernambuco, Brazil",
     "detailitemthree": "creative and minimalist"
-  },
-  "wrapper": {
-    "item1": "NEXT.JS",
-    "item2": "TYPESCRIPT",
-    "item3": "JAVA",
-    "item4": "SPRING BOOT",
-    "item5": "FAST WEB APPLICATIONS",
-    "item6": "SCALABLE SYSTEMS",
-    "item7": "MODERN WEB PRODUCTS",
-    "item8": "AVAILABLE FOR PROJECTS",
-    "item9": "REMOTE WORLDWIDE",
-    "item10": "PERFORMANCE",
-    "item11": "UI/UX",
-    "item12": "CLEAN ARCHITECTURE",
-    "item13": "WEB SYSTEMS",
-    "item14": "RELIABLE SOFTWARE"
   },
   "work": {
     "projects": "II - SELECTED PROJECTS",
@@ -55,7 +39,8 @@
     "description1": "I started my development journey in <strong>2025</strong> with a strong focus on back-end engineering, studying <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>APIs</strong> <strong> databases</strong> and <strong> software architecture</strong>.",
     "description2": "Later, an opportunity to work on front-end projects at <strong>Saints Films </strong> introduced me to a different side of web development.",
     "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
-    "description4": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
+    "description4": "My work is driven by simplicity, motion, and <strong>attention to detail</strong>. I enjoy creating <strong>creative and minimalist</strong> digital experiences where design and development work together seamlessly.",
+    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
   },
   "contact": {
     "got": "got",
@@ -63,5 +48,6 @@
     "project": "project",
     "inMind": "in mind?",
     "letsBuild": "let's build together!"
-  }
+  },
+  "menu": { "work": "work", "about": "about", "contact": "contact" }
 }

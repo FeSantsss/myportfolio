@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
 
@@ -139,6 +140,8 @@ export function Initialize() {
     { scope: pageRef },
   );
 
+  const tl = useTranslations("initialize");
+
   return (
     <div ref={pageRef}>
       <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center transform-gpu">
@@ -147,12 +150,12 @@ export function Initialize() {
             className="introName font-[chillax] text-[clamp(28px,5vw,42px)] font-medium tracking-tight text-myblack uppercase overflow-hidden whitespace-nowrap w-0"
             translate="no"
           >
-            Felipy Santos
+            {tl("nameintro")}
           </div>
 
           <div className="introLine w-0 h-[1px] bg-myblack opacity-20" />
           <div className="introSub font-[montserrat] text-[clamp(9px,1.2vw,12px)] tracking-[3px] text-myblack opacity-0 lowercase">
-            Minimalist developer
+            {tl("minimalistdev")}
           </div>
         </div>
       </div>
@@ -160,43 +163,42 @@ export function Initialize() {
       <section className="pt-[70px] max-w-[1900px] contain-paint mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
         <div className="block overflow-hidden">
           <span translate="no" className="subtitles mb-1 md:mt-6 lg:mb-4">
-            I - FULL-STACK DEVELOPER
+            {tl("fulldev")}
           </span>
         </div>
         <div className="font-[chillax] font-normal text-mybeige text-2xl leading-[1.3] lg:text-2xl">
-          <p className="upTitle">Hi, I'm</p>
+          <p className="upTitle">{tl("iam")}</p>
 
           <h1 className="block overflow-hidden">
             <span
               className="titleOne font-semibold text-[clamp(90px,27vw,100px)] mt-2 tracking-tighter leading-[0.80] block md:text-[clamp(90px,27vw,150px)] lg:text-[clamp(150px,17vw,200px)] 2xl:text-[clamp(220px,15vw,220px)]"
               translate="no"
             >
-              Felipy
+              {tl("nameone")}
             </span>
             <span
               className="titleTwo font-semibold text-[clamp(90px,27vw,100px)] mt-2 tracking-tighter leading-[0.80] block md:text-[clamp(90px,27vw,150px)] lg:text-[clamp(150px,17vw,200px)] 2xl:text-[clamp(220px,15vw,220px)]"
               translate="no"
             >
-              Santos
+              {tl("nametwo")}
             </span>
           </h1>
         </div>
         <div className="flex flex-col items-start my-6 gap-5 md:items-end md:flex-row md:justify-between md:my-14 lg:my-12 xl:my-10 2xl:my-8">
           <p className="description font-[montserrat] text-mywhite text-sm my-5 leadind-[1.65] max-w-[280px] opacity-70 md:max-w-[240px] lg:max-w-[280px] xl:max-w-[350px]">
-            I build fast, scalable and client-friendly web applications with
-            Next.js, Tailwind CSS, Sanity CMS, TypeScript and Spring Boot.
+            {tl("description")}
           </p>
           <div className="flex flex-col items-start md:items-end lg:scale-110">
             <div className="detail-item bg-[rgba(0,128,0,0.119)] text-[rgb(31,226,31)] border-green-600">
               <div className="w-2 h-2 bg-green-400 rounded-4xl inline-block mr-2 animate-pulse shadow-green-600"></div>
-              <p>available for work</p>
+              <p>{tl("detailitemone")}</p>
             </div>
             <div className="detail-item">
-              <p>Pernambuco, Brazil</p>
+              <p>{tl("detailitemtwo")}</p>
             </div>
             <div className="detail-item bg-[rgba(81,10,102,0.32)] text-[rgb(221,0,255)] border-[rgba(221,0,255,0.618)]">
               <p aria-label="creative and minimalist developer">
-                creative and minimalist
+                {tl("detailitemthree")}
               </p>
             </div>
           </div>
