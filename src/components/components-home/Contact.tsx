@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import contacts from "@/data/contacts.json";
+import { useTranslations } from "next-intl";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -18,6 +19,7 @@ interface contactProps {
 export function Contact() {
   const pageRef = useRef<HTMLDivElement>(null);
   const contact = contacts as contactProps[];
+  const tl = useTranslations("contact");
 
   if (!contacts) {
     return (
@@ -79,29 +81,30 @@ export function Contact() {
         <div className="font-[chillax] text-mybeige font-bold text-right">
           <div className="lowercase">
             <div className="block overflow-hidden pb-2">
-              <p className="textWork text-7xl md:text-8xl lg:text-9xl">got</p>
+              <p className="textWork text-7xl md:text-8xl lg:text-9xl">
+                {tl("got")}
+              </p>
             </div>
 
             <div className="block overflow-hidden -mt-3.5">
               <p className="textWork text-5xl -mb-2.5 md:text-7xl lg:text-8xl">
-                a
+                {tl("a")}
               </p>
             </div>
             <div className="block overflow-hidden">
               <p className="textWork text-7xl mb-1 tracking-widest md:text-8xl lg:text-9xl">
-                project
+                {tl("project")}
               </p>
             </div>
             <div className="block overflow-hidden">
               <p className="textWork text-5xl md:text-7xl lg:text-8xl">
-                {" "}
-                in mind?
+                {tl("inMind")}
               </p>
             </div>
           </div>
           <div className="block overflow-hidden pb-2">
             <h3 className="titleContact text-7xl mt-2.5 lowercase md:text-8xl lg:text-9xl">
-              let's build together!
+              {tl("letsBuild")}
             </h3>
           </div>
         </div>
