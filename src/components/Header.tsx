@@ -217,7 +217,7 @@ export function Header() {
 
           <div
             tabIndex={menuOpen ? 0 : -1}
-            className="menu-link max-w-[100px]  mt-5"
+            className="menu-link max-w-[100px]   mt-5"
           >
             <LanguageSwitcher />
           </div>

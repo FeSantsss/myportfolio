@@ -27,13 +27,13 @@ export function LanguageSwitcher() {
     <button
       onClick={toggleLanguage}
       disabled={isPending}
-      className="font-['montserrat'] cursor-pointer text-xs uppercase tracking-widest px-3 py-1.5 rounded-full border border-[rgba(255,251,244,0.15)] bg-[#1e1b16] text-mybeige hover:bg-[#232018] hover:border-[rgba(255,251,244,0.4)] transition-all duration-300 disabled:opacity-50"
+      className="font-['montserrat'] cursor-pointer text-xs uppercase tracking-widest px-3 py-1.5 rounded-full border border-[rgba(255,251,244,0.15)] bg-[#1e1b166d] text-mybeige hover:bg-[#232018] hover:border-[rgba(255,251,244,0.4)] transition-all duration-300 disabled:opacity-50"
       title="Alternar idioma / Switch language"
     >
       {/* Exibe o idioma oposto para onde o usuário vai ao clicar */}
       {locale === "pt" ? (
         <Image
-          className="w-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
+          className="w-[25px] h-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
           width={100}
           height={50}
           src={usaFlag}
