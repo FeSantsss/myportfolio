@@ -26,18 +26,11 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
       ScrollTrigger.update();
     }
 
-    // O GSAP ticker se torna a ÚNICA fonte de tempo do app.
-    // Isso elimina qualquer dessincronia entre dois loops de RAF concorrentes.
-    function update(time: number) {
-      lenisInstance?.lenis?.raf(time * 1000);
-    }
-    gsap.ticker.add(update);
     lenisInstance?.lenis?.on("scroll", onScroll);
     gsap.ticker.lagSmoothing(0);
     ScrollTrigger.refresh();
 
     return () => {
-      gsap.ticker.remove(update);
       lenisInstance?.lenis?.off("scroll", onScroll);
     };
   }, []);
@@ -47,7 +40,12 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
       root
       ref={lenisRef}
       options={{
-        autoRaf: false,
+        // `autoRaf: false` (dirigido manualmente pelo gsap.ticker) trava o
+        // scroll por wheel nesta versão do Lenis: o preventDefault do
+        // wheel acontece, mas a posição de scroll nunca é de fato
+        // aplicada. `autoRaf: true` deixa o próprio Lenis rodar seu loop
+        // de rAF, que é o caminho testado/suportado pela lib.
+        autoRaf: true,
         orientation: "vertical",
         gestureOrientation: "vertical",
         duration: 1.1,
