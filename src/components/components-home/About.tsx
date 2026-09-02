@@ -231,14 +231,19 @@ export function About() {
           <span className="subtitles">experience</span>
           <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="experiences">
-            {experiences.map((exp: IExperience) => (
-              <ExperienceAbout
-                key={exp.id}
-                name={exp.name}
-                role={exp.role}
-                date={exp.date}
-              />
-            ))}
+            {experiences.map((exp: IExperience) => {
+              const roleKey = `experienceRoles.${exp.id}`;
+              const role = tl.has(roleKey) ? tl(roleKey) : exp.role;
+
+              return (
+                <ExperienceAbout
+                  key={exp.id}
+                  name={exp.name}
+                  role={role}
+                  date={exp.date}
+                />
+              );
+            })}
           </div>
 
           <span className="subtitles mt-8">skills</span>

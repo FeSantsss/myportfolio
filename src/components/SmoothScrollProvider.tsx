@@ -15,6 +15,11 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Copiamos o ref para uma variável local: o valor lido no cleanup
+    // precisa ser o mesmo lido na montagem, não o que `lenisRef.current`
+    // tiver no momento do unmount.
+    const lenisInstance = lenisRef.current;
+
     // avisamos o ScrollTrigger pra recalcular a cada scroll do Lenis.
     // Isso garante leitura 1:1 da posição real, sem lag de 1 frame.
     function onScroll() {
@@ -24,16 +29,16 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
     // O GSAP ticker se torna a ÚNICA fonte de tempo do app.
     // Isso elimina qualquer dessincronia entre dois loops de RAF concorrentes.
     function update(time: number) {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenisInstance?.lenis?.raf(time * 1000);
     }
     gsap.ticker.add(update);
-    lenisRef.current?.lenis?.on("scroll", onScroll);
+    lenisInstance?.lenis?.on("scroll", onScroll);
     gsap.ticker.lagSmoothing(0);
     ScrollTrigger.refresh();
 
     return () => {
       gsap.ticker.remove(update);
-      lenisRef.current?.lenis?.off("scroll", onScroll);
+      lenisInstance?.lenis?.off("scroll", onScroll);
     };
   }, []);
 

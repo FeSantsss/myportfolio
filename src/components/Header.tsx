@@ -143,7 +143,7 @@ export function Header() {
             type="button"
             className="relative z-[1010] flex h-8 w-8 items-center cursor-pointer justify-center border-none bg-transparent p-1 md:hidden"
             onClick={toggleMenu}
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={menuOpen ? tl("closeMenu") : tl("openMenu")}
             aria-expanded={menuOpen}
           >
             <span
