@@ -168,7 +168,6 @@ export default async function RootLayout({
 
   // Carrega as mensagens do dicionário (pt.json / en.json)
   const messages = await getMessages();
-  const t = await getTranslations({ locale, namespace: "metadata" });
 
   const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
 
