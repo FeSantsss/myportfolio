@@ -76,7 +76,7 @@ export function Contact() {
       <section
         ref={pageRef}
         id="contact"
-        className="pt-40 contain-paint transform-gpu max-w-[1900px] mx-2 -mb-10 lg:px-2 2xl:mx-auto"
+        className="pt-40 pb-2 contain-paint transform-gpu max-w-[1900px] mx-2 -mb-10 lg:px-2 2xl:mx-auto"
       >
         <div className="font-[chillax] text-mybeige font-bold text-right">
           <div className="lowercase">

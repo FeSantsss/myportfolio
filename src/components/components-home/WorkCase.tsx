@@ -42,7 +42,7 @@ export function WorkCase() {
               >
                 {project.title}
               </h3>
-              <p className="font-[montserrat] text-xs mb-9 max-w-[500px] md:text-sm xl:ml-4">
+              <p className="font-[montserrat] leading-5 tracking-wider text-xs mb-9 max-w-[500px] md:leading-6 md:text-sm xl:ml-4">
                 {project.description}
               </p>
               {project.stack && project.stack.length > 0 && (
@@ -51,7 +51,7 @@ export function WorkCase() {
                     <span
                       translate="no"
                       key={index}
-                      className="border-[1px] border-mybeige opacity-80 rounded-2xl p-1"
+                      className="border-[1px] border-mybeige opacity-80 tracking-widest rounded-2xl p-1"
                     >
                       {item}
                     </span>
