@@ -49,5 +49,33 @@
     "inMind": "em mente?",
     "letsBuild": "vamos construir juntos!"
   },
-  "menu": { "work": "trabalhos", "about": "sobre", "contact": "contatos" }
+  "menu": {
+    "work": "trabalhos",
+    "about": "sobre",
+    "contact": "contatos",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "metadata": {
+    "title": "Felipy Santos — Desenvolvedor Full-Stack",
+    "description": "Desenvolvedor Full-Stack especializado em React, TypeScript e Spring Boot. Criando interfaces limpas e performáticas e back-ends escaláveis. Disponível para oportunidades internacionais.",
+    "keywords": [
+      "desenvolvedor full-stack",
+      "desenvolvedor frontend",
+      "desenvolvedor React",
+      "TypeScript",
+      "Spring Boot",
+      "desenvolvedor Java",
+      "desenvolvedor minimalista",
+      "portfólio",
+      "desenvolvedor Brasil",
+      "desenvolvedor remoto",
+      "desenvolvedor UI",
+      "desenvolvedor web",
+      "Felipy Santos"
+    ],
+    "ogDescription": "Next.js · TypeScript · GSAP. Código limpo, design intencional, soluções escaláveis. Disponível para trabalho internacional.",
+    "twitterDescription": "React · TypeScript · Spring Boot. Código limpo, design intencional. Aberto a oportunidades internacionais.",
+    "jsonLdDescription": "Desenvolvedor Full-Stack especializado em React, TypeScript e Spring Boot. Disponível para oportunidades internacionais."
+  }
 }

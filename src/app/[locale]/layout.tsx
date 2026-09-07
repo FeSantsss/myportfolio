@@ -140,6 +140,7 @@ const chillax = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-chillax",
 });
 
 const montserrat = localFont({
@@ -150,6 +151,7 @@ const montserrat = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-montserrat",
 });
 
 export default async function RootLayout({
@@ -166,11 +168,15 @@ export default async function RootLayout({
 
   // Carrega as mensagens do dicionário (pt.json / en.json)
   const messages = await getMessages();
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      className={`${chillax.variable} ${montserrat.variable}`}
+    >
       <body suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <main>
