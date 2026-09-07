@@ -1,8 +1,16 @@
 [
   {
     "id": "01",
-    "name": "saintsfilms",
-    "role": "developer / designer",
+    "image": "/images/saints-logo.svg",
+    "name": "Saints Films",
+    "role": "Developer / Designer",
     "date": "2025 - 2026/jun"
+  },
+  {
+    "id": "02",
+    "image": "/images/he4rt-logo.svg",
+    "name": "He4rt Devs",
+    "role": "Open Source Contributor",
+    "date": "2026 - Now"
   }
 ]

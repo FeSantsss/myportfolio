@@ -1,0 +1,31 @@
+# Felipy Santos
+
+> Software Engineer building fast, scalable web applications with Next.js, React, TypeScript and Spring Boot. Full-stack, detail-obsessed, and available for international opportunities. Based in Pernambuco, Brazil.
+
+Portfolio site: https://felipysantsss.vercel.app (Portuguese, default) / https://felipysantsss.vercel.app/en (English)
+
+## About
+
+Felipy Santos is a full-stack Software Engineer specializing in Next.js, React, TypeScript, Java and Spring Boot — from backend architecture to polished, animated interfaces.
+
+## Skills
+
+Java, Spring, Docker, Next.js, GSAP, TypeScript, Tailwind CSS, Sanity CMS, Responsive Design, Creative Front-End.
+
+## Experience
+
+- Saints Films — Developer / Designer (2025 – Jun 2026)
+- He4rt Devs — Open Source Contributor (2026 – present)
+
+## Links
+
+- GitHub: https://github.com/FeSantsss
+- LinkedIn: https://www.linkedin.com/in/felipysantsss
+- Instagram: https://www.instagram.com/felipysantsss/
+- Behance: https://www.behance.net/tercetime/
+- Email: felipysantos@proton.me
+
+## Pages
+
+- Home / Work / About / Contact: https://felipysantsss.vercel.app
+- Sitemap: https://felipysantsss.vercel.app/sitemap.xml

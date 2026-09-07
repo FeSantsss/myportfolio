@@ -2,11 +2,11 @@
   "initialize": {
     "nameintro": "felipy santos",
     "minimalistdev": "Desenvolvedor minimalista",
-    "fulldev": "I - DESENVOLVEDOR FULL-STACK",
+    "fulldev": "I - ENGENHEIRO DE SOFTWARE",
     "iam": "Olá! eu me chamo",
     "nameone": "Felipy",
     "nametwo": "Santos",
-    "description": "Construo aplicações web rápidas, escaláveis e amigáveis ao cliente com Next.js, Tailwind CSS, Sanity CMS, TypeScript e Spring Boot.",
+    "description": "Construo aplicações web rápidas, escaláveis e amigáveis ao cliente com Next.js e Spring.",
     "detailitemone": "disponível para trabalho",
     "detailitemtwo": "Pernambuco, Brasil",
     "detailitemthree": "criativo e minimalista"
@@ -40,10 +40,7 @@
     "description2": "Mais tarde, a oportunidade de trabalhar em projetos front-end na <strong>Saints Films</strong> me apresentou a um lado diferente do desenvolvimento web.",
     "description3": "O que começou com HTML, CSS e JavaScript rapidamente evoluiu para a construção de aplicações modernas com <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong>GSAP</strong> e <strong>Sanity CMS</strong>.",
     "description4": "Meu trabalho é movido pela simplicidade, movimento e <strong>atenção aos detalhes</strong>. Gosto de criar experiências digitais <strong>criativas e minimalistas</strong> onde o design e o desenvolvimento trabalham juntos em perfeita harmonia.",
-    "description5": "A maior parte das minhas habilidades foi desenvolvida através de <strong>projetos práticos</strong>, <strong>trabalhos como freelancer</strong>, documentação técnica, cursos online e <strong>aprendizado contínuo.</strong>",
-    "experienceRoles": {
-      "01": "desenvolvedor / designer"
-    }
+    "description5": "A maior parte das minhas habilidades foi desenvolvida através de <strong>projetos práticos</strong>, <strong>trabalhos como freelancer</strong>, <strong>contribuições open source</strong>, documentação técnica, cursos online e <strong>aprendizado contínuo.</strong>"
   },
   "contact": {
     "got": "tem",

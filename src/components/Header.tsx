@@ -95,7 +95,7 @@ export function Header() {
   }, [menuOpen]);
 
   const navLinkClass =
-    "group relative whitespace-nowrap font-[montserrat] text-[13px] font-medium text-mybeige opacity-40 no-underline transition-opacity duration-500 ease-out hover:opacity-100 md:text-lg lg:text-xl";
+    "group relative whitespace-nowrap font-[montserrat] tracking-[0.1em] text-[13px] font-medium text-mybeige opacity-40 no-underline transition-opacity duration-500 ease-out hover:opacity-100 md:text-lg lg:text-xl";
 
   const navUnderlineClass =
     "absolute -bottom-1 left-0 h-px w-0 bg-white/90 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:w-full";

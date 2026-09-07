@@ -2,11 +2,11 @@
   "initialize": {
     "nameintro": "felipy santos",
     "minimalistdev": "Minimalist developer",
-    "fulldev": "I - FULL-STACK DEVELOPER",
+    "fulldev": "I - SOFTWARE ENGINEER",
     "iam": "Hi! I'm",
     "nameone": "Felipy",
     "nametwo": "Santos",
-    "description": "I build fast, scalable and client-friendly web applications with Next.js, Tailwind CSS, Sanity CMS, TypeScript and Spring Boot.",
+    "description": "I build fast, scalable and client-friendly web applications with Next.js and Spring.",
     "detailitemone": "available for work",
     "detailitemtwo": "Pernambuco, Brazil",
     "detailitemthree": "creative and minimalist"
@@ -40,10 +40,7 @@
     "description2": "Later, an opportunity to work on front-end projects at <strong>Saints Films </strong> introduced me to a different side of web development.",
     "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
     "description4": "My work is driven by simplicity, motion, and <strong>attention to detail</strong>. I enjoy creating <strong>creative and minimalist</strong> digital experiences where design and development work together seamlessly.",
-    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>",
-    "experienceRoles": {
-      "01": "developer / designer"
-    }
+    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
   },
   "contact": {
     "got": "got",

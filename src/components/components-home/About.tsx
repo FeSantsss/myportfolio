@@ -15,6 +15,7 @@ if (typeof window !== "undefined") {
 
 interface IExperience {
   id: string;
+  image: string;
   name: string;
   role: string;
   date: string;
@@ -196,7 +197,7 @@ export function About() {
         <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
       </h2>
       <div className="flex flex-col gap-10 text-mybeige font-[montserrat] xl:flex-row xl:justify-between md:text-xl">
-        <div className=" max-w-[800px] opacity-70">
+        <div className=" max-w-[800px] opacity-60 leading-6 md:leading-7 lg:leading-8 tracking-wide">
           <p className="aboutText">
             {tl.rich("description1", {
               strong: (chunks) => <strong>{chunks}</strong>,
@@ -230,20 +231,16 @@ export function About() {
         <div className="w-full">
           <span className="subtitles">experience</span>
           <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
-          <div className="experiences">
-            {experiences.map((exp: IExperience) => {
-              const roleKey = `experienceRoles.${exp.id}`;
-              const role = tl.has(roleKey) ? tl(roleKey) : exp.role;
-
-              return (
-                <ExperienceAbout
-                  key={exp.id}
-                  name={exp.name}
-                  role={role}
-                  date={exp.date}
-                />
-              );
-            })}
+          <div className="experiences mt-4">
+            {experiences.map((exp: IExperience) => (
+              <ExperienceAbout
+                key={exp.id}
+                image={exp.image}
+                name={exp.name}
+                role={exp.role}
+                date={exp.date}
+              />
+            ))}
           </div>
 
           <span className="subtitles mt-8">skills</span>
@@ -253,7 +250,7 @@ export function About() {
               <span
                 translate="no"
                 key={index}
-                className="skills text-xs opacity-40 w-fit h-fit p-1 border-[0.8px] border-mywhite rounded-2xl"
+                className="skills text-xs tracking-widest opacity-40 w-fit h-fit p-1 border-[0.8px] border-mywhite rounded-2xl"
               >
                 {skill}
               </span>
