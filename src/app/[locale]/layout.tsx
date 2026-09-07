@@ -100,7 +100,7 @@ export async function generateMetadata({
       url: path,
       images: [
         {
-          url: `${SITE_URL}/icon.png`,
+          url: "https://felipysantsss.vercel.app/icon.png",
           width: 1200,
           height: 630,
           alt: copy.title,
@@ -113,7 +113,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: copy.title,
       description: copy.twitterDescription,
-      images: [`${SITE_URL}/icon.png`],
+      images: ["https://felipysantsss.vercel.app/icon.png"],
       creator: "@felipysantsss",
     },
     robots: {
@@ -192,7 +192,7 @@ export default async function RootLayout({
               "@type": "Person",
               name: "Felipy Santos",
               url: SITE_URL,
-              image: `${SITE_URL}/icon.png`,
+              image: "https://felipysantsss.vercel.app/icon.png",
               jobTitle: copy.jobTitle,
               description: copy.personDescription,
               email: "mailto:felipysantos@proton.me",
