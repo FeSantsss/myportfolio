@@ -21,14 +21,6 @@ export function Contact() {
   const contact = contacts as contactProps[];
   const tl = useTranslations("contact");
 
-  if (!contacts) {
-    return (
-      <div className="text-xs flex flex-row justify-between items-center mt-2 px-1.5 text-mybeige">
-        Error
-      </div>
-    );
-  }
-
   useGSAP(
     () => {
       const tl = gsap.timeline({
@@ -70,6 +62,14 @@ export function Contact() {
     },
     { scope: pageRef },
   );
+
+  if (contact.length === 0) {
+    return (
+      <div className="text-xs flex flex-row justify-between items-center mt-2 px-1.5 text-mybeige">
+        Error
+      </div>
+    );
+  }
 
   return (
     <>
