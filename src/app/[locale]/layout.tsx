@@ -82,7 +82,7 @@ export async function generateMetadata({
     description: copy.description,
     keywords: [...copy.keywords],
     icons: {
-      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+      icon: [{ url: "/mylogo.svg", type: "image/svg+xml" }],
     },
     metadataBase: new URL(SITE_URL),
     alternates: {
