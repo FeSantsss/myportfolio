@@ -146,7 +146,7 @@ export function Initialize() {
 
   return (
     <div ref={pageRef} className="relative">
-      <DotGrid theme="light" spacing={24} />
+      <DotGrid theme="dark" spacing={24} />
       <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center transform-gpu">
         <div className="introCenter flex flex-col items-center gap-4">
           <div
