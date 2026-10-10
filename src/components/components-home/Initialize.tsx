@@ -6,6 +6,8 @@ import { useRef } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 
+import DotGrid from "../DotGrid";
+
 const Marquee = dynamic(() => import("../Marquee").then((mod) => mod.Marquee));
 
 export function Initialize() {
@@ -143,7 +145,8 @@ export function Initialize() {
   const tl = useTranslations("initialize");
 
   return (
-    <div ref={pageRef}>
+    <div ref={pageRef} className="relative">
+      <DotGrid theme="light" spacing={24} />
       <div className="intro fixed inset-0 z-[9999] bg-mywhite flex items-center justify-center transform-gpu">
         <div className="introCenter flex flex-col items-center gap-4">
           <div
@@ -160,7 +163,7 @@ export function Initialize() {
         </div>
       </div>
 
-      <section className="pt-[70px] max-w-[1900px] contain-paint mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
+      <section className="relative pt-[70px] max-w-[1900px] contain-paint mx-2.5 md:pt-28 md:mx-12 2xl:mx-auto lg:px-2 xl:px-5 2xl:px-20">
         <div className="block overflow-hidden">
           <span translate="no" className="subtitles mb-1 md:mt-6 lg:mb-4">
             {tl("fulldev")}
