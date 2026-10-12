@@ -66,7 +66,16 @@
     "description2": "Later, an opportunity to work on front-end projects at <strong>Saints Films </strong> introduced me to a different side of web development.",
     "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
     "description4": "My work is driven by simplicity, motion, and <strong>attention to detail</strong>. I enjoy creating <strong>creative and minimalist</strong> digital experiences where design and development work together seamlessly.",
-    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
+    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>",
+    "cv": {
+      "file": "/cv/felipy-santos-cv-pt.pdf",
+      "meta": "PDF · 2 pages",
+      "view": "view",
+      "download": "download",
+      "viewLabel": "View the résumé (opens in a new tab)",
+      "downloadLabel": "Download the résumé as PDF",
+      "note": "Currently available in Portuguese"
+    }
   },
   "contact": {
     "got": "got",

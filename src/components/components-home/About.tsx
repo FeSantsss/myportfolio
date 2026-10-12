@@ -99,6 +99,16 @@ export function About() {
               stagger: 0.04,
             },
             "-=1.4",
+          )
+          .from(
+            ".cvCard",
+            {
+              y: 20,
+              autoAlpha: 0,
+              duration: 0.7,
+              ease: "power3.out",
+            },
+            "-=0.6",
           );
       });
       mm.add("(max-width: 1023px)", () => {
@@ -168,6 +178,16 @@ export function About() {
               stagger: 0.04,
             },
             "-=0.8",
+          )
+          .from(
+            ".cvCard",
+            {
+              y: 20,
+              autoAlpha: 0,
+              duration: 0.7,
+              ease: "power3.out",
+            },
+            "-=0.4",
           );
       });
     },
@@ -255,6 +275,81 @@ export function About() {
                 {skill}
               </span>
             ))}
+          </div>
+
+          {/* Currículo: o arquivo vem das mensagens, então acompanha o idioma do site */}
+          <span className="subtitles mt-8">cv</span>
+          <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+          <div className="cvCard mt-4 flex max-w-[500px] flex-col gap-4 rounded-2xl border border-white/[0.08] bg-[#1e1b16] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-mybeige"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M14 3v5h5M9 13h6M9 17h4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              <div className="leading-tight">
+                <p translate="no" className="text-sm text-mybeige">
+                  Felipy Santos — CV
+                </p>
+                <p className="mt-1 text-[11px] tracking-wider text-mybeige/55">
+                  {tl("cv.meta")}
+                  {tl.has("cv.note") && <> · {tl("cv.note")}</>}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-2">
+              <a
+                href={tl("cv.file")}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={tl("cv.viewLabel")}
+                className="flex h-10 flex-1 items-center justify-center gap-2 rounded-full border border-white/15 px-4 text-xs tracking-wider text-mybeige outline-none transition-colors duration-300 hover:border-white/40 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-mybeige/60 sm:flex-none"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                {tl("cv.view")}
+              </a>
+              <a
+                href={tl("cv.file")}
+                download="felipy-santos-cv.pdf"
+                aria-label={tl("cv.downloadLabel")}
+                className="flex h-10 flex-1 items-center justify-center gap-2 rounded-full bg-mybeige px-4 text-xs font-medium tracking-wider text-myblack outline-none transition-colors duration-300 hover:bg-mywhite focus-visible:ring-2 focus-visible:ring-mybeige/60 focus-visible:ring-offset-2 focus-visible:ring-offset-myblack sm:flex-none"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {tl("cv.download")}
+              </a>
+            </div>
           </div>
         </div>
       </div>

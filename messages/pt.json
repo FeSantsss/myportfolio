@@ -66,7 +66,15 @@
     "description2": "Mais tarde, a oportunidade de trabalhar em projetos front-end na <strong>Saints Films</strong> deu-me a conhecer um lado diferente do desenvolvimento web.",
     "description3": "O que começou com HTML, CSS e JavaScript rapidamente evoluiu para a criação de aplicações modernas com <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong>GSAP</strong> e <strong>Sanity CMS</strong>.",
     "description4": "O meu trabalho é movido pela simplicidade, pelo movimento e pela <strong>atenção ao detalhe</strong>. Gosto de criar experiências digitais <strong>criativas e minimalistas</strong>, onde o design e o desenvolvimento trabalham juntos em perfeita harmonia.",
-    "description5": "A maior parte das minhas competências foi desenvolvida através de <strong>projetos práticos</strong>, <strong>trabalho como freelancer</strong>, <strong>contribuições open source</strong>, documentação técnica, cursos online e <strong>aprendizagem contínua.</strong>"
+    "description5": "A maior parte das minhas competências foi desenvolvida através de <strong>projetos práticos</strong>, <strong>trabalho como freelancer</strong>, <strong>contribuições open source</strong>, documentação técnica, cursos online e <strong>aprendizagem contínua.</strong>",
+    "cv": {
+      "file": "/cv/felipy-santos-cv-pt.pdf",
+      "meta": "PDF · 2 páginas",
+      "view": "ver",
+      "download": "descarregar",
+      "viewLabel": "Ver o currículo (abre num novo separador)",
+      "downloadLabel": "Descarregar o currículo em PDF"
+    }
   },
   "contact": {
     "got": "tem",
