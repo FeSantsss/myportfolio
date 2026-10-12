@@ -71,7 +71,7 @@ export function Work() {
     <section
       ref={pageRef}
       id="work"
-      className="pt-18 contain-paint mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
+      className="pt-18 pb-1 contain-paint mx-2.5 md:mx-13 md:pt-30 lg:px-2 2xl:max-w-[1900px] 2xl:mx-auto 2xl:px-20 2xl:pt-22"
     >
       <span className="subtitles -mb-15 xl:-mb-20">{tl("projects")}</span>
 
