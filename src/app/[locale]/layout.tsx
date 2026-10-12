@@ -246,10 +246,8 @@ export default async function RootLayout({
           timeZone={timeZone}
           documentMeta={documentMeta}
         >
-          <main>
-            <Header />
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
-          </main>
+          <Header />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </LocaleProvider>
 
         <script

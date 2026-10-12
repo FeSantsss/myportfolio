@@ -18,10 +18,12 @@ const Work = dynamic(() =>
 export default function Home() {
   return (
     <>
-      <Initialize />
-      <Work />
-      <About />
-      <Contact />
+      <main>
+        <Initialize />
+        <Work />
+        <About />
+        <Contact />
+      </main>
       <Footer />
     </>
   );

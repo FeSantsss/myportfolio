@@ -2,7 +2,7 @@ import { LanguageSwitcher } from "./SwitchLanguage";
 
 export function Footer() {
   return (
-    <>
+    <footer>
       <div className="w-full h-[.5px] opacity-40 bg-mybeige max-w-5/6 m-auto mt-20"></div>
       <div className="flex justify-center mt-10 md:mt-12">
         <LanguageSwitcher />
@@ -16,6 +16,6 @@ export function Footer() {
           <p className="opacity-70">bless u always</p>
         </div>
       </div>
-    </>
+    </footer>
   );
 }
