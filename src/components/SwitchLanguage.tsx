@@ -3,19 +3,23 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useTransition } from "react";
-import Image from "next/image";
-import usaFlag from "../../public/images/usunitedstatesflag_111929.svg";
-import brFlag from "../../public/images/br_icon_128192.svg";
+import "flag-icons/css/flag-icons.min.css";
+
+// Cada locale do site com a bandeira correspondente (flag-icons) e o nome no próprio idioma
+const languages = [
+  { locale: "pt", flag: "pt", label: "Português (Portugal)" },
+  { locale: "en", flag: "us", label: "English" },
+  { locale: "es", flag: "es", label: "Español (España)" },
+] as const;
 
 export function LanguageSwitcher() {
-  const locale = useLocale(); // Retorna "pt" ou "en"
+  const locale = useLocale(); // Retorna "pt", "en" ou "es"
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  const toggleLanguage = () => {
-    // Se o idioma atual for "pt", muda para "en", e vice-versa
-    const nextLocale = locale === "pt" ? "en" : "pt";
+  const changeLanguage = (nextLocale: string) => {
+    if (nextLocale === locale) return;
 
     startTransition(() => {
       // Navega para a mesma página, mas com o novo locale
@@ -24,30 +28,34 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <button
-      onClick={toggleLanguage}
-      disabled={isPending}
-      className="font-['montserrat'] cursor-pointer text-xs uppercase tracking-widest px-3 py-1.5 rounded-full border border-[rgba(255,251,244,0.15)] bg-[#1e1b166d] text-mybeige hover:bg-[#232018] hover:border-[rgba(255,251,244,0.4)] transition-all duration-300 disabled:opacity-50"
-      title="Alternar idioma / Switch language"
+    <div
+      role="group"
+      aria-label="Idioma / Language / Idioma"
+      className="flex items-center gap-1 px-2 py-1.5 rounded-full border border-[rgba(255,251,244,0.15)] bg-[#1e1b166d]"
     >
-      {/* Exibe o idioma oposto para onde o usuário vai ao clicar */}
-      {locale === "pt" ? (
-        <Image
-          className="w-[25px] h-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
-          width={100}
-          height={50}
-          src={usaFlag}
-          alt="language selected: USA"
-        />
-      ) : (
-        <Image
-          className="w-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
-          width={100}
-          height={50}
-          src={brFlag}
-          alt="language selected: BR"
-        />
-      )}
-    </button>
+      {languages.map(({ locale: itemLocale, flag, label }) => {
+        const isActive = itemLocale === locale;
+
+        return (
+          <button
+            key={itemLocale}
+            type="button"
+            onClick={() => changeLanguage(itemLocale)}
+            disabled={isPending}
+            aria-pressed={isActive}
+            aria-label={label}
+            title={label}
+            lang={itemLocale}
+            className={`flex cursor-pointer items-center rounded-full px-1.5 py-1 transition-all duration-300 disabled:opacity-50 ${
+              isActive
+                ? "bg-[#232018] opacity-100"
+                : "opacity-40 hover:opacity-100"
+            }`}
+          >
+            <span className={`fi fi-${flag} rounded-[3px] text-[18px]`} />
+          </button>
+        );
+      })}
+    </div>
   );
 }
