@@ -19,7 +19,7 @@ export function WorkCase() {
   if (!projects) return <div>Erro ao carregar os dados do projeto.</div>;
 
   return (
-    <div className="mx-2.5 contain-paint transform-gpu">
+    <div className="mx-2.5 flex flex-col gap-6 contain-paint transform-gpu md:gap-8">
       {projects.map((project) => (
         <a
           href={project.url}
@@ -27,39 +27,51 @@ export function WorkCase() {
           rel="noopener noreferrer"
           title={`full case of ${project.title}`}
           key={project.id}
+          className="group block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-mybeige/60 focus-visible:ring-offset-4 focus-visible:ring-offset-myblack"
         >
-          <div className="group/image group/arrow mb-10 rounded-2xl bg-[#1e1b16] border-[rgba(255,251,244,0.08)] flex flex-col flex-1 cursor-pointer xl:flex-row  xl:justify-between border duration-700 hover:bg-[#232018] hover:border-[rgba(255,251,244,0.2)]">
-            <div className="mb-6 p-2.5 text-mybeige flex flex-col md:gap-3">
-              <span className="block mb-2.5 font-montserrat text-sm opacity-20 duration-500 group-hover/image:opacity-80">
-                {`0${project.id}`} -
-              </span>
-              <span className="font-[montserrat] uppercase opacity-50 md:-mt-3.5 xl:ml-4">
-                {project.data}
-              </span>
-              <h3
-                translate="no"
-                className="font-[chillax] text-3xl my-2 font-semibold md:text-4xl xl:ml-4"
-              >
-                {project.title}
-              </h3>
-              <p className="font-[montserrat] leading-5 tracking-wider text-xs mb-6 max-w-[600px] md:leading-6 md:text-sm xl:ml-4">
-                {project.description}
-              </p>
+          <article className="flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e1b16] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-500 group-hover:border-white/20 group-hover:bg-[#232018] xl:flex-row">
+            <div className="flex flex-col justify-between gap-6 p-6 text-mybeige md:p-8 xl:w-1/2">
+              <div>
+                {/* Índice e período, como uma linha de metadados */}
+                <div className="flex items-center gap-3 font-[montserrat] text-[11px] uppercase tracking-[0.2em] text-mybeige/55">
+                  <span className="transition-colors duration-500 group-hover:text-mybeige">
+                    {String(project.id).padStart(2, "0")}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="h-px w-8 bg-mybeige/25 transition-[width,background-color] duration-500 group-hover:w-12 group-hover:bg-mybeige/60 motion-reduce:transition-none"
+                  />
+                  <span>{project.data}</span>
+                </div>
+
+                <h3
+                  translate="no"
+                  className="mt-4 font-[chillax] text-3xl font-semibold leading-tight text-balance md:text-4xl xl:text-3xl 2xl:text-4xl"
+                >
+                  {project.title}
+                </h3>
+
+                <p className="mt-4 max-w-[62ch] font-[montserrat] text-[13px] leading-relaxed tracking-wide text-mybeige/75 md:text-sm">
+                  {project.description}
+                </p>
+              </div>
+
               {project.stack && project.stack.length > 0 && (
-                <div className="font-[montserrat] text-xs flex gap-2.5 flex-row flex-wrap md:text-sm xl:ml-4">
-                  {project.stack.map((item, index) => (
-                    <span
+                <ul className="flex flex-wrap gap-2 font-[montserrat]">
+                  {project.stack.map((item) => (
+                    <li
                       translate="no"
-                      key={index}
-                      className="border-[1px] border-mybeige opacity-80 tracking-widest rounded-2xl p-1"
+                      key={item}
+                      className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-wider text-mybeige/80 md:text-xs"
                     >
                       {item}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               )}
             </div>
-            <div className="relative overflow-hidden h-56 md:h-72 xl:h-auto xl:w-1/2 xl:shrink-0 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
+
+            <div className="relative h-56 overflow-hidden border-t border-white/[0.06] md:h-72 xl:h-auto xl:w-1/2 xl:shrink-0 xl:border-t-0 xl:border-l">
               {project.imageSrc && (
                 <Image
                   src={project.imageSrc}
@@ -67,21 +79,27 @@ export function WorkCase() {
                   fill
                   sizes="(min-width: 1280px) 50vw, 100vw"
                   loading="lazy"
-                  className="rounded-2xl rounded-t-none saturate-0 rounded-tl-none will-change-transform object-cover duration-700 group-hover/image:scale-105 xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none"
+                  className="object-cover saturate-0 will-change-transform transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.04] group-hover:saturate-100 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
               )}
-              <div className="flex items-center justify-center  bg-[rgba(245,245,245,0.07)] border border-[rgba(255,255,255,0.87)] w-11 h-11 rounded-full will-change-transform absolute right-4 bottom-4 duration-1000 group-hover/arrow:scale-110 group-hover/arrow:bg-white">
+              {/* Leve vinheta para o botão de seta se destacar sobre qualquer capa */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+              />
+              <div className="absolute right-4 bottom-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-black/20 backdrop-blur-md transition-[background-color,border-color,transform] duration-500 group-hover:scale-110 group-hover:border-white group-hover:bg-white motion-reduce:group-hover:scale-100">
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
-                  className="-rotate-45 duration-500 group-hover/arrow:rotate-0"
+                  className="-rotate-45 text-mywhite transition-[transform,color] duration-500 group-hover:rotate-0 group-hover:text-myblack"
                   xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden
                 >
                   <path
                     d="M2 8H14M14 8L8 2M14 8L8 14"
-                    stroke="#1a1712"
+                    stroke="currentColor"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -89,7 +107,7 @@ export function WorkCase() {
                 </svg>
               </div>
             </div>
-          </div>
+          </article>
         </a>
       ))}
     </div>
