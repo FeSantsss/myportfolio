@@ -87,7 +87,7 @@ export function Work() {
         <WorkCase />
       </div>
 
-      <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+      <div className="lines w-0 h-[.5px] mt-5 opacity-20 bg-mybeige"></div>
     </section>
   );
 }
