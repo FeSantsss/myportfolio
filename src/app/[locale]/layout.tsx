@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import localFont from "next/font/local";
-import { notFound } from "next/navigation";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import {
@@ -219,10 +218,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-  const { locale: siteLocale } = await params;
+  const { locale } = await params;
 
-  // Caminhos com ponto (ex.: /favicon.ico) não passam pelo proxy e chegam aqui como idioma
-  if (!isLocale(siteLocale)) notFound();
+  // Caminhos com ponto (ex.: /favicon.ico) não passam pelo proxy e chegam aqui como idioma:
+  // o layout usa o idioma padrão e a página responde com a 404 localizada
+  const siteLocale = resolveLocale(locale);
 
   // Garante que a renderização estática e o i18n funcionem em sincronia
   setRequestLocale(siteLocale);
