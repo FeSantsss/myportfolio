@@ -43,13 +43,14 @@ export function WorkCase() {
           const hiddenCount = project.stack.length - visibleStack.length;
           const { isLarge, span } = getLayout(i, projects.length);
           // No tablet (2 colunas), a última caixa de uma lista ímpar ocupa a linha inteira
-          const isLastOdd = i === projects.length - 1 && projects.length % 2 === 1;
+          const isLastOdd =
+            i === projects.length - 1 && projects.length % 2 === 1;
 
           return (
             <article
               key={project.id}
-              className={`workcase-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e1b16] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-500 hover:border-white/20 hover:bg-[#211e18] has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-mybeige/60 has-[button:focus-visible]:ring-offset-4 has-[button:focus-visible]:ring-offset-myblack min-h-[320px] md:min-h-[360px] ${
-                isLarge ? "lg:min-h-[420px]" : "lg:min-h-[360px]"
+              className={`workcase-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e1b16] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-500 hover:border-white/20 hover:bg-[#211e18] has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-mybeige/60 has-[button:focus-visible]:ring-offset-4 has-[button:focus-visible]:ring-offset-myblack min-h-[240px] md:min-h-[260px] ${
+                isLarge ? "lg:min-h-[300px]" : "lg:min-h-[260px]"
               } ${isLastOdd ? "md:col-span-2" : ""} ${SPAN_CLASS[span]}`}
             >
               {/* Botão que cobre a caixa inteira: mantém o conteúdo como HTML válido e o título como título */}
@@ -61,11 +62,11 @@ export function WorkCase() {
                 className="absolute inset-0 z-10 cursor-pointer rounded-2xl outline-none"
               />
 
-              {/* Número grande, propositalmente cortado na borda esquerda */}
+              {/* Número grande atrás do título e da descrição, como marca d'água, cortado na borda esquerda */}
               <span
                 aria-hidden
-                className={`pointer-events-none absolute top-5 -left-[0.1em] font-[chillax] leading-[0.8] font-semibold tracking-tight text-mybeige/10 transition-colors duration-700 select-none group-hover:text-mybeige/90 motion-reduce:transition-none text-[7.5rem] ${
-                  isLarge ? "lg:text-[11rem]" : "lg:text-[9rem]"
+                className={`workcase-number pointer-events-none absolute top-1/2 -left-[0.08em] -translate-y-1/2 font-[chillax] text-[9rem] leading-[0.8] font-semibold tracking-tight text-mybeige/[0.07] select-none md:text-[10rem] ${
+                  isLarge ? "lg:text-[13rem]" : "lg:text-[11rem]"
                 }`}
               >
                 {index}
@@ -81,8 +82,8 @@ export function WorkCase() {
                 className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-mybeige/[0.07] opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
               />
 
-              {/* Conteúdo alinhado embaixo, deixando o topo para o número */}
-              <div className="relative mt-auto flex flex-col gap-6 p-6 pt-36 text-mybeige md:p-7 md:pt-40">
+              {/* Conteúdo alinhado embaixo, por cima do número */}
+              <div className="relative z-[1] mt-auto flex flex-col gap-6 p-6 text-mybeige md:p-7">
                 <div>
                   <div className="flex items-center gap-3 font-[montserrat] text-[11px] tracking-[0.2em] text-mybeige/55 uppercase">
                     <span
