@@ -102,6 +102,15 @@ const seoCopy = {
 
 const ogLocales = { pt: "pt_PT", en: "en_US", es: "es_ES" } as const;
 
+// Imagem de compartilhamento única, em inglês, para todos os idiomas
+const shareImage = {
+  url: `${SITE_URL}/og-image.png`,
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "Felipy Santos — Software Engineer. Fast, scalable web applications with Next.js and Spring Boot.",
+};
+
 // Título e descrição por idioma, para o LocaleProvider atualizar o <head> na troca de idioma
 const documentMeta = Object.fromEntries(
   routing.locales.map((l) => [
@@ -152,14 +161,7 @@ export async function generateMetadata({
       description: copy.ogDescription,
       siteName: "Felipy Santos",
       url: path,
-      images: [
-        {
-          url: "https://felipysantsss.vercel.app/icon.png",
-          width: 1200,
-          height: 630,
-          alt: copy.title,
-        },
-      ],
+      images: [shareImage],
       locale: ogLocale,
       alternateLocale: Object.values(ogLocales).filter((l) => l !== ogLocale),
       type: "website",
@@ -168,7 +170,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: copy.title,
       description: copy.twitterDescription,
-      images: ["https://felipysantsss.vercel.app/icon.png"],
+      images: [shareImage],
       creator: "@felipysantsss",
     },
     robots: {
