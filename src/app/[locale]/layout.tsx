@@ -114,6 +114,11 @@ function resolveLocale(locale: string): Locale {
   return isLocale(locale) ? locale : routing.defaultLocale;
 }
 
+// Gera as três versões no build, em vez de renderizar a cada visita
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({
   params,
 }: {
