@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "../globals.css";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import {
@@ -246,7 +245,6 @@ export default async function RootLayout({
           timeZone={timeZone}
           documentMeta={documentMeta}
         >
-          <Header />
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </LocaleProvider>
 

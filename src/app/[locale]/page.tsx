@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 
+import { Header } from "@/components/Header";
 import { Initialize } from "@/components/components-home/Initialize";
 
 const Footer = dynamic(() =>
@@ -16,8 +17,10 @@ const Work = dynamic(() =>
 );
 
 export default function Home() {
+  // O header fica na página (e não no layout) porque os links dele apontam para as seções daqui
   return (
     <>
+      <Header />
       <main>
         <Initialize />
         <Work />
