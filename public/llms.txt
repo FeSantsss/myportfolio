@@ -2,7 +2,7 @@
 
 > Software Engineer building fast, scalable web applications with Next.js, React, TypeScript and Spring Boot. Full-stack, detail-obsessed, and available for international opportunities. Based in Pernambuco, Brazil.
 
-Portfolio site: https://felipysantsss.vercel.app (Portuguese, default) / https://felipysantsss.vercel.app/en (English)
+Portfolio site: https://felipysantsss.vercel.app (European Portuguese, default) / https://felipysantsss.vercel.app/en (English) / https://felipysantsss.vercel.app/es (Spanish)
 
 ## About
 

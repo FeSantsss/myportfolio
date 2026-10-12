@@ -65,7 +65,43 @@ const seoCopy = {
       "Felipy Santos",
     ],
   },
+  es: {
+    title: "Felipy Santos — Ingeniero de Software",
+    description:
+      "Ingeniero de Software que desarrolla aplicaciones web rápidas, escalables y centradas en el cliente con Next.js, React, TypeScript y Spring Boot. Full-stack, obsesionado con el detalle y disponible para oportunidades internacionales.",
+    ogDescription:
+      "Next.js · React · TypeScript · Spring Boot. Desarrollo software limpio, eficiente y escalable: desde la arquitectura backend hasta interfaces pulidas y animadas.",
+    twitterDescription:
+      "Ingeniero de Software que trabaja con React, TypeScript, Java y Spring Boot. Código limpio, diseño intencional, sistemas escalables.",
+    jobTitle: "Ingeniero de Software",
+    personDescription:
+      "Ingeniero de Software especializado en desarrollo web full-stack con Next.js, React, TypeScript, Java y Spring Boot. Disponible para oportunidades internacionales.",
+    keywords: [
+      "ingeniero de software",
+      "desarrollador full-stack",
+      "desarrollador React",
+      "desarrollador Next.js",
+      "TypeScript",
+      "Spring Boot",
+      "desarrollador Java",
+      "ingeniero backend",
+      "ingeniero frontend",
+      "portfolio desarrollador",
+      "desarrollador remoto",
+      "ingeniero de software Brasil",
+      "Felipy Santos",
+    ],
+  },
 } as const;
+
+const htmlLang = { pt: "pt-PT", en: "en", es: "es-ES" } as const;
+const ogLocales = { pt: "pt_PT", en: "en_US", es: "es_ES" } as const;
+
+type SiteLocale = keyof typeof seoCopy;
+
+function resolveLocale(locale: string): SiteLocale {
+  return locale in seoCopy ? (locale as SiteLocale) : "pt";
+}
 
 export async function generateMetadata({
   params,
@@ -73,9 +109,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
+  const siteLocale = resolveLocale(locale);
+  const copy = seoCopy[siteLocale];
   const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
-  const ogLocale = locale === "en" ? "en_US" : "pt_PT";
+  const ogLocale = ogLocales[siteLocale];
 
   return {
     title: copy.title,
@@ -90,6 +127,7 @@ export async function generateMetadata({
       languages: {
         en: "/en",
         "pt-PT": "/",
+        "es-ES": "/es",
         "x-default": "/",
       },
     },
@@ -107,6 +145,7 @@ export async function generateMetadata({
         },
       ],
       locale: ogLocale,
+      alternateLocale: Object.values(ogLocales).filter((l) => l !== ogLocale),
       type: "website",
     },
     twitter: {
@@ -169,11 +208,12 @@ export default async function RootLayout({
   // Carrega as mensagens do dicionário (pt.json / en.json)
   const messages = await getMessages();
 
-  const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
+  const siteLocale = resolveLocale(locale);
+  const copy = seoCopy[siteLocale];
 
   return (
     <html
-      lang={locale === "pt" ? "pt-PT" : locale}
+      lang={htmlLang[siteLocale]}
       className={`${chillax.variable} ${montserrat.variable}`}
     >
       <body suppressHydrationWarning>

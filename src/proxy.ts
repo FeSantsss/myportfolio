@@ -5,5 +5,5 @@ export default createMiddleware(routing);
 
 export const config = {
   // Match apenas em rotas internacionalizadas
-  matcher: ["/", "/(pt|en)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(pt|en|es)/:path*", "/((?!_next|_vercel|.*\\..*).*)"],
 };
