@@ -18,7 +18,18 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
   // Isso garante leitura 1:1 da posição real, sem lag de 1 frame.
   // O hook só registra o callback quando a instância já existe; ler
   // `ref.current.lenis` num useEffect de montagem pegava `undefined`.
-  useLenis(ScrollTrigger.update);
+  const lenis = useLenis(ScrollTrigger.update);
+
+  // Um laço só: o Lenis roda no ticker do GSAP, antes das animações. Assim cada
+  // quadro rola, lê a posição e só depois escreve estilos, sem recálculo de
+  // layout forçado no meio do quadro (com dois laços de rAF, o scrollTo do
+  // Lenis vinha depois das escritas do GSAP e forçava layout a cada quadro).
+  useEffect(() => {
+    if (!lenis) return;
+    const update = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(update, false, true);
+    return () => gsap.ticker.remove(update);
+  }, [lenis]);
 
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
@@ -31,12 +42,10 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
     <ReactLenis
       root
       options={{
-        // `autoRaf: false` (dirigido manualmente pelo gsap.ticker) trava o
-        // scroll por wheel nesta versão do Lenis: o preventDefault do
-        // wheel acontece, mas a posição de scroll nunca é de fato
-        // aplicada. `autoRaf: true` deixa o próprio Lenis rodar seu loop
-        // de rAF, que é o caminho testado/suportado pela lib.
-        autoRaf: true,
+        // Dirigido pelo gsap.ticker (acima). A roda "travava" antes porque o
+        // raf era chamado numa instância ainda indefinida, lida do ref no
+        // useEffect de montagem; agora a instância vem do useLenis.
+        autoRaf: false,
         orientation: "vertical",
         gestureOrientation: "vertical",
         duration: 1.1,
