@@ -73,8 +73,7 @@
       "view": "ver",
       "download": "descargar",
       "viewLabel": "Ver el currículum (se abre en una pestaña nueva)",
-      "downloadLabel": "Descargar el currículum en PDF",
-      "note": "Disponible en portugués por ahora"
+      "downloadLabel": "Descargar el currículum en PDF"
     }
   },
   "contact": {

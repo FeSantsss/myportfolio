@@ -73,8 +73,7 @@
       "view": "view",
       "download": "download",
       "viewLabel": "View the résumé (opens in a new tab)",
-      "downloadLabel": "Download the résumé as PDF",
-      "note": "Currently available in Portuguese"
+      "downloadLabel": "Download the résumé as PDF"
     }
   },
   "contact": {
