@@ -200,9 +200,7 @@ export function Initialize() {
               <p>{tl("detailitemtwo")}</p>
             </div>
             <div className="detail-item bg-[rgba(81,10,102,0.32)] text-[rgb(221,0,255)] border-[rgba(221,0,255,0.618)]">
-              <p aria-label="creative and minimalist developer">
-                {tl("detailitemthree")}
-              </p>
+              <p>{tl("detailitemthree")}</p>
             </div>
           </div>
         </div>
