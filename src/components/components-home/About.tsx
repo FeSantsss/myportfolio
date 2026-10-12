@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import skillsData from "@/data/skills.json";
 import { useTranslations } from "next-intl";
-import { MOTION_OK, revealOnScroll } from "@/lib/motion";
+import { MOTION_OK, observeReveals } from "@/lib/motion";
 import { SplitChars } from "../SplitChars";
 
 interface IExperience {
@@ -28,7 +28,7 @@ export function About() {
       // Cada bloco entra quando aparece na tela (e não tudo de uma vez no topo da seção)
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
-        if (pageRef.current) revealOnScroll(pageRef.current);
+        if (pageRef.current) return observeReveals(pageRef.current);
       });
     },
     { scope: pageRef },

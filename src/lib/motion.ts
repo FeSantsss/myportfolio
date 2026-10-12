@@ -21,10 +21,6 @@ export const MOTION_OK = "(prefers-reduced-motion: no-preference)";
 export const FINE_POINTER =
   "(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)";
 
-// Revela quando o topo do elemento entra nos últimos 12% da tela. O clamp() garante o
-// disparo de quem fica tão no fim da página que nunca chegaria a essa altura (ex.: rodapé)
-export const START = "clamp(top 88%)";
-
 // O hero avisa quando a abertura termina, para o header entrar junto com ele
 const HERO_READY_EVENT = "felipy:hero-ready";
 
@@ -38,72 +34,78 @@ export function onHeroReady(callback: () => void) {
 }
 
 /**
+ * Chama `onEnter` uma vez para cada elemento quando o topo dele passa de 88% da tela,
+ * ou quando ele já está todo visível (o que cobre o fim da página, onde nada chega a 88%).
+ * Os elementos que entram juntos chegam no mesmo lote, na ordem do documento.
+ * O IntersectionObserver trabalha fora da rolagem: nada roda a cada quadro.
+ */
+export function onceInView(
+  targets: Element[],
+  onEnter: (entered: Element[]) => void,
+) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entered = entries
+        .filter(
+          (entry) =>
+            entry.isIntersecting &&
+            (entry.boundingClientRect.top <= window.innerHeight * 0.88 ||
+              entry.intersectionRatio >= 0.99),
+        )
+        .map((entry) => entry.target);
+      if (!entered.length) return;
+      entered.forEach((el) => observer.unobserve(el));
+      onEnter(entered);
+    },
+    { threshold: [0, 0.25, 0.5, 0.75, 1] },
+  );
+  targets.forEach((el) => observer.observe(el));
+  return () => observer.disconnect();
+}
+
+/**
  * Revela, quando entram na tela, os elementos do escopo marcados com:
  * - data-reveal="up": sobe e aparece
  * - data-reveal="mask": sobe por trás do pai (o pai precisa de overflow-hidden)
  * - data-reveal="line": a linha se desenha (data-origin="center" para abrir do meio)
  * - data-reveal="chars": as letras de um <SplitChars> sobem uma a uma
  * - data-reveal-stagger no pai: os filhos entram em sequência ("pop" para tags)
- * Chame dentro de gsap.matchMedia().add(MOTION_OK, ...).
+ * Aqui só se troca uma classe; as transições estão em globals.css.
+ * Chame dentro de gsap.matchMedia().add(MOTION_OK, ...) e devolva a limpeza.
  */
-export function revealOnScroll(scope: Element) {
-  const all = (selector: string) =>
-    Array.from(scope.querySelectorAll<HTMLElement>(selector));
-  const once = (trigger: Element) => ({ trigger, start: START, once: true });
+export function observeReveals(scope: HTMLElement) {
+  const elements = Array.from(
+    scope.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-stagger]"),
+  );
+  if (!elements.length) return () => {};
 
-  // Opacidade (e não autoAlpha) para o conteúdo continuar acessível a leitores de tela
-  all('[data-reveal="up"]').forEach((el) => {
-    gsap.from(el, {
-      opacity: 0,
-      y: 32,
-      duration: DURATION.base,
-      ease: EASE.reveal,
-      scrollTrigger: once(el),
-    });
+  // Índice de cada filho, usado no atraso em sequência
+  elements.forEach((el) => {
+    if (!el.hasAttribute("data-reveal-stagger")) return;
+    Array.from(el.children).forEach((child, i) =>
+      (child as HTMLElement).style.setProperty("--reveal-i", String(i)),
+    );
   });
 
-  all('[data-reveal="mask"]').forEach((el) => {
-    gsap.from(el, {
-      yPercent: 110,
-      duration: DURATION.slow,
-      ease: EASE.reveal,
-      scrollTrigger: once(el.parentElement ?? el),
-    });
-  });
+  // A máscara desloca o próprio elemento; observa o pai, que fica parado
+  const watched = new Map<Element, HTMLElement>();
+  elements.forEach((el) =>
+    watched.set(
+      el.dataset.reveal === "mask" && el.parentElement ? el.parentElement : el,
+      el,
+    ),
+  );
 
-  all('[data-reveal="line"]').forEach((el) => {
-    gsap.from(el, {
-      scaleX: 0,
-      transformOrigin: el.dataset.origin === "center" ? "50% 50%" : "0% 50%",
-      duration: DURATION.slow,
-      ease: EASE.draw,
-      scrollTrigger: once(el),
-    });
-  });
+  const stop = onceInView([...watched.keys()], (entered) =>
+    entered.forEach((el) => watched.get(el)?.classList.add("is-revealed")),
+  );
+  scope.dataset.revealScope = "ready";
 
-  all('[data-reveal="chars"]').forEach((el) => {
-    gsap.from(el.querySelectorAll(".split-char"), {
-      yPercent: 120,
-      opacity: 0,
-      duration: DURATION.slow,
-      ease: EASE.reveal,
-      stagger: STAGGER.char,
-      scrollTrigger: once(el),
-    });
-  });
-
-  all("[data-reveal-stagger]").forEach((group) => {
-    const pop = group.dataset.revealStagger === "pop";
-    gsap.from(group.children, {
-      opacity: 0,
-      y: pop ? 12 : 24,
-      scale: pop ? 0.9 : 1,
-      duration: pop ? DURATION.quick : DURATION.base,
-      ease: pop ? "back.out(1.6)" : EASE.reveal,
-      stagger: pop ? STAGGER.char : STAGGER.base,
-      scrollTrigger: once(group),
-    });
-  });
+  return () => {
+    stop();
+    // Se o movimento reduzido for ligado com a página aberta, tudo volta a aparecer
+    delete scope.dataset.revealScope;
+  };
 }
 
 /**
