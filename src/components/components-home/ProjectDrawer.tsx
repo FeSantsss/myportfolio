@@ -3,6 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useLenis } from "lenis/react";
+import { FINE_POINTER, magnetic } from "@/lib/motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useId, useRef } from "react";
@@ -83,6 +84,16 @@ export function ProjectDrawer({ project, onClosed }: ProjectDrawerProps) {
           },
           0.35 * d,
         );
+
+      // O texto do botão "ver case" é puxado na direção do cursor
+      const mm = gsap.matchMedia();
+      mm.add(FINE_POINTER, () => {
+        const cta = dialog.querySelector<HTMLElement>(".drawer-cta");
+        const content = cta?.querySelector<HTMLElement>(".drawer-cta-content");
+        if (cta && content) {
+          return magnetic(content, { area: cta, strength: 0.25, max: 8 });
+        }
+      });
 
       return () => {
         lenis?.start();
@@ -240,25 +251,27 @@ export function ProjectDrawer({ project, onClosed }: ProjectDrawerProps) {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="drawer-item group flex h-12 w-full items-center justify-center gap-3 rounded-full bg-mybeige font-[montserrat] text-sm font-medium tracking-wide text-myblack outline-none transition-colors duration-300 hover:bg-mywhite focus-visible:ring-2 focus-visible:ring-mybeige/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1e1b16]"
+              className="drawer-cta drawer-item group flex h-12 w-full items-center justify-center rounded-full bg-mybeige font-[montserrat] text-sm font-medium tracking-wide text-myblack outline-none transition-colors duration-300 hover:bg-mywhite focus-visible:ring-2 focus-visible:ring-mybeige/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1e1b16]"
             >
-              {tl("viewCase")}
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden
-                className="-rotate-45 transition-transform duration-300 group-hover:rotate-0 motion-reduce:transition-none"
-              >
-                <path
-                  d="M2 8H14M14 8L8 2M14 8L8 14"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <span className="drawer-cta-content inline-flex items-center gap-3">
+                {tl("viewCase")}
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  aria-hidden
+                  className="-rotate-45 transition-transform duration-300 group-hover:rotate-0 motion-reduce:transition-none"
+                >
+                  <path
+                    d="M2 8H14M14 8L8 2M14 8L8 14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </a>
           </footer>
         )}

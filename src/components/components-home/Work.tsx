@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   DURATION,
   EASE,
+  FINE_POINTER,
+  magnetic,
   MOTION_OK,
   revealOnScroll,
   STAGGER,
@@ -89,6 +91,19 @@ export function Work() {
             },
           );
         });
+      });
+
+      // A seta de cada card se inclina na direção do cursor enquanto ele passa pelo card
+      mm.add(FINE_POINTER, () => {
+        const cleanups = gsap.utils
+          .toArray<HTMLElement>(".workcase-card")
+          .map((card) => {
+            const arrow = card.querySelector<HTMLElement>(".workcase-arrow");
+            return arrow
+              ? magnetic(arrow, { area: card, strength: 0.2, max: 10 })
+              : () => {};
+          });
+        return () => cleanups.forEach((cleanup) => cleanup());
       });
     },
     { scope: pageRef },

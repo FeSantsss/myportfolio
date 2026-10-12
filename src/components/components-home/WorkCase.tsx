@@ -127,10 +127,10 @@ export function WorkCase() {
                     </ul>
                   )}
 
-                  {/* Indica que a caixa abre os detalhes */}
+                  {/* Indica que a caixa abre os detalhes; no desktop é puxada pelo cursor */}
                   <span
                     aria-hidden
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-mybeige transition-[background-color,border-color,color] duration-500 group-hover:border-mybeige group-hover:bg-mybeige group-hover:text-myblack"
+                    className="workcase-arrow flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/20 text-mybeige transition-[background-color,border-color,color] duration-500 group-hover:border-mybeige group-hover:bg-mybeige group-hover:text-myblack"
                   >
                     <svg
                       width="14"

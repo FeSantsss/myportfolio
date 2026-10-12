@@ -5,7 +5,14 @@ import gsap from "gsap";
 import { useRef } from "react";
 import contacts from "@/data/contacts.json";
 import { useTranslations } from "next-intl";
-import { DURATION, EASE, MOTION_OK, STAGGER } from "@/lib/motion";
+import {
+  DURATION,
+  EASE,
+  FINE_POINTER,
+  magnetic,
+  MOTION_OK,
+  STAGGER,
+} from "@/lib/motion";
 import { SplitChars } from "../SplitChars";
 
 interface contactProps {
@@ -48,6 +55,19 @@ export function Contact() {
             },
             "-=0.7",
           );
+      });
+
+      // Cada link de contato é puxado levemente na direção do cursor
+      mm.add(FINE_POINTER, () => {
+        const cleanups = gsap.utils
+          .toArray<HTMLElement>(".contacts")
+          .map((item) => {
+            const link = item.querySelector<HTMLElement>(".link-line");
+            return link
+              ? magnetic(link, { area: item, strength: 0.35, max: 8 })
+              : () => {};
+          });
+        return () => cleanups.forEach((cleanup) => cleanup());
       });
     },
     { scope: pageRef },
