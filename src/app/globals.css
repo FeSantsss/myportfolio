@@ -15,6 +15,54 @@
   }
 
   --animate-marquee-scroll: marquee-scroll 30s linear infinite;
+
+  /* Página 404: entrada dos elementos e o olho que procura a página */
+  @keyframes nf-rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+  }
+  @keyframes nf-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.3) rotate(-25deg);
+    }
+  }
+  @keyframes nf-look {
+    0%,
+    12%,
+    100% {
+      transform: translate(0, 0);
+    }
+    22%,
+    34% {
+      transform: translate(-70%, -25%);
+    }
+    46%,
+    58% {
+      transform: translate(65%, -30%);
+    }
+    70%,
+    82% {
+      transform: translate(45%, 55%);
+    }
+  }
+  @keyframes nf-blink {
+    0%,
+    92%,
+    100% {
+      transform: scaleY(1);
+    }
+    95% {
+      transform: scaleY(0.08);
+    }
+  }
+
+  --animate-nf-rise: nf-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-nf-pop: nf-pop 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  --animate-nf-look: nf-look 7s ease-in-out 1.2s infinite;
+  --animate-nf-blink: nf-blink 4.5s ease-in-out 2s infinite;
 }
 @utility link-line {
   text-decoration: none;

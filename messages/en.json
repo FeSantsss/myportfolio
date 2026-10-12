@@ -110,5 +110,14 @@
   },
   "footer": {
     "language": "language"
+  },
+  "notFound": {
+    "eyebrow": "error 404 · page not found",
+    "title": "I looked everywhere.",
+    "description": "But this page doesn't exist or has moved. The rest of the portfolio is right here.",
+    "home": "back to home",
+    "work": "see my work",
+    "marquee": "page not found",
+    "metaTitle": "Page not found — Felipy Santos"
   }
 }

@@ -110,5 +110,14 @@
   },
   "footer": {
     "language": "idioma"
+  },
+  "notFound": {
+    "eyebrow": "erro 404 · página não encontrada",
+    "title": "Procurei por todo o lado.",
+    "description": "Mas esta página não existe ou mudou de endereço. O resto do portefólio continua aqui.",
+    "home": "voltar ao início",
+    "work": "ver trabalhos",
+    "marquee": "página não encontrada",
+    "metaTitle": "Página não encontrada — Felipy Santos"
   }
 }

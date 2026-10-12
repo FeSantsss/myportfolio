@@ -1,4 +1,4 @@
-const items = [
+const defaultItems = [
   "NEXT.JS",
   "TYPESCRIPT",
   "JAVA",
@@ -15,7 +15,7 @@ const items = [
   "RELIABLE SOFTWARE",
 ];
 
-export function Marquee() {
+export function Marquee({ items = defaultItems }: { items?: string[] }) {
   return (
     <div
       className="overflow-hidden w-full bg-[#ffffff00] border-y-[0.5px] border-[rgba(190,190,190,0.488)] py-3.5 select-none mt-10"
