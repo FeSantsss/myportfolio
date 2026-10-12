@@ -187,10 +187,12 @@ export async function generateMetadata({
   };
 }
 
+// WOFF2 em vez de TTF; a Montserrat foi recortada para o conjunto latino (PT, ES, EN).
+// Para outro alfabeto, gere um novo recorte a partir da fonte original do Google Fonts.
 const chillax = localFont({
   src: [
     {
-      path: "../fonts/Chillax-Variable.ttf",
+      path: "../fonts/Chillax-Variable.woff2",
       weight: "100 900",
       style: "normal",
     },
@@ -201,7 +203,7 @@ const chillax = localFont({
 const montserrat = localFont({
   src: [
     {
-      path: "../fonts/Montserrat-VariableFont_wght.ttf",
+      path: "../fonts/Montserrat-Variable-Latin.woff2",
       weight: "100 900",
       style: "normal",
     },
