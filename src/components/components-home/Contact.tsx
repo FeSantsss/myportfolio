@@ -2,14 +2,11 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import contacts from "@/data/contacts.json";
 import { useTranslations } from "next-intl";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { DURATION, EASE, MOTION_OK, STAGGER } from "@/lib/motion";
+import { SplitChars } from "../SplitChars";
 
 interface contactProps {
   name: string;
@@ -23,42 +20,35 @@ export function Contact() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pageRef.current,
-          start: "top 50%",
-          end: "bottom 90%",
-        },
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_OK, () => {
+        // A chamada sobe letra por letra, linha após linha, e os contatos vêm em seguida
+        gsap
+          .timeline({
+            defaults: { ease: EASE.reveal },
+            scrollTrigger: {
+              trigger: ".contactTitle",
+              start: "clamp(top 75%)",
+              once: true,
+            },
+          })
+          .from(".contactTitle .split-char", {
+            yPercent: 120,
+            opacity: 0,
+            duration: DURATION.slow,
+            stagger: STAGGER.char * 0.8,
+          })
+          .from(
+            ".contacts",
+            {
+              opacity: 0,
+              y: 20,
+              duration: DURATION.base,
+              stagger: STAGGER.base,
+            },
+            "-=0.7",
+          );
       });
-
-      tl.from(".textWork", {
-        autoAlpha: 0,
-        yPercent: 110,
-        duration: 1.1,
-        ease: "expo.out",
-        stagger: 0.12,
-      })
-        .from(
-          ".titleContact",
-          {
-            autoAlpha: 0,
-            yPercent: 100,
-            duration: 1.3,
-            ease: "expo.out",
-          },
-          "-=0.6",
-        )
-        .from(
-          ".contacts",
-          {
-            autoAlpha: 0,
-            x: -30,
-            duration: 0.8,
-            ease: "power3.out",
-            stagger: 0.12,
-          },
-          "-=0.5",
-        );
     },
     { scope: pageRef },
   );
@@ -78,36 +68,40 @@ export function Contact() {
         id="contact"
         className="pt-40 pb-2 contain-paint transform-gpu max-w-[1900px] mx-2 -mb-10 lg:px-2 2xl:mx-auto"
       >
-        <div className="font-[chillax] text-mybeige font-bold text-right">
-          <div className="lowercase">
-            <div className="block overflow-hidden pb-2">
-              <p className="textWork text-[clamp(2.5rem,16vw,4.5rem)] md:text-8xl lg:text-9xl">
-                {tl("got")}
-              </p>
-            </div>
+        {/* Um único título com a frase inteira; as linhas são só visuais */}
+        <h2
+          aria-label={`${tl("got")} ${tl("a")} ${tl("project")} ${tl("inMind")} ${tl("letsBuild")}`}
+          className="contactTitle block font-[chillax] text-mybeige font-bold text-right"
+        >
+          <span className="block lowercase">
+            <span className="block overflow-hidden pb-2">
+              <span className="textWork block text-[clamp(2.5rem,16vw,4.5rem)] md:text-8xl lg:text-9xl">
+                <SplitChars text={tl("got")} />
+              </span>
+            </span>
 
-            <div className="block overflow-hidden -mt-3.5">
-              <p className="textWork text-5xl -mb-2.5 md:text-7xl lg:text-8xl">
-                {tl("a")}
-              </p>
-            </div>
-            <div className="block overflow-hidden">
-              <p className="textWork text-[clamp(2.5rem,16vw,4.5rem)] mb-1 tracking-widest md:text-8xl lg:text-9xl">
-                {tl("project")}
-              </p>
-            </div>
-            <div className="block overflow-hidden">
-              <p className="textWork text-5xl md:text-7xl lg:text-8xl">
-                {tl("inMind")}
-              </p>
-            </div>
-          </div>
-          <div className="block overflow-hidden pb-2">
-            <h2 className="titleContact text-[clamp(2.25rem,12vw,4.5rem)] mt-2.5 lowercase md:text-8xl lg:text-9xl">
-              {tl("letsBuild")}
-            </h2>
-          </div>
-        </div>
+            <span className="block overflow-hidden -mt-3.5">
+              <span className="textWork block text-5xl -mb-2.5 md:text-7xl lg:text-8xl">
+                <SplitChars text={tl("a")} />
+              </span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="textWork block text-[clamp(2.5rem,16vw,4.5rem)] mb-1 tracking-widest md:text-8xl lg:text-9xl">
+                <SplitChars text={tl("project")} />
+              </span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="textWork block text-5xl md:text-7xl lg:text-8xl">
+                <SplitChars text={tl("inMind")} />
+              </span>
+            </span>
+          </span>
+          <span className="block overflow-hidden pb-2">
+            <span className="titleContact block text-[clamp(2.25rem,12vw,4.5rem)] mt-2.5 lowercase md:text-8xl lg:text-9xl">
+              <SplitChars text={tl("letsBuild")} />
+            </span>
+          </span>
+        </h2>
         <div
           translate="no"
           className="font-[montserrat] text-mywhite text-sm opacity-70 flex flex-col gap-5 mx-2.5 mt-10 md:flex-row"
