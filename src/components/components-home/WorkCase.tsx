@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { useState } from "react";
 import { ProjectDrawer, type Project } from "./ProjectDrawer";
 
@@ -27,7 +26,7 @@ export function WorkCase() {
           return (
             <article
               key={project.id}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e1b16] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-500 hover:border-white/20 hover:bg-[#232018] has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-mybeige/60 has-[button:focus-visible]:ring-offset-4 has-[button:focus-visible]:ring-offset-myblack md:flex-row"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e1b16] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors duration-500 hover:border-white/20 hover:bg-[#232018] has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-mybeige/60 has-[button:focus-visible]:ring-offset-4 has-[button:focus-visible]:ring-offset-myblack"
             >
               {/* Botão que cobre o card inteiro: mantém o conteúdo como HTML válido e o título como título */}
               <button
@@ -37,7 +36,7 @@ export function WorkCase() {
                 aria-label={`${tw("openProject")}: ${project.title}`}
                 className="absolute inset-0 z-10 cursor-pointer rounded-2xl outline-none"
               />
-              <div className="flex flex-1 flex-col justify-between gap-5 p-5 text-mybeige md:p-7">
+              <div className="flex flex-1 flex-col justify-between gap-5 p-5 text-mybeige md:p-7 lg:flex-row lg:items-end lg:gap-12">
                 <div>
                   {/* Índice e período, como uma linha de metadados */}
                   <div className="flex items-center gap-3 font-[montserrat] text-[11px] uppercase tracking-[0.2em] text-mybeige/55">
@@ -63,9 +62,9 @@ export function WorkCase() {
                   </p>
                 </div>
 
-                <div className="flex items-end justify-between gap-4">
+                <div className="flex items-end justify-between gap-4 lg:max-w-[46%] lg:shrink-0">
                   {project.stack.length > 0 && (
-                    <ul className="flex flex-wrap gap-2 font-[montserrat]">
+                    <ul className="flex flex-wrap gap-2 font-[montserrat] lg:justify-end">
                       {visibleStack.map((item) => (
                         <li
                           translate="no"
@@ -105,19 +104,6 @@ export function WorkCase() {
                     </svg>
                   </span>
                 </div>
-              </div>
-
-              <div className="relative h-44 overflow-hidden border-t border-white/[0.06] md:h-auto md:w-[38%] md:shrink-0 md:border-t-0 md:border-l xl:w-[42%]">
-                {project.imageSrc && (
-                  <Image
-                    src={project.imageSrc}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1280px) 42vw, (min-width: 768px) 38vw, 100vw"
-                    loading="lazy"
-                    className="object-cover saturate-0 will-change-transform transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.04] group-hover:saturate-100 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                  />
-                )}
               </div>
             </article>
           );
