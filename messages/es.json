@@ -18,6 +18,26 @@
   "workcases": [
     {
       "id": 1,
+      "imageSrc": "",
+      "data": "2026/sep - 2026/oct",
+      "title": "Bot de Suscripciones para Telegram",
+      "description": "Bot de Telegram que automatiza la venta de suscripciones mensuales de acceso a canales privados. El usuario elige un plan en un menú interactivo, recibe un cobro PIX (código QR y copia y pega) generado mediante la API de Mercado Pago y, en cuanto se confirma el pago, obtiene un enlace de invitación de un solo uso al canal de su plan. Cuando la suscripción vence, el acceso se retira automáticamente. El proyecto cuenta con una base de datos relacional para usuarios y suscripciones, confirmación de pago mediante consultas programadas, credenciales protegidas en variables de entorno y despliegue en un contenedor Docker.",
+      "stack": [
+        "Java 21",
+        "Spring Boot 3",
+        "Maven",
+        "TelegramBots 9",
+        "Mercado Pago (PIX)",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "Supabase",
+        "Docker",
+        "Railway"
+      ],
+      "url": "https://www.behance.net/gallery/257003967/Telegram-Subscription-Bot-Java-Spring-Boot"
+    },
+    {
+      "id": 2,
       "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
       "data": "2025 - 2026/jun",
       "title": "saintsfilms",

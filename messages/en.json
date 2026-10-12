@@ -18,6 +18,26 @@
   "workcases": [
     {
       "id": 1,
+      "imageSrc": "",
+      "data": "2026/sep - 2026/oct",
+      "title": "Telegram Subscription Bot",
+      "description": "Telegram bot that automates the sale of monthly subscriptions to private channels. The user picks a plan from an interactive menu, receives a PIX charge (QR Code and copy-and-paste code) generated through the Mercado Pago API and, as soon as the payment is confirmed, gets a single-use invite link to their plan's channel. When the subscription expires, access is removed automatically. The project features a relational database for users and subscriptions, payment confirmation through scheduled polling, credentials secured in environment variables, and deployment in a Docker container.",
+      "stack": [
+        "Java 21",
+        "Spring Boot 3",
+        "Maven",
+        "TelegramBots 9",
+        "Mercado Pago (PIX)",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "Supabase",
+        "Docker",
+        "Railway"
+      ],
+      "url": "https://www.behance.net/gallery/257003967/Telegram-Subscription-Bot-Java-Spring-Boot"
+    },
+    {
+      "id": 2,
       "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
       "data": "2025 - 2026/jun",
       "title": "saintsfilms",
