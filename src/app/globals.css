@@ -5,6 +5,17 @@
   --color-mywhite: #fffbf4;
   --color-myblack: #1a1712;
 
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  --animate-marquee-scroll: marquee-scroll 30s linear infinite;
+
   /* Página 404: entrada dos elementos e o olho que procura a página */
   @keyframes nf-rise {
     from {

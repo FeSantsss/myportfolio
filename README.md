@@ -10,7 +10,7 @@ Personal portfolio of Felipy Santos, a software engineer building fast, scalable
 
 - **Three languages:** pt-PT at `/`, English at `/en` and Spanish at `/es`. Switching language from the footer swaps the copy in place, without reloading the page or replaying the intro.
 - **Project showcase:** a bento grid of compact cards; each one opens an animated side drawer with the cover, full description, stack and a link to the case study.
-- **Motion:** a short intro that any click, key or scroll fast-forwards, letter-by-letter headlines, sections that reveal as they scroll in, project cards with a parallax index number, a marquee that speeds up with the scroll and magnetic buttons, all on Lenis smooth scrolling. Everything stops under `prefers-reduced-motion`.
+- **Motion:** a short intro that any click, key or scroll fast-forwards, letter-by-letter headlines, sections that reveal as they scroll in, project cards with a parallax index number and magnetic buttons, all on Lenis smooth scrolling. Everything stops under `prefers-reduced-motion`.
 - **CV:** view or download from the about section; each locale can point to its own PDF.
 - **Creative 404:** the zero of "404" is an eye that follows the cursor, localized like the rest of the site.
 - **SEO:** per-locale metadata, `hreflang` alternates, sitemap, robots, JSON-LD (`Person`), a 1200×630 share image and [`llms.txt`](public/llms.txt).
