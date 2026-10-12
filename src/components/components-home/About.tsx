@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import skillsData from "@/data/skills.json";
-import experienceData from "@/data/experiences.json";
 import { useTranslations } from "next-intl";
 
 if (typeof window !== "undefined") {
@@ -23,10 +22,9 @@ interface IExperience {
 
 export function About() {
   const pageRef = useRef<HTMLDivElement>(null);
-  const experiences = Array.isArray(experienceData)
-    ? (experienceData as IExperience[])
-    : [];
   const tl = useTranslations("about");
+  // Cargos e datas vêm das mensagens para acompanhar o idioma do site
+  const experiences = tl.raw("experiences") as IExperience[];
 
   useGSAP(
     () => {
@@ -194,14 +192,6 @@ export function About() {
     { scope: pageRef },
   );
 
-  if (experiences.length === 0) {
-    return (
-      <div className="text-xs flex flex-row justify-between items-center mt-2 px-1.5 text-mybeige">
-        Experiences not found
-      </div>
-    );
-  }
-
   return (
     <section
       ref={pageRef}
@@ -249,7 +239,7 @@ export function About() {
           </p>
         </div>
         <div className="w-full">
-          <span className="subtitles">experience</span>
+          <span className="subtitles">{tl("experienceTitle")}</span>
           <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="experiences mt-4">
             {experiences.map((exp: IExperience) => (
@@ -263,7 +253,7 @@ export function About() {
             ))}
           </div>
 
-          <span className="subtitles mt-8">skills</span>
+          <span className="subtitles mt-8">{tl("skillsTitle")}</span>
           <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
           <div className="flex flex-row flex-wrap gap-2.5 mt-4 px-1.5 max-w-[500px]">
             {skillsData.map((skill: string, index: number) => (

@@ -67,6 +67,24 @@
     "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
     "description4": "My work is driven by simplicity, motion, and <strong>attention to detail</strong>. I enjoy creating <strong>creative and minimalist</strong> digital experiences where design and development work together seamlessly.",
     "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>",
+    "experienceTitle": "experience",
+    "skillsTitle": "skills",
+    "experiences": [
+      {
+        "id": "01",
+        "image": "/images/saints-logo.svg",
+        "name": "Saints Films",
+        "role": "Developer / Designer",
+        "date": "2025 - 2026/jun"
+      },
+      {
+        "id": "02",
+        "image": "/images/he4rt-logo.svg",
+        "name": "He4rt Devs",
+        "role": "Open Source Contributor",
+        "date": "2026 - Now"
+      }
+    ],
     "cv": {
       "file": "/cv/felipy-santos-cv-pt.pdf",
       "meta": "PDF · 2 pages",
