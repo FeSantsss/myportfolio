@@ -78,6 +78,13 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+/* Com `lenis.stop()` (gaveta, menu) a página também deixa de rolar por teclado e pela barra.
+   `hidden` em vez do `clip` do lenis.css para o scrollbar-gutter manter a largura da página */
+html.lenis-stopped {
+  overflow: hidden;
 }
 * {
   scrollbar-color: #fff5de #1a1712;
