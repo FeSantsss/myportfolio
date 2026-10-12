@@ -18,7 +18,7 @@
   "workcases": [
     {
       "id": 1,
-      "imageSrc": "",
+      "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/portfolio-cover.png",
       "data": "2026/set - 2026/out",
       "title": "Bot de Subscrições para Telegram",
       "description": "Bot de Telegram que automatiza a venda de subscrições mensais de acesso a canais privados. O utilizador escolhe um plano num menu interativo, recebe uma cobrança PIX (QR Code e copia-e-cola) gerada pela API do Mercado Pago e, assim que o pagamento é confirmado, recebe um link de convite de utilização única para o canal do seu plano. Quando a subscrição expira, o acesso é removido automaticamente. O projeto conta com uma base de dados relacional para utilizadores e subscrições, confirmação de pagamento por consulta agendada, credenciais protegidas em variáveis de ambiente e deploy num contentor Docker.",
