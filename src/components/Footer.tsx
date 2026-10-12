@@ -1,31 +1,21 @@
-import { ScrollReveal } from "./ScrollReveal";
 import { LanguageSwitcher } from "./SwitchLanguage";
 
 export function Footer() {
   return (
     <footer>
-      <ScrollReveal>
-        <div
-          data-reveal="line"
-          data-origin="center"
-          className="w-full h-[.5px] opacity-40 bg-mybeige max-w-5/6 m-auto mt-20"
-        ></div>
-        <div data-reveal="up" className="flex justify-center mt-10 md:mt-12">
-          <LanguageSwitcher />
+      <div className="w-full h-[.5px] opacity-40 bg-mybeige max-w-5/6 m-auto mt-20"></div>
+      <div className="flex justify-center mt-10 md:mt-12">
+        <LanguageSwitcher />
+      </div>
+      <div className="flex flex-col justify-center items-center w-full font-[montserrat] text-mywhite opacity-50 text-xs mb-10 mt-3.5 md:text-sm md:mt-7">
+        <p className="opacity-75" translate="no">
+          &copy; 2026 - Felipy Santos - Minimalist Developer
+        </p>
+        <div translate="no" className="mt-2.5 flex gap-1">
+          <p className="opacity-100">God</p>{" "}
+          <p className="opacity-70">bless u always</p>
         </div>
-        <div
-          data-reveal="up"
-          className="flex flex-col justify-center items-center w-full font-[montserrat] text-mywhite opacity-50 text-xs mb-10 mt-3.5 md:text-sm md:mt-7"
-        >
-          <p className="opacity-75" translate="no">
-            &copy; 2026 - Felipy Santos - Minimalist Developer
-          </p>
-          <div translate="no" className="mt-2.5 flex gap-1">
-            <p className="opacity-100">God</p>{" "}
-            <p className="opacity-70">bless u always</p>
-          </div>
-        </div>
-      </ScrollReveal>
+      </div>
     </footer>
   );
 }
