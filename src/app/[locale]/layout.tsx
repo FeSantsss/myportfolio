@@ -108,7 +108,7 @@ const shareImage = {
   width: 1200,
   height: 630,
   type: "image/png",
-  alt: "Felipy Santos — Software Engineer. Fast, scalable web applications with Next.js and Spring Boot.",
+  alt: "Felipy Santos — Software Engineer, available for work",
 };
 
 // Título e descrição por idioma, para o LocaleProvider atualizar o <head> na troca de idioma
