@@ -85,7 +85,7 @@ export function WorkCase() {
               {/* Conteúdo alinhado embaixo, por cima do número */}
               <div className="relative z-[1] mt-auto flex flex-col gap-6 p-6 text-mybeige md:p-7">
                 <div>
-                  <div className="flex items-center gap-3 font-[montserrat] text-[11px] tracking-[0.2em] text-mybeige/55 uppercase">
+                  <div className="workcase-item flex items-center gap-3 font-[montserrat] text-[11px] tracking-[0.2em] text-mybeige/55 uppercase">
                     <span
                       aria-hidden
                       className="h-px w-8 bg-mybeige/25 transition-[width,background-color] duration-500 group-hover:w-12 group-hover:bg-mybeige/60 motion-reduce:transition-none"
@@ -95,19 +95,19 @@ export function WorkCase() {
 
                   <h3
                     translate="no"
-                    className={`mt-4 font-[chillax] text-2xl leading-tight font-semibold text-balance ${
+                    className={`workcase-item mt-4 font-[chillax] text-2xl leading-tight font-semibold text-balance ${
                       isLarge ? "lg:text-4xl" : "lg:text-2xl"
                     }`}
                   >
                     {project.title}
                   </h3>
 
-                  <p className="mt-3 line-clamp-2 max-w-[62ch] font-[montserrat] text-[13px] leading-relaxed tracking-wide text-mybeige/70">
+                  <p className="workcase-item mt-3 line-clamp-2 max-w-[62ch] font-[montserrat] text-[13px] leading-relaxed tracking-wide text-mybeige/70">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="flex items-end justify-between gap-4">
+                <div className="workcase-item flex items-end justify-between gap-4">
                   {project.stack.length > 0 && (
                     <ul className="flex flex-wrap gap-2 font-[montserrat]">
                       {visibleStack.map((item) => (

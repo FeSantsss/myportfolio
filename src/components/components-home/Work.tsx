@@ -5,7 +5,15 @@ import gsap from "gsap";
 import { WorkCase } from "./WorkCase";
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { MOTION_OK, revealOnScroll } from "@/lib/motion";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  DURATION,
+  EASE,
+  MOTION_OK,
+  revealOnScroll,
+  STAGGER,
+  START,
+} from "@/lib/motion";
 import { SplitChars } from "../SplitChars";
 
 export function Work() {
@@ -19,17 +27,67 @@ export function Work() {
         // Título letra por letra, sobrancelha por trás da máscara e linhas que se desenham
         if (pageRef.current) revealOnScroll(pageRef.current);
 
-        // Os cards entram em sequência, com um stagger curto
-        gsap.from(".workcase-card", {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".workCaseContainer",
-            start: "top 85%",
-          },
+        // Cards: sobem com uma cortina, o número desliza da esquerda e o conteúdo entra em sequência
+        const cards = gsap.utils.toArray<HTMLElement>(".workcase-card");
+        const entrances = cards.map((card) =>
+          gsap
+            .timeline({ paused: true, defaults: { ease: EASE.reveal } })
+            .fromTo(
+              card,
+              { opacity: 0, y: 60, clipPath: "inset(35% 0% 0% 0% round 16px)" },
+              {
+                opacity: 1,
+                y: 0,
+                clipPath: "inset(0% 0% 0% 0% round 16px)",
+                duration: DURATION.slow,
+                // Sem o clip-path no fim, o anel de foco (fora da borda) volta a aparecer
+                clearProps: "clipPath",
+              },
+            )
+            .from(
+              card.querySelector(".workcase-number"),
+              { xPercent: -40, opacity: 0, duration: 1.6 },
+              0.1,
+            )
+            .from(
+              card.querySelectorAll(".workcase-item"),
+              {
+                opacity: 0,
+                y: 20,
+                duration: DURATION.base,
+                stagger: STAGGER.tight,
+              },
+              0.2,
+            ),
+        );
+        // Os cards da mesma linha entram um depois do outro
+        ScrollTrigger.batch(cards, {
+          start: START,
+          once: true,
+          onEnter: (batch) =>
+            batch.forEach((card, i) =>
+              gsap.delayedCall(i * STAGGER.base * 1.5, () =>
+                entrances[cards.indexOf(card as HTMLElement)]?.play(),
+              ),
+            ),
+        });
+
+        // Parallax: o número (decorativo) anda um pouco mais devagar que o card ao rolar
+        cards.forEach((card) => {
+          gsap.fromTo(
+            card.querySelector(".workcase-number"),
+            { yPercent: 12 },
+            {
+              yPercent: -12,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            },
+          );
         });
       });
     },
