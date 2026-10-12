@@ -10,7 +10,8 @@ export interface IAppProps {
 export function ExperienceAbout(props: IAppProps) {
   return (
     <>
-      <div className="text-xs flex flex-row justify-between items-center mt-3 px-1.5">
+      {/* A data fica numa linha só; abaixo de 360px ela desce para baixo do cargo */}
+      <div className="mt-3 flex flex-col items-start gap-1 px-1.5 text-xs min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between min-[360px]:gap-3">
         <div className="flex items-center gap-2">
           <Image
             alt={props.name}
@@ -26,8 +27,8 @@ export function ExperienceAbout(props: IAppProps) {
             <p className="opacity-70">{props.role}</p>
           </div>
         </div>
-        <div>
-          <p className="opacity-80 uppercase">{props.date}</p>
+        <div className="shrink-0 pl-12 min-[360px]:pl-0">
+          <p className="whitespace-nowrap opacity-80 uppercase">{props.date}</p>
         </div>
       </div>
     </>
