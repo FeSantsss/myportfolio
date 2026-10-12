@@ -188,7 +188,7 @@ export function Initialize() {
           </h1>
         </div>
         <div className="flex flex-col items-start my-6 gap-5 md:items-end md:flex-row md:justify-between md:my-14 lg:my-12 xl:my-10 2xl:my-8">
-          <p className="description font-[montserrat] text-mywhite text-sm my-5 leadind-[1.65] max-w-[280px] opacity-70 md:max-w-[240px] lg:max-w-[280px] xl:max-w-[350px]">
+          <p className="description font-[montserrat] text-mywhite text-sm my-5 leading-[1.65] max-w-[280px] opacity-70 md:max-w-[240px] lg:max-w-[280px] xl:max-w-[350px]">
             {tl("description")}
           </p>
           <div className="flex flex-col items-start md:items-end lg:scale-110">
