@@ -13,7 +13,13 @@
   },
   "work": {
     "projects": "II - PROJETOS SELECIONADOS",
-    "title": "trabalhos"
+    "title": "trabalhos",
+    "openProject": "Ver detalhes do projeto",
+    "close": "Fechar",
+    "aboutProject": "sobre o projeto",
+    "stack": "stack",
+    "viewCase": "ver case completo",
+    "more": "mais"
   },
   "workcases": [
     {

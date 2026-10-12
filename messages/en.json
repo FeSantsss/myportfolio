@@ -13,7 +13,13 @@
   },
   "work": {
     "projects": "II - SELECTED PROJECTS",
-    "title": "work"
+    "title": "work",
+    "openProject": "View project details",
+    "close": "Close",
+    "aboutProject": "about the project",
+    "stack": "stack",
+    "viewCase": "view full case",
+    "more": "more"
   },
   "workcases": [
     {
