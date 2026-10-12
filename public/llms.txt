@@ -14,7 +14,7 @@ Java, Spring, Docker, Next.js, GSAP, TypeScript, Tailwind CSS, Sanity CMS, Respo
 
 ## Experience
 
-- Saints Films — Developer / Designer (2025 – Jun 2026)
+- Saints Films — Developer / Designer (Nov 2025 – present)
 - He4rt Devs — Open Source Contributor (2026 – present)
 
 ## Links
