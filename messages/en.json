@@ -13,13 +13,39 @@
   },
   "work": {
     "projects": "II - SELECTED PROJECTS",
-    "title": "work"
+    "title": "work",
+    "openProject": "View project details",
+    "close": "Close",
+    "aboutProject": "about the project",
+    "stack": "stack",
+    "viewCase": "view full case",
+    "more": "more"
   },
   "workcases": [
     {
       "id": 1,
+      "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/portfolio-cover-phone.png",
+      "data": "2026/sep - 2026/oct",
+      "title": "Telegram Subscription Bot",
+      "description": "Telegram bot that automates the sale of monthly subscriptions to private channels. The user picks a plan from an interactive menu, receives a PIX charge (QR Code and copy-and-paste code) generated through the Mercado Pago API and, as soon as the payment is confirmed, gets a single-use invite link to their plan's channel. When the subscription expires, access is removed automatically. The project features a relational database for users and subscriptions, payment confirmation through scheduled polling, credentials secured in environment variables, and deployment in a Docker container.",
+      "stack": [
+        "Java 21",
+        "Spring Boot 3",
+        "Maven",
+        "TelegramBots 9",
+        "Mercado Pago (PIX)",
+        "Spring Data JPA",
+        "PostgreSQL",
+        "Supabase",
+        "Docker",
+        "Railway"
+      ],
+      "url": "https://www.behance.net/gallery/257003967/Telegram-Subscription-Bot-Java-Spring-Boot"
+    },
+    {
+      "id": 2,
       "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
-      "data": "2025 - 2026/jun",
+      "data": "2025/nov - now",
       "title": "saintsfilms",
       "description": "Institutional website for Saints Films — a professional audiovisual production company based in Brazil, PE. Developed with a focus on a strong visual identity, fluid animations, strong SEO, and a scalable frontend architecture.",
       "stack": [
@@ -40,7 +66,33 @@
     "description2": "Later, an opportunity to work on front-end projects at <strong>Saints Films </strong> introduced me to a different side of web development.",
     "description3": "What began with HTML, CSS, and JavaScript quickly evolved into building modern applications with <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong> GSAP</strong>, and <strong>Sanity CMS</strong>.",
     "description4": "My work is driven by simplicity, motion, and <strong>attention to detail</strong>. I enjoy creating <strong>creative and minimalist</strong> digital experiences where design and development work together seamlessly.",
-    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>"
+    "description5": "Most of my skills have been developed through hands-on <strong>projects</strong>, <strong>freelance work</strong>, <strong>open source contributions</strong>, technical documentation, online courses, and <strong> continuous self-learning.</strong>",
+    "experienceTitle": "experience",
+    "skillsTitle": "skills",
+    "experiences": [
+      {
+        "id": "01",
+        "image": "/images/saints-logo.svg",
+        "name": "Saints Films",
+        "role": "Developer / Designer",
+        "date": "2025/nov - Now"
+      },
+      {
+        "id": "02",
+        "image": "/images/he4rt-logo.svg",
+        "name": "He4rt Devs",
+        "role": "Open Source Contributor",
+        "date": "2026 - Now"
+      }
+    ],
+    "cv": {
+      "file": "/cv/felipy-santos-cv-pt.pdf",
+      "meta": "PDF · 2 pages",
+      "view": "view",
+      "download": "download",
+      "viewLabel": "View the résumé (opens in a new tab)",
+      "downloadLabel": "Download the résumé as PDF"
+    }
   },
   "contact": {
     "got": "got",
@@ -59,26 +111,13 @@
   "footer": {
     "language": "language"
   },
-  "metadata": {
-    "title": "Felipy Santos — Full-Stack Developer",
-    "description": "Full-Stack Developer specializing in React, TypeScript & Spring Boot. Crafting clean, performant interfaces and scalable backends. Available for international opportunities.",
-    "keywords": [
-      "full-stack developer",
-      "frontend developer",
-      "React developer",
-      "TypeScript",
-      "Spring Boot",
-      "Java developer",
-      "minimalist developer",
-      "portfolio",
-      "Brazil developer",
-      "remote developer",
-      "UI developer",
-      "web developer",
-      "Felipy Santos"
-    ],
-    "ogDescription": "Next.js · TypeScript · GSAP. Clean code, intentional design, scalable solutions. Available for international work.",
-    "twitterDescription": "React · TypeScript · Spring Boot. Clean code, intentional design. Open to international opportunities.",
-    "jsonLdDescription": "Full-Stack Developer specializing in React, TypeScript and Spring Boot. Available for international opportunities."
+  "notFound": {
+    "eyebrow": "error 404 · page not found",
+    "title": "I looked everywhere.",
+    "description": "But this page doesn't exist or has moved. The rest of the portfolio is right here.",
+    "home": "back to home",
+    "work": "see my work",
+    "marquee": "page not found",
+    "metaTitle": "Page not found — Felipy Santos"
   }
 }

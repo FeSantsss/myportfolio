@@ -3,12 +3,15 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useLenis } from "lenis/react";
 import { useTranslations } from "next-intl";
+import { DURATION, EASE, MOTION_OK, onHeroReady } from "@/lib/motion";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const tl = useTranslations("menu");
+  const lenis = useLenis();
 
   // Referências para controlar os elementos com GSAP
   const headerRef = useRef<HTMLDivElement>(null);
@@ -24,43 +27,59 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. Acessibilidade e Bloqueio de Scroll
+  // 2. Acessibilidade e Bloqueio de Scroll: com o menu aberto o Lenis fica parado
+  // (sem roda, toque ou teclado, via html.lenis-stopped) e Esc fecha o menu
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    if (!menuOpen) return;
+    lenis?.stop();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
-  }, [menuOpen]);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      lenis?.start();
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen, lenis]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
 
   useGSAP(
     () => {
-      // A. Animação de entrada do próprio Header quando a página monta
-      gsap.from(".header-container", {
-        y: -50,
-        autoAlpha: 0,
-        duration: 1,
-        delay: 5,
-        ease: "power4.out",
+      // A. Entrada do header: espera a abertura terminar e chega junto com o hero
+      const mm = gsap.matchMedia();
+      mm.add(MOTION_OK, () => {
+        const enter = gsap.from(".header-container", {
+          yPercent: -150,
+          opacity: 0,
+          duration: DURATION.slow,
+          ease: EASE.reveal,
+          paused: true,
+        });
+        return onHeroReady(() => enter.play());
       });
 
-      // B. Criando a Linha do Tempo para o Menu Mobile (Começa pausada)
+      // B. Linha do tempo do menu mobile (começa pausada); com movimento reduzido ela é instantânea
+      const d = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? 0
+        : 1;
       const tl = gsap.timeline({ paused: true });
 
       tl.to(".menu-bg", {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.4 * d,
         ease: "power2.out",
       })
         .to(
           ".menu-divider",
           {
             scaleX: 1,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: "power3.inOut",
+            duration: 0.5 * d,
+            stagger: 0.06 * d,
+            ease: EASE.draw,
           },
           "-=0.2", // Overlap para iniciar junto com o fundo
         )
@@ -69,8 +88,8 @@ export function Header() {
           {
             y: 25,
             autoAlpha: 0,
-            duration: 0.5,
-            stagger: 0.08,
+            duration: 0.5 * d,
+            stagger: 0.06 * d,
             ease: "power3.out",
           },
           "-=0.4", // Faz os links subirem enquanto as linhas se expandem
@@ -97,7 +116,7 @@ export function Header() {
     "group relative whitespace-nowrap font-[montserrat] tracking-[0.1em] text-[13px] font-medium text-mybeige opacity-40 no-underline transition-opacity duration-500 ease-out hover:opacity-100 md:text-lg lg:text-xl";
 
   const navUnderlineClass =
-    "absolute -bottom-1 left-0 h-px w-0 bg-white/90 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:w-full";
+    "absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-white/90 transition-[scale] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-x-100";
 
   return (
     <div ref={headerRef}>

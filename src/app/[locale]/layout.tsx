@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import localFont from "next/font/local";
-import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTimeZone,
+  setRequestLocale,
+} from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { htmlLang, isLocale, type Locale } from "@/i18n/locales";
 
@@ -97,6 +100,15 @@ const seoCopy = {
 
 const ogLocales = { pt: "pt_PT", en: "en_US", es: "es_ES" } as const;
 
+// Imagem de compartilhamento única, em inglês, para todos os idiomas
+const shareImage = {
+  url: `${SITE_URL}/og-image.png`,
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "Felipy Santos — Software Engineer, available for work",
+};
+
 // Título e descrição por idioma, para o LocaleProvider atualizar o <head> na troca de idioma
 const documentMeta = Object.fromEntries(
   routing.locales.map((l) => [
@@ -109,6 +121,11 @@ function resolveLocale(locale: string): Locale {
   return isLocale(locale) ? locale : routing.defaultLocale;
 }
 
+// Gera as três versões no build, em vez de renderizar a cada visita
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -117,7 +134,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const siteLocale = resolveLocale(locale);
   const copy = seoCopy[siteLocale];
-  const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const path = siteLocale === routing.defaultLocale ? "/" : `/${siteLocale}`;
   const ogLocale = ogLocales[siteLocale];
 
   return {
@@ -142,14 +159,7 @@ export async function generateMetadata({
       description: copy.ogDescription,
       siteName: "Felipy Santos",
       url: path,
-      images: [
-        {
-          url: "https://felipysantsss.vercel.app/icon.png",
-          width: 1200,
-          height: 630,
-          alt: copy.title,
-        },
-      ],
+      images: [shareImage],
       locale: ogLocale,
       alternateLocale: Object.values(ogLocales).filter((l) => l !== ogLocale),
       type: "website",
@@ -158,7 +168,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: copy.title,
       description: copy.twitterDescription,
-      images: ["https://felipysantsss.vercel.app/icon.png"],
+      images: [shareImage],
       creator: "@felipysantsss",
     },
     robots: {
@@ -177,10 +187,12 @@ export async function generateMetadata({
   };
 }
 
+// WOFF2 em vez de TTF; a Montserrat foi recortada para o conjunto latino (PT, ES, EN).
+// Para outro alfabeto, gere um novo recorte a partir da fonte original do Google Fonts.
 const chillax = localFont({
   src: [
     {
-      path: "../fonts/Chillax-Variable.ttf",
+      path: "../fonts/Chillax-Variable.woff2",
       weight: "100 900",
       style: "normal",
     },
@@ -191,7 +203,7 @@ const chillax = localFont({
 const montserrat = localFont({
   src: [
     {
-      path: "../fonts/Montserrat-VariableFont_wght.ttf",
+      path: "../fonts/Montserrat-Variable-Latin.woff2",
       weight: "100 900",
       style: "normal",
     },
@@ -208,13 +220,17 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
+  // Caminhos com ponto (ex.: /favicon.ico) não passam pelo proxy e chegam aqui como idioma:
+  // o layout usa o idioma padrão e a página responde com a 404 localizada
+  const siteLocale = resolveLocale(locale);
+
   // Garante que a renderização estática e o i18n funcionem em sincronia
-  setRequestLocale(locale);
+  setRequestLocale(siteLocale);
 
   // Carrega as mensagens do dicionário (pt.json / en.json / es.json)
   const messages = await getMessages();
+  const timeZone = await getTimeZone();
 
-  const siteLocale = resolveLocale(locale);
   const copy = seoCopy[siteLocale];
 
   return (
@@ -226,12 +242,10 @@ export default async function RootLayout({
         <LocaleProvider
           initialLocale={siteLocale}
           initialMessages={messages}
+          timeZone={timeZone}
           documentMeta={documentMeta}
         >
-          <main>
-            <Header />
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
-          </main>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </LocaleProvider>
 
         <script
