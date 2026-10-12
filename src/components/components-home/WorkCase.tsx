@@ -36,7 +36,7 @@ export function WorkCase() {
 
   return (
     <>
-      <div className="mx-2.5 grid grid-cols-1 gap-4 contain-paint transform-gpu md:grid-cols-2 md:gap-5 lg:grid-cols-6">
+      <div className="mx-2.5 grid grid-cols-1 gap-4 transform-gpu md:grid-cols-2 md:gap-5 lg:grid-cols-6">
         {projects.map((project, i) => {
           const index = String(project.id).padStart(2, "0");
           const visibleStack = project.stack.slice(0, MAX_CARD_STACK);
