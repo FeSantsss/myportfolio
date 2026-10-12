@@ -1,44 +1,33 @@
 "use client";
 
-import { ReactLenis, type LenisRef } from "lenis/react";
-import { useEffect, useRef } from "react";
+import { ReactLenis, useLenis } from "lenis/react";
+import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface SmoothScrollChildren {
   children: React.ReactNode;
 }
 
 export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
-  const lenisRef = useRef<LenisRef>(null);
+  // Avisamos o ScrollTrigger pra recalcular a cada scroll do Lenis.
+  // Isso garante leitura 1:1 da posição real, sem lag de 1 frame.
+  // O hook só registra o callback quando a instância já existe; ler
+  // `ref.current.lenis` num useEffect de montagem pegava `undefined`.
+  useLenis(ScrollTrigger.update);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Copiamos o ref para uma variável local: o valor lido no cleanup
-    // precisa ser o mesmo lido na montagem, não o que `lenisRef.current`
-    // tiver no momento do unmount.
-    const lenisInstance = lenisRef.current;
-
-    // avisamos o ScrollTrigger pra recalcular a cada scroll do Lenis.
-    // Isso garante leitura 1:1 da posição real, sem lag de 1 frame.
-    function onScroll() {
-      ScrollTrigger.update();
-    }
-
-    lenisInstance?.lenis?.on("scroll", onScroll);
     gsap.ticker.lagSmoothing(0);
     ScrollTrigger.refresh();
-
-    return () => {
-      lenisInstance?.lenis?.off("scroll", onScroll);
-    };
   }, []);
 
   return (
     <ReactLenis
       root
-      ref={lenisRef}
       options={{
         // `autoRaf: false` (dirigido manualmente pelo gsap.ticker) trava o
         // scroll por wheel nesta versão do Lenis: o preventDefault do
