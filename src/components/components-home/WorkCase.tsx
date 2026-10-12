@@ -29,7 +29,7 @@ export function WorkCase() {
           key={project.id}
         >
           <div className="group/image group/arrow mb-10 rounded-2xl bg-[#1e1b16] border-[rgba(255,251,244,0.08)] flex flex-col flex-1 cursor-pointer xl:flex-row  xl:justify-between border duration-700 hover:bg-[#232018] hover:border-[rgba(255,251,244,0.2)]">
-            <div className="mb-8 p-2.5 text-mybeige flex flex-col md:gap-6">
+            <div className="mb-6 p-2.5 text-mybeige flex flex-col md:gap-3">
               <span className="block mb-2.5 font-montserrat text-sm opacity-20 duration-500 group-hover/image:opacity-80">
                 {`0${project.id}`} -
               </span>
@@ -38,11 +38,11 @@ export function WorkCase() {
               </span>
               <h3
                 translate="no"
-                className="font-[chillax] text-3xl my-2.5 font-semibold md:text-5xl xl:ml-4"
+                className="font-[chillax] text-3xl my-2 font-semibold md:text-4xl xl:ml-4"
               >
                 {project.title}
               </h3>
-              <p className="font-[montserrat] leading-5 tracking-wider text-xs mb-9 max-w-[500px] md:leading-6 md:text-sm xl:ml-4">
+              <p className="font-[montserrat] leading-5 tracking-wider text-xs mb-6 max-w-[600px] md:leading-6 md:text-sm xl:ml-4">
                 {project.description}
               </p>
               {project.stack && project.stack.length > 0 && (
@@ -59,7 +59,7 @@ export function WorkCase() {
                 </div>
               )}
             </div>
-            <div className="relative overflow-hidden h-64 md:h-80 xl:h-auto xl:w-1/2 xl:shrink-0 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
+            <div className="relative overflow-hidden h-56 md:h-72 xl:h-auto xl:w-1/2 xl:shrink-0 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
               {project.imageSrc && (
                 <Image
                   src={project.imageSrc}
