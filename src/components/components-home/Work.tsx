@@ -80,7 +80,7 @@ export function Work() {
         className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
       >
         <span className="title">{tl("title")}</span>
-        <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+        <span className="lines block w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></span>
       </h2>
 
       <div className="workCaseContainer transform-gpu">

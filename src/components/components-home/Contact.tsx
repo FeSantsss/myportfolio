@@ -103,9 +103,9 @@ export function Contact() {
             </div>
           </div>
           <div className="block overflow-hidden pb-2">
-            <h3 className="titleContact text-[clamp(2.25rem,12vw,4.5rem)] mt-2.5 lowercase md:text-8xl lg:text-9xl">
+            <h2 className="titleContact text-[clamp(2.25rem,12vw,4.5rem)] mt-2.5 lowercase md:text-8xl lg:text-9xl">
               {tl("letsBuild")}
-            </h3>
+            </h2>
           </div>
         </div>
         <div
@@ -120,6 +120,7 @@ export function Contact() {
                 </a>
                 <span className="inline-block transition-transform duration-500 ease-out ml-1 -rotate-45 translate-x-0 translate-y-0 group-hover:rotate-0">
                   <svg
+                    aria-hidden
                     width="12"
                     height="12"
                     viewBox="0 0 16 16"

@@ -204,7 +204,7 @@ export function About() {
         className="font-['chillax'] mt-16 mb-15 font-bold text-mybeige text-6xl md:mt-18 md:text-7xl lg:mt-23 lg:text-8xl lg:mb-20"
       >
         <span className="title">{tl("title")}</span>
-        <div className="lines w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></div>
+        <span className="lines block w-0 h-[.5px] mt-3 opacity-20 bg-mybeige"></span>
       </h2>
       <div className="flex flex-col gap-10 text-mybeige font-[montserrat] xl:flex-row xl:justify-between md:text-xl">
         <div className=" max-w-[800px] opacity-60 leading-6 md:leading-7 lg:leading-8 tracking-wide">
