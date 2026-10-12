@@ -140,7 +140,11 @@ export function Initialize() {
             repeat: 5,
           });
 
-        // Ao rolar, "Felipy" desliza para a esquerda e "Santos" para a direita
+        return stopListening;
+      });
+
+      // Só no desktop: ao rolar, "Felipy" desliza para a esquerda e "Santos" para a direita
+      mm.add(`${MOTION_OK} and (min-width: 1024px)`, () => {
         const separate = () => ({
           trigger: ".hero",
           start: "top top",
@@ -157,8 +161,6 @@ export function Initialize() {
           ease: "none",
           scrollTrigger: separate(),
         });
-
-        return stopListening;
       });
 
       // Com movimento reduzido a abertura nem aparece (CSS) e nada se move
