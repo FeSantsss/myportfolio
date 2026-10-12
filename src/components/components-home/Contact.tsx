@@ -81,7 +81,7 @@ export function Contact() {
         <div className="font-[chillax] text-mybeige font-bold text-right">
           <div className="lowercase">
             <div className="block overflow-hidden pb-2">
-              <p className="textWork text-7xl md:text-8xl lg:text-9xl">
+              <p className="textWork text-[clamp(2.5rem,16vw,4.5rem)] md:text-8xl lg:text-9xl">
                 {tl("got")}
               </p>
             </div>
@@ -92,7 +92,7 @@ export function Contact() {
               </p>
             </div>
             <div className="block overflow-hidden">
-              <p className="textWork text-7xl mb-1 tracking-widest md:text-8xl lg:text-9xl">
+              <p className="textWork text-[clamp(2.5rem,16vw,4.5rem)] mb-1 tracking-widest md:text-8xl lg:text-9xl">
                 {tl("project")}
               </p>
             </div>
@@ -103,7 +103,7 @@ export function Contact() {
             </div>
           </div>
           <div className="block overflow-hidden pb-2">
-            <h3 className="titleContact text-7xl mt-2.5 lowercase md:text-8xl lg:text-9xl">
+            <h3 className="titleContact text-[clamp(2.25rem,12vw,4.5rem)] mt-2.5 lowercase md:text-8xl lg:text-9xl">
               {tl("letsBuild")}
             </h3>
           </div>
