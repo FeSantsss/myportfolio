@@ -23,6 +23,8 @@ export function SmoothScrollProvider({ children }: SmoothScrollChildren) {
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
     ScrollTrigger.refresh();
+    // As fontes mudam a altura dos textos: recalcula os gatilhos quando terminam de carregar
+    document.fonts?.ready.then(() => ScrollTrigger.refresh());
   }, []);
 
   return (

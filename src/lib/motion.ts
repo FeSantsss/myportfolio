@@ -21,8 +21,9 @@ export const MOTION_OK = "(prefers-reduced-motion: no-preference)";
 export const FINE_POINTER =
   "(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)";
 
-// Revela quando o topo do elemento entra nos últimos 12% da tela
-const START = "top 88%";
+// Revela quando o topo do elemento entra nos últimos 12% da tela. O clamp() garante o
+// disparo de quem fica tão no fim da página que nunca chegaria a essa altura (ex.: rodapé)
+export const START = "clamp(top 88%)";
 
 // O hero avisa quando a abertura termina, para o header entrar junto com ele
 const HERO_READY_EVENT = "felipy:hero-ready";
