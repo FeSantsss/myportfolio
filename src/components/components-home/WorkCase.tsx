@@ -59,7 +59,7 @@ export function WorkCase() {
                 </div>
               )}
             </div>
-            <div className="relative overflow-hidden h-64 md:h-80 xl:h-auto xl:w-1/2 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
+            <div className="relative overflow-hidden h-64 md:h-80 xl:h-auto xl:w-1/2 xl:shrink-0 rounded-2xl rounded-t-none rounded-tl-none xl:rounded-2xl xl:rounded-l-none xl:rounded-bl-none">
               {project.imageSrc && (
                 <Image
                   src={project.imageSrc}
