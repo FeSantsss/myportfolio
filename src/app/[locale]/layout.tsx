@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import localFont from "next/font/local";
+import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
@@ -117,7 +118,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const siteLocale = resolveLocale(locale);
   const copy = seoCopy[siteLocale];
-  const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const path = siteLocale === routing.defaultLocale ? "/" : `/${siteLocale}`;
   const ogLocale = ogLocales[siteLocale];
 
   return {
@@ -206,15 +207,17 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = await params;
+  const { locale: siteLocale } = await params;
+
+  // Caminhos com ponto (ex.: /favicon.ico) não passam pelo proxy e chegam aqui como idioma
+  if (!isLocale(siteLocale)) notFound();
 
   // Garante que a renderização estática e o i18n funcionem em sincronia
-  setRequestLocale(locale);
+  setRequestLocale(siteLocale);
 
   // Carrega as mensagens do dicionário (pt.json / en.json / es.json)
   const messages = await getMessages();
 
-  const siteLocale = resolveLocale(locale);
   const copy = seoCopy[siteLocale];
 
   return (
