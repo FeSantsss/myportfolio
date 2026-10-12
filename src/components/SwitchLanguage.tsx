@@ -1,17 +1,21 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import type { MouseEvent } from "react";
 import { getPathname, Link, usePathname } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/locales";
 import { useLocaleSwitch } from "./LocaleProvider";
-import "flag-icons/css/flag-icons.min.css";
+// Só os três SVGs usados, em vez do CSS do flag-icons com as regras de todos os países
+import esFlag from "flag-icons/flags/1x1/es.svg";
+import ptFlag from "flag-icons/flags/1x1/pt.svg";
+import usFlag from "flag-icons/flags/1x1/us.svg";
 
 // Cada locale do site com a bandeira correspondente (flag-icons), o código exibido e o nome no próprio idioma
 const languages = [
-  { locale: "pt", flag: "pt", code: "PT", label: "Português (Portugal)", hrefLang: "pt-PT" },
-  { locale: "en", flag: "us", code: "EN", label: "English", hrefLang: "en" },
-  { locale: "es", flag: "es", code: "ES", label: "Español (España)", hrefLang: "es-ES" },
+  { locale: "pt", flag: ptFlag, code: "PT", label: "Português (Portugal)", hrefLang: "pt-PT" },
+  { locale: "en", flag: usFlag, code: "EN", label: "English", hrefLang: "en" },
+  { locale: "es", flag: esFlag, code: "ES", label: "Español (España)", hrefLang: "es-ES" },
 ] as const;
 
 export function LanguageSwitcher() {
@@ -74,9 +78,13 @@ export function LanguageSwitcher() {
               }`}
             >
               {/* Bandeira circular; pulsa enquanto as mensagens do novo idioma carregam */}
-              <span
-                aria-hidden
-                className={`fi fis fi-${flag} rounded-full text-[15px] ring-1 ring-white/15 transition-[filter] duration-300 group-hover:grayscale-0 ${
+              <Image
+                src={flag}
+                alt=""
+                width={15}
+                height={15}
+                unoptimized
+                className={`h-[15px] w-[15px] rounded-full ring-1 ring-white/15 transition-[filter] duration-300 group-hover:grayscale-0 ${
                   isActive ? "" : "grayscale"
                 } ${isPending ? "animate-pulse motion-reduce:animate-none" : ""}`}
               />
