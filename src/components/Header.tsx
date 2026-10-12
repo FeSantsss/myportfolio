@@ -3,12 +3,14 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useLenis } from "lenis/react";
 import { useTranslations } from "next-intl";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const tl = useTranslations("menu");
+  const lenis = useLenis();
 
   // Referências para controlar os elementos com GSAP
   const headerRef = useRef<HTMLDivElement>(null);
@@ -24,13 +26,22 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. Acessibilidade e Bloqueio de Scroll
+  // 2. Acessibilidade e Bloqueio de Scroll: com o menu aberto o Lenis fica parado
+  // (sem roda, toque ou teclado, via html.lenis-stopped) e Esc fecha o menu
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    if (!menuOpen) return;
+    lenis?.stop();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
-  }, [menuOpen]);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      lenis?.start();
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen, lenis]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
