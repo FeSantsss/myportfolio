@@ -88,9 +88,12 @@ export function WorkCase() {
                   <div className="workcase-item flex items-center gap-3 font-[montserrat] text-[11px] tracking-[0.2em] text-mybeige/55 uppercase">
                     <span
                       aria-hidden
-                      className="h-px w-8 bg-mybeige/25 transition-[width,background-color] duration-500 group-hover:w-12 group-hover:bg-mybeige/60 motion-reduce:transition-none"
+                      className="h-px w-8 origin-left bg-mybeige/25 transition-[scale,background-color] duration-500 group-hover:scale-x-150 group-hover:bg-mybeige/60 motion-reduce:transition-none"
                     />
-                    <span>{project.data}</span>
+                    {/* A linha cresce com scale e a data acompanha com translate: sem recalcular layout */}
+                    <span className="transition-[translate] duration-500 group-hover:translate-x-4 motion-reduce:transition-none">
+                      {project.data}
+                    </span>
                   </div>
 
                   <h3
