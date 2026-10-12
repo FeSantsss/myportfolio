@@ -3,9 +3,10 @@ import "../globals.css";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
-import { NextIntlClientProvider } from "next-intl";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { htmlLang, isLocale, type Locale } from "@/i18n/locales";
 
 const SITE_URL = "https://felipysantsss.vercel.app";
 
@@ -94,13 +95,18 @@ const seoCopy = {
   },
 } as const;
 
-const htmlLang = { pt: "pt-PT", en: "en", es: "es-ES" } as const;
 const ogLocales = { pt: "pt_PT", en: "en_US", es: "es_ES" } as const;
 
-type SiteLocale = keyof typeof seoCopy;
+// Título e descrição por idioma, para o LocaleProvider atualizar o <head> na troca de idioma
+const documentMeta = Object.fromEntries(
+  routing.locales.map((l) => [
+    l,
+    { title: seoCopy[l].title, description: seoCopy[l].description },
+  ]),
+) as Record<Locale, { title: string; description: string }>;
 
-function resolveLocale(locale: string): SiteLocale {
-  return locale in seoCopy ? (locale as SiteLocale) : "pt";
+function resolveLocale(locale: string): Locale {
+  return isLocale(locale) ? locale : routing.defaultLocale;
 }
 
 export async function generateMetadata({
@@ -205,7 +211,7 @@ export default async function RootLayout({
   // Garante que a renderização estática e o i18n funcionem em sincronia
   setRequestLocale(locale);
 
-  // Carrega as mensagens do dicionário (pt.json / en.json)
+  // Carrega as mensagens do dicionário (pt.json / en.json / es.json)
   const messages = await getMessages();
 
   const siteLocale = resolveLocale(locale);
@@ -217,12 +223,16 @@ export default async function RootLayout({
       className={`${chillax.variable} ${montserrat.variable}`}
     >
       <body suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
+        <LocaleProvider
+          initialLocale={siteLocale}
+          initialMessages={messages}
+          documentMeta={documentMeta}
+        >
           <main>
             <Header />
             <SmoothScrollProvider>{children}</SmoothScrollProvider>
           </main>
-        </NextIntlClientProvider>
+        </LocaleProvider>
 
         <script
           type="application/ld+json"

@@ -1,9 +1,10 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useLinkStatus } from "next/link";
-import { useState } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
+import type { MouseEvent } from "react";
+import { getPathname, Link, usePathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/locales";
+import { useLocaleSwitch } from "./LocaleProvider";
 import "flag-icons/css/flag-icons.min.css";
 
 // Cada locale do site com a bandeira correspondente (flag-icons), o código exibido e o nome no próprio idioma
@@ -13,38 +14,38 @@ const languages = [
   { locale: "es", flag: "es", code: "ES", label: "Español (España)", hrefLang: "es-ES" },
 ] as const;
 
-// Bandeira circular; pulsa enquanto a navegação para o novo idioma está pendente
-function Flag({ flag, active }: { flag: string; active: boolean }) {
-  const { pending } = useLinkStatus();
-
-  return (
-    <span
-      aria-hidden
-      className={`fi fis fi-${flag} rounded-full text-[15px] ring-1 ring-white/15 transition-[filter] duration-300 group-hover:grayscale-0 ${
-        active ? "" : "grayscale"
-      } ${pending ? "animate-pulse motion-reduce:animate-none" : ""}`}
-    />
-  );
-}
-
 export function LanguageSwitcher() {
   const locale = useLocale(); // Retorna "pt", "en" ou "es"
   const pathname = usePathname();
   const tl = useTranslations("footer");
+  const { switchLocale, pendingLocale } = useLocaleSwitch();
 
-  // Move o indicador imediatamente no clique, sem esperar a navegação terminar
-  const [selected, setSelected] = useState<string | null>(null);
-  const activeLocale = selected ?? locale;
+  // O indicador já se move para o idioma clicado enquanto as mensagens carregam
+  const activeLocale = pendingLocale ?? locale;
   const activeIndex = Math.max(
     languages.findIndex((item) => item.locale === activeLocale),
     0,
   );
 
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, nextLocale: Locale) => {
+    // Ctrl/⌘/Shift + clique ou botão do meio mantêm o comportamento normal do link (nova aba etc.)
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+
+    // Troca o idioma no cliente, sem navegação: a página não remonta e a rolagem é mantida
+    event.preventDefault();
+    switchLocale(nextLocale, getPathname({ href: pathname, locale: nextLocale }));
+  };
+
   return (
     <nav aria-label={tl("language")} className="flex flex-col items-center gap-3">
       <span className="subtitles">{tl("language")}</span>
 
-      <div className="relative grid grid-cols-3 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.08)]">
+      <div
+        aria-busy={pendingLocale !== null}
+        className="relative grid grid-cols-3 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.08)]"
+      >
         {/* Indicador deslizante do idioma ativo */}
         <span
           aria-hidden
@@ -54,23 +55,31 @@ export function LanguageSwitcher() {
 
         {languages.map(({ locale: itemLocale, flag, code, label, hrefLang }) => {
           const isActive = itemLocale === activeLocale;
+          const isPending = itemLocale === pendingLocale;
 
           return (
             <Link
               key={itemLocale}
               href={pathname}
               locale={itemLocale}
+              prefetch={false}
               hrefLang={hrefLang}
               lang={itemLocale}
               aria-label={label}
               aria-current={itemLocale === locale ? "true" : undefined}
               title={label}
-              onClick={() => setSelected(itemLocale)}
+              onClick={(event) => handleClick(event, itemLocale)}
               className={`group relative z-[1] flex h-9 min-w-[68px] items-center justify-center gap-2 rounded-full px-3 font-[montserrat] text-[11px] font-medium tracking-[0.15em] text-mybeige no-underline transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-mybeige/60 md:h-10 md:min-w-[76px] ${
                 isActive ? "opacity-100" : "opacity-60 hover:opacity-90"
               }`}
             >
-              <Flag flag={flag} active={isActive} />
+              {/* Bandeira circular; pulsa enquanto as mensagens do novo idioma carregam */}
+              <span
+                aria-hidden
+                className={`fi fis fi-${flag} rounded-full text-[15px] ring-1 ring-white/15 transition-[filter] duration-300 group-hover:grayscale-0 ${
+                  isActive ? "" : "grayscale"
+                } ${isPending ? "animate-pulse motion-reduce:animate-none" : ""}`}
+              />
               <span aria-hidden>{code}</span>
             </Link>
           );
