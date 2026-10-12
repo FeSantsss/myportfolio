@@ -193,7 +193,7 @@ export function Initialize() {
           </p>
           <div className="flex flex-col items-start md:items-end lg:scale-110">
             <div className="detail-item bg-[rgba(0,128,0,0.119)] text-[rgb(31,226,31)] border-green-600">
-              <div className="w-2 h-2 bg-green-400 rounded-4xl inline-block mr-2 animate-pulse shadow-green-600"></div>
+              <div className="w-2 h-2 bg-green-400 rounded-4xl inline-block mr-2 animate-pulse shadow-green-600 motion-reduce:animate-none"></div>
               <p>{tl("detailitemone")}</p>
             </div>
             <div className="detail-item">
@@ -206,7 +206,7 @@ export function Initialize() {
         </div>
         <div
           aria-hidden="true"
-          className="arrow text-2xl rotate-90 inline-block mt-2 animate-pulse"
+          className="arrow text-2xl rotate-90 inline-block mt-2 animate-pulse motion-reduce:animate-none"
         >
           <svg
             width="16"
