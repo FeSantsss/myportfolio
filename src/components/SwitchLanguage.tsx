@@ -1,53 +1,90 @@
 "use client";
 
-import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { useTransition } from "react";
-import Image from "next/image";
-import usaFlag from "../../public/images/usunitedstatesflag_111929.svg";
-import brFlag from "../../public/images/br_icon_128192.svg";
+import { useLocale, useTranslations } from "next-intl";
+import type { MouseEvent } from "react";
+import { getPathname, Link, usePathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/locales";
+import { useLocaleSwitch } from "./LocaleProvider";
+import "flag-icons/css/flag-icons.min.css";
+
+// Cada locale do site com a bandeira correspondente (flag-icons), o código exibido e o nome no próprio idioma
+const languages = [
+  { locale: "pt", flag: "pt", code: "PT", label: "Português (Portugal)", hrefLang: "pt-PT" },
+  { locale: "en", flag: "us", code: "EN", label: "English", hrefLang: "en" },
+  { locale: "es", flag: "es", code: "ES", label: "Español (España)", hrefLang: "es-ES" },
+] as const;
 
 export function LanguageSwitcher() {
-  const locale = useLocale(); // Retorna "pt" ou "en"
-  const router = useRouter();
+  const locale = useLocale(); // Retorna "pt", "en" ou "es"
   const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const tl = useTranslations("footer");
+  const { switchLocale, pendingLocale } = useLocaleSwitch();
 
-  const toggleLanguage = () => {
-    // Se o idioma atual for "pt", muda para "en", e vice-versa
-    const nextLocale = locale === "pt" ? "en" : "pt";
+  // O indicador já se move para o idioma clicado enquanto as mensagens carregam
+  const activeLocale = pendingLocale ?? locale;
+  const activeIndex = Math.max(
+    languages.findIndex((item) => item.locale === activeLocale),
+    0,
+  );
 
-    startTransition(() => {
-      // Navega para a mesma página, mas com o novo locale
-      router.replace(pathname, { locale: nextLocale });
-    });
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>, nextLocale: Locale) => {
+    // Ctrl/⌘/Shift + clique ou botão do meio mantêm o comportamento normal do link (nova aba etc.)
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return;
+    }
+
+    // Troca o idioma no cliente, sem navegação: a página não remonta e a rolagem é mantida
+    event.preventDefault();
+    switchLocale(nextLocale, getPathname({ href: pathname, locale: nextLocale }));
   };
 
   return (
-    <button
-      onClick={toggleLanguage}
-      disabled={isPending}
-      className="font-['montserrat'] cursor-pointer text-xs uppercase tracking-widest px-3 py-1.5 rounded-full border border-[rgba(255,251,244,0.15)] bg-[#1e1b166d] text-mybeige hover:bg-[#232018] hover:border-[rgba(255,251,244,0.4)] transition-all duration-300 disabled:opacity-50"
-      title="Alternar idioma / Switch language"
-    >
-      {/* Exibe o idioma oposto para onde o usuário vai ao clicar */}
-      {locale === "pt" ? (
-        <Image
-          className="w-[25px] h-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
-          width={100}
-          height={50}
-          src={usaFlag}
-          alt="language selected: USA"
+    <nav aria-label={tl("language")} className="flex flex-col items-center gap-3">
+      <span className="subtitles">{tl("language")}</span>
+
+      <div
+        aria-busy={pendingLocale !== null}
+        className="relative grid grid-cols-3 rounded-full border border-white/10 bg-black/40 p-1 backdrop-blur-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.08)]"
+      >
+        {/* Indicador deslizante do idioma ativo */}
+        <span
+          aria-hidden
+          className="absolute inset-y-1 left-1 w-[calc((100%-0.5rem)/3)] rounded-full border border-mybeige/20 bg-mybeige/10 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none"
+          style={{ transform: `translateX(${activeIndex * 100}%)` }}
         />
-      ) : (
-        <Image
-          className="w-[25px] opacity-50 hover:opacity-100 duration-300 rounded-md"
-          width={100}
-          height={50}
-          src={brFlag}
-          alt="language selected: BR"
-        />
-      )}
-    </button>
+
+        {languages.map(({ locale: itemLocale, flag, code, label, hrefLang }) => {
+          const isActive = itemLocale === activeLocale;
+          const isPending = itemLocale === pendingLocale;
+
+          return (
+            <Link
+              key={itemLocale}
+              href={pathname}
+              locale={itemLocale}
+              prefetch={false}
+              hrefLang={hrefLang}
+              lang={itemLocale}
+              aria-label={label}
+              aria-current={itemLocale === locale ? "true" : undefined}
+              title={label}
+              onClick={(event) => handleClick(event, itemLocale)}
+              className={`group relative z-[1] flex h-9 min-w-[68px] items-center justify-center gap-2 rounded-full px-3 font-[montserrat] text-[11px] font-medium tracking-[0.15em] text-mybeige no-underline transition-opacity duration-300 outline-none focus-visible:ring-2 focus-visible:ring-mybeige/60 md:h-10 md:min-w-[76px] ${
+                isActive ? "opacity-100" : "opacity-60 hover:opacity-90"
+              }`}
+            >
+              {/* Bandeira circular; pulsa enquanto as mensagens do novo idioma carregam */}
+              <span
+                aria-hidden
+                className={`fi fis fi-${flag} rounded-full text-[15px] ring-1 ring-white/15 transition-[filter] duration-300 group-hover:grayscale-0 ${
+                  isActive ? "" : "grayscale"
+                } ${isPending ? "animate-pulse motion-reduce:animate-none" : ""}`}
+              />
+              <span aria-hidden>{code}</span>
+            </Link>
+          );
+        })}
+      </div>
+    </nav>
   );
 }

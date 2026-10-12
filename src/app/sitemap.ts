@@ -11,8 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       alternates: {
         languages: {
-          pt: SITE_URL,
+          "pt-PT": SITE_URL,
           en: `${SITE_URL}/en`,
+          "es-ES": `${SITE_URL}/es`,
         },
       },
     },
@@ -23,8 +24,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       alternates: {
         languages: {
-          pt: SITE_URL,
+          "pt-PT": SITE_URL,
           en: `${SITE_URL}/en`,
+          "es-ES": `${SITE_URL}/es`,
+        },
+      },
+    },
+    {
+      url: `${SITE_URL}/es`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          "pt-PT": SITE_URL,
+          en: `${SITE_URL}/en`,
+          "es-ES": `${SITE_URL}/es`,
         },
       },
     },

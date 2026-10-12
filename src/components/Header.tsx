@@ -4,7 +4,6 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
-import { LanguageSwitcher } from "./SwitchLanguage";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -134,8 +133,6 @@ export function Header() {
               {tl("contact")}
               <span className={navUnderlineClass} />
             </a>
-
-            <LanguageSwitcher />
           </nav>
 
           {/* Burger Button */}
@@ -214,13 +211,6 @@ export function Header() {
           </a>
 
           <div className="menu-divider h-px w-full origin-left scale-x-0 bg-white/10" />
-
-          <div
-            tabIndex={menuOpen ? 0 : -1}
-            className="menu-link max-w-[100px]   mt-5"
-          >
-            <LanguageSwitcher />
-          </div>
         </nav>
       </div>
     </div>

@@ -3,9 +3,10 @@ import "../globals.css";
 import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
-import { NextIntlClientProvider } from "next-intl";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { htmlLang, isLocale, type Locale } from "@/i18n/locales";
 
 const SITE_URL = "https://felipysantsss.vercel.app";
 
@@ -41,31 +42,72 @@ const seoCopy = {
   pt: {
     title: "Felipy Santos — Engenheiro de Software",
     description:
-      "Engenheiro de Software que constrói aplicações web rápidas, escaláveis e centradas no cliente com Next.js, React, TypeScript e Spring Boot. Full-stack, obcecado por detalhes e disponível para oportunidades internacionais.",
+      "Engenheiro de Software que constrói aplicações web rápidas, escaláveis e centradas no cliente com Next.js, React, TypeScript e Spring Boot. Full-stack, obcecado pelo detalhe e disponível para oportunidades internacionais.",
     ogDescription:
-      "Next.js · React · TypeScript · Spring Boot. Desenvolvo software limpo, performático e escalável — da arquitetura de backend a interfaces polidas e animadas.",
+      "Next.js · React · TypeScript · Spring Boot. Desenvolvo software limpo, eficiente e escalável — da arquitetura de backend a interfaces cuidadas e animadas.",
     twitterDescription:
-      "Engenheiro de Software atuando com React, TypeScript, Java e Spring Boot. Código limpo, design intencional, sistemas escaláveis.",
+      "Engenheiro de Software a trabalhar com React, TypeScript, Java e Spring Boot. Código limpo, design intencional, sistemas escaláveis.",
     jobTitle: "Engenheiro de Software",
     personDescription:
       "Engenheiro de Software especializado em desenvolvimento web full-stack com Next.js, React, TypeScript, Java e Spring Boot. Disponível para oportunidades internacionais.",
     keywords: [
       "engenheiro de software",
-      "desenvolvedor full-stack",
-      "desenvolvedor React",
-      "desenvolvedor Next.js",
+      "programador full-stack",
+      "programador React",
+      "programador Next.js",
       "TypeScript",
       "Spring Boot",
-      "desenvolvedor Java",
+      "programador Java",
       "engenheiro backend",
       "engenheiro frontend",
-      "portfólio desenvolvedor",
-      "desenvolvedor remoto",
+      "portefólio programador",
+      "programador remoto",
       "engenheiro de software Brasil",
       "Felipy Santos",
     ],
   },
+  es: {
+    title: "Felipy Santos — Ingeniero de Software",
+    description:
+      "Ingeniero de Software que desarrolla aplicaciones web rápidas, escalables y centradas en el cliente con Next.js, React, TypeScript y Spring Boot. Full-stack, obsesionado con el detalle y disponible para oportunidades internacionales.",
+    ogDescription:
+      "Next.js · React · TypeScript · Spring Boot. Desarrollo software limpio, eficiente y escalable: desde la arquitectura backend hasta interfaces pulidas y animadas.",
+    twitterDescription:
+      "Ingeniero de Software que trabaja con React, TypeScript, Java y Spring Boot. Código limpio, diseño intencional, sistemas escalables.",
+    jobTitle: "Ingeniero de Software",
+    personDescription:
+      "Ingeniero de Software especializado en desarrollo web full-stack con Next.js, React, TypeScript, Java y Spring Boot. Disponible para oportunidades internacionales.",
+    keywords: [
+      "ingeniero de software",
+      "desarrollador full-stack",
+      "desarrollador React",
+      "desarrollador Next.js",
+      "TypeScript",
+      "Spring Boot",
+      "desarrollador Java",
+      "ingeniero backend",
+      "ingeniero frontend",
+      "portfolio desarrollador",
+      "desarrollador remoto",
+      "ingeniero de software Brasil",
+      "Felipy Santos",
+    ],
+  },
 } as const;
+
+const ogLocales = { pt: "pt_PT", en: "en_US", es: "es_ES" } as const;
+
+// Título e descrição por idioma, para o LocaleProvider atualizar o <head> na troca de idioma
+const documentMeta = Object.fromEntries(
+  routing.locales.map((l) => [
+    l,
+    { title: seoCopy[l].title, description: seoCopy[l].description },
+  ]),
+) as Record<Locale, { title: string; description: string }>;
+
+function resolveLocale(locale: string): Locale {
+  return isLocale(locale) ? locale : routing.defaultLocale;
+}
 
 export async function generateMetadata({
   params,
@@ -73,9 +115,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
+  const siteLocale = resolveLocale(locale);
+  const copy = seoCopy[siteLocale];
   const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
-  const ogLocale = locale === "en" ? "en_US" : "pt_BR";
+  const ogLocale = ogLocales[siteLocale];
 
   return {
     title: copy.title,
@@ -89,7 +132,8 @@ export async function generateMetadata({
       canonical: path,
       languages: {
         en: "/en",
-        pt: "/",
+        "pt-PT": "/",
+        "es-ES": "/es",
         "x-default": "/",
       },
     },
@@ -107,6 +151,7 @@ export async function generateMetadata({
         },
       ],
       locale: ogLocale,
+      alternateLocale: Object.values(ogLocales).filter((l) => l !== ogLocale),
       type: "website",
     },
     twitter: {
@@ -166,23 +211,28 @@ export default async function RootLayout({
   // Garante que a renderização estática e o i18n funcionem em sincronia
   setRequestLocale(locale);
 
-  // Carrega as mensagens do dicionário (pt.json / en.json)
+  // Carrega as mensagens do dicionário (pt.json / en.json / es.json)
   const messages = await getMessages();
 
-  const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
+  const siteLocale = resolveLocale(locale);
+  const copy = seoCopy[siteLocale];
 
   return (
     <html
-      lang={locale}
+      lang={htmlLang[siteLocale]}
       className={`${chillax.variable} ${montserrat.variable}`}
     >
       <body suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
+        <LocaleProvider
+          initialLocale={siteLocale}
+          initialMessages={messages}
+          documentMeta={documentMeta}
+        >
           <main>
             <Header />
             <SmoothScrollProvider>{children}</SmoothScrollProvider>
           </main>
-        </NextIntlClientProvider>
+        </LocaleProvider>
 
         <script
           type="application/ld+json"

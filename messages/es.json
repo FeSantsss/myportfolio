@@ -1,0 +1,84 @@
+{
+  "initialize": {
+    "nameintro": "felipy santos",
+    "minimalistdev": "Desarrollador minimalista",
+    "fulldev": "I - INGENIERO DE SOFTWARE",
+    "iam": "¡Hola! Me llamo",
+    "nameone": "Felipy",
+    "nametwo": "Santos",
+    "description": "Desarrollo aplicaciones web rápidas, escalables y pensadas para el cliente con Next.js y Spring.",
+    "detailitemone": "disponible para trabajar",
+    "detailitemtwo": "Pernambuco, Brasil",
+    "detailitemthree": "creativo y minimalista"
+  },
+  "work": {
+    "projects": "II - PROYECTOS SELECCIONADOS",
+    "title": "trabajos"
+  },
+  "workcases": [
+    {
+      "id": 1,
+      "imageSrc": "https://pub-29c79b56b9f44c2a80b005bc022bef94.r2.dev/felipysantos/Screenshot%20from%202026-06-26%2022-45-14.png",
+      "data": "2025 - 2026/jun",
+      "title": "saintsfilms",
+      "description": "Web corporativa para Saints Films, una productora audiovisual profesional con sede en Pernambuco, Brasil. Desarrollada con especial atención a una identidad visual sólida, animaciones fluidas, un SEO optimizado y una arquitectura frontend escalable.",
+      "stack": [
+        "Next.js",
+        "Sanity CMS",
+        "TypeScript",
+        "Tailwind CSS",
+        "Motion",
+        "Minimalista"
+      ],
+      "url": "https://www.behance.net/gallery/252363217/SAINTSFILMS"
+    }
+  ],
+  "about": {
+    "journey": "III - MI TRAYECTORIA",
+    "title": "sobre mí",
+    "description1": "Empecé mi trayectoria en el desarrollo en <strong>2025</strong> con un fuerte enfoque en la ingeniería back-end, estudiando <strong>Java</strong>, <strong>Spring Boot</strong>, <strong>APIs</strong>, <strong>bases de datos</strong> y <strong>arquitectura de software</strong>.",
+    "description2": "Más tarde, la oportunidad de trabajar en proyectos front-end en <strong>Saints Films</strong> me descubrió otra faceta del desarrollo web.",
+    "description3": "Lo que empezó con HTML, CSS y JavaScript pronto evolucionó hacia la creación de aplicaciones modernas con <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>, <strong>GSAP</strong> y <strong>Sanity CMS</strong>.",
+    "description4": "Mi trabajo se guía por la sencillez, el movimiento y la <strong>atención al detalle</strong>. Disfruto creando experiencias digitales <strong>creativas y minimalistas</strong> en las que el diseño y el desarrollo trabajan juntos en perfecta armonía.",
+    "description5": "La mayor parte de mis habilidades las he desarrollado a través de <strong>proyectos prácticos</strong>, <strong>trabajos como freelance</strong>, <strong>contribuciones open source</strong>, documentación técnica, cursos online y <strong>aprendizaje continuo.</strong>"
+  },
+  "contact": {
+    "got": "¿tienes",
+    "a": "un",
+    "project": "proyecto",
+    "inMind": "en mente?",
+    "letsBuild": "¡construyamos juntos!"
+  },
+  "menu": {
+    "work": "trabajos",
+    "about": "sobre mí",
+    "contact": "contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "footer": {
+    "language": "idioma"
+  },
+  "metadata": {
+    "title": "Felipy Santos — Desarrollador Full-Stack",
+    "description": "Desarrollador Full-Stack especializado en React, TypeScript y Spring Boot. Creo interfaces limpias y eficientes y back-ends escalables. Disponible para oportunidades internacionales.",
+    "keywords": [
+      "desarrollador full-stack",
+      "desarrollador frontend",
+      "desarrollador React",
+      "TypeScript",
+      "Spring Boot",
+      "desarrollador Java",
+      "desarrollador minimalista",
+      "portfolio",
+      "desarrollador Brasil",
+      "desarrollador remoto",
+      "desarrollador UI",
+      "desarrollador web",
+      "Felipy Santos"
+    ],
+    "ogDescription": "Next.js · TypeScript · GSAP. Código limpio, diseño intencional, soluciones escalables. Disponible para trabajar a nivel internacional.",
+    "twitterDescription": "React · TypeScript · Spring Boot. Código limpio, diseño intencional. Abierto a oportunidades internacionales.",
+    "jsonLdDescription": "Desarrollador Full-Stack especializado en React, TypeScript y Spring Boot. Disponible para oportunidades internacionales."
+  }
+}
