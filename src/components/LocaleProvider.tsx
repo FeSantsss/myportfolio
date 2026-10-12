@@ -34,11 +34,14 @@ export function useLocaleSwitch() {
 export function LocaleProvider({
   initialLocale,
   initialMessages,
+  timeZone,
   documentMeta,
   children,
 }: {
   initialLocale: Locale;
   initialMessages: Messages;
+  // Repassado à mão: o provider do cliente não herda a config do servidor
+  timeZone: string;
   documentMeta: DocumentMeta;
   children: React.ReactNode;
 }) {
@@ -91,6 +94,7 @@ export function LocaleProvider({
       <NextIntlClientProvider
         locale={current.locale}
         messages={current.messages}
+        timeZone={timeZone}
       >
         {children}
       </NextIntlClientProvider>

@@ -10,6 +10,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
+    // Fuso fixo para servidor e navegador formatarem datas da mesma forma
+    timeZone: "America/Recife",
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });

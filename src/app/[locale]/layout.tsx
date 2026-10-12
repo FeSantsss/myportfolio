@@ -5,7 +5,11 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTimeZone,
+  setRequestLocale,
+} from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { htmlLang, isLocale, type Locale } from "@/i18n/locales";
 
@@ -217,6 +221,7 @@ export default async function RootLayout({
 
   // Carrega as mensagens do dicionário (pt.json / en.json / es.json)
   const messages = await getMessages();
+  const timeZone = await getTimeZone();
 
   const copy = seoCopy[siteLocale];
 
@@ -229,6 +234,7 @@ export default async function RootLayout({
         <LocaleProvider
           initialLocale={siteLocale}
           initialMessages={messages}
+          timeZone={timeZone}
           documentMeta={documentMeta}
         >
           <main>
