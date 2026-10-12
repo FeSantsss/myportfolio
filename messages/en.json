@@ -56,6 +56,9 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
+  "footer": {
+    "language": "language"
+  },
   "metadata": {
     "title": "Felipy Santos — Full-Stack Developer",
     "description": "Full-Stack Developer specializing in React, TypeScript & Spring Boot. Crafting clean, performant interfaces and scalable backends. Available for international opportunities.",

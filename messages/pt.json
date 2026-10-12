@@ -56,6 +56,9 @@
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu"
   },
+  "footer": {
+    "language": "idioma"
+  },
   "metadata": {
     "title": "Felipy Santos — Programador Full-Stack",
     "description": "Programador Full-Stack especializado em React, TypeScript e Spring Boot. Crio interfaces limpas e de alto desempenho e back-ends escaláveis. Disponível para oportunidades internacionais.",
