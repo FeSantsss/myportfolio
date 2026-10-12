@@ -41,26 +41,26 @@ const seoCopy = {
   pt: {
     title: "Felipy Santos — Engenheiro de Software",
     description:
-      "Engenheiro de Software que constrói aplicações web rápidas, escaláveis e centradas no cliente com Next.js, React, TypeScript e Spring Boot. Full-stack, obcecado por detalhes e disponível para oportunidades internacionais.",
+      "Engenheiro de Software que constrói aplicações web rápidas, escaláveis e centradas no cliente com Next.js, React, TypeScript e Spring Boot. Full-stack, obcecado pelo detalhe e disponível para oportunidades internacionais.",
     ogDescription:
-      "Next.js · React · TypeScript · Spring Boot. Desenvolvo software limpo, performático e escalável — da arquitetura de backend a interfaces polidas e animadas.",
+      "Next.js · React · TypeScript · Spring Boot. Desenvolvo software limpo, eficiente e escalável — da arquitetura de backend a interfaces cuidadas e animadas.",
     twitterDescription:
-      "Engenheiro de Software atuando com React, TypeScript, Java e Spring Boot. Código limpo, design intencional, sistemas escaláveis.",
+      "Engenheiro de Software a trabalhar com React, TypeScript, Java e Spring Boot. Código limpo, design intencional, sistemas escaláveis.",
     jobTitle: "Engenheiro de Software",
     personDescription:
       "Engenheiro de Software especializado em desenvolvimento web full-stack com Next.js, React, TypeScript, Java e Spring Boot. Disponível para oportunidades internacionais.",
     keywords: [
       "engenheiro de software",
-      "desenvolvedor full-stack",
-      "desenvolvedor React",
-      "desenvolvedor Next.js",
+      "programador full-stack",
+      "programador React",
+      "programador Next.js",
       "TypeScript",
       "Spring Boot",
-      "desenvolvedor Java",
+      "programador Java",
       "engenheiro backend",
       "engenheiro frontend",
-      "portfólio desenvolvedor",
-      "desenvolvedor remoto",
+      "portefólio programador",
+      "programador remoto",
       "engenheiro de software Brasil",
       "Felipy Santos",
     ],
@@ -75,7 +75,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const copy = locale === "en" ? seoCopy.en : seoCopy.pt;
   const path = locale === routing.defaultLocale ? "/" : `/${locale}`;
-  const ogLocale = locale === "en" ? "en_US" : "pt_BR";
+  const ogLocale = locale === "en" ? "en_US" : "pt_PT";
 
   return {
     title: copy.title,
@@ -89,7 +89,7 @@ export async function generateMetadata({
       canonical: path,
       languages: {
         en: "/en",
-        pt: "/",
+        "pt-PT": "/",
         "x-default": "/",
       },
     },
@@ -173,7 +173,7 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={locale}
+      lang={locale === "pt" ? "pt-PT" : locale}
       className={`${chillax.variable} ${montserrat.variable}`}
     >
       <body suppressHydrationWarning>
