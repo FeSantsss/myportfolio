@@ -184,7 +184,8 @@ export function ProjectDrawer({ project, onClosed }: ProjectDrawerProps) {
 
         <div
           data-lenis-prevent
-          className="flex-1 overflow-y-auto overscroll-contain px-6 pb-10 md:px-8"
+          // O esmaecimento no fim indica que há mais conteúdo acima do botão fixo
+          className="flex-1 overflow-y-auto overscroll-contain px-6 pb-16 [mask-image:linear-gradient(to_bottom,black_calc(100%-3rem),transparent)] md:px-8"
         >
           {project.imageSrc && (
             <div className="drawer-image relative mt-6 aspect-[3/2] overflow-hidden rounded-xl border border-white/10">

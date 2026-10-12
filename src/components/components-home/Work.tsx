@@ -51,11 +51,13 @@ export function Work() {
           },
           "-=0.5",
         );
-      gsap.from(".workCaseContainer", {
+      // Os cards entram em sequência, com um stagger curto
+      gsap.from(".workcase-card", {
         y: 40,
         autoAlpha: 0,
         duration: 0.8,
         ease: "power3.out",
+        stagger: 0.1,
         scrollTrigger: {
           trigger: ".workCaseContainer",
           start: "top 85%",
